@@ -222,13 +222,7 @@
   },
   "logo": {
     "light": "/logo/light.svg",
-    "dark": {
-      "text": "Skillment",
-      "textColor": "#FF5722"
-    },
-    "href": "https://skillment.in",
-    "width": 180,
-    "height": 45
+    "dark": "/logo/text-logo.svg"
   },
   "navbar": {
     "links": [
