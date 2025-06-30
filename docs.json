@@ -112,7 +112,67 @@
             "group": "API Reference",
             "pages": [
               "api-reference/introduction",
-              "api-reference/errors"
+              "api-reference/errors",
+              "api-reference/rate-limiting"
+            ]
+          },
+          {
+            "group": "Authentication",
+            "pages": [
+              "api-reference/auth/register",
+              "api-reference/auth/login",
+              "api-reference/auth/verify",
+              "api-reference/auth/logout",
+              "api-reference/auth/candidate-login",
+              "api-reference/auth/otp"
+            ]
+          },
+          {
+            "group": "Assessments",
+            "pages": [
+              "api-reference/assessments/list",
+              "api-reference/assessments/create",
+              "api-reference/assessments/get",
+              "api-reference/assessments/update",
+              "api-reference/assessments/delete",
+              "api-reference/assessments/stats",
+              "api-reference/assessments/candidates"
+            ]
+          },
+          {
+            "group": "Participants",
+            "pages": [
+              "api-reference/participants/list",
+              "api-reference/participants/create",
+              "api-reference/participants/get",
+              "api-reference/participants/update",
+              "api-reference/participants/delete",
+              "api-reference/participants/bulk",
+              "api-reference/participants/export"
+            ]
+          },
+          {
+            "group": "Questions",
+            "pages": [
+              "api-reference/questions/list",
+              "api-reference/questions/create",
+              "api-reference/questions/update",
+              "api-reference/questions/delete"
+            ]
+          },
+          {
+            "group": "Organizations",
+            "pages": [
+              "api-reference/organizations/validate"
+            ]
+          },
+          {
+            "group": "Endpoints",
+            "pages": [
+              "api-reference/endpoint/create",
+              "api-reference/endpoint/get",
+              "api-reference/endpoint/delete",
+              "api-reference/endpoint/webhook"
             ]
           }
         ]
