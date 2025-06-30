@@ -1,0 +1,489 @@
+---
+title: 'Email Communications'
+description: 'Manage assessment invitations, reminders, and automated communications'
+---
+
+## Overview
+
+Effective communication is crucial for successful assessments. Skillment's email system handles everything from initial invitations to result notifications, ensuring participants stay informed throughout the assessment process.
+
+## Assessment Invitations
+
+### Creating Invitation Templates
+
+<Steps>
+  <Step title="Access Email Templates">
+    Go to **Settings** → **Email Templates** in your dashboard
+  </Step>
+  <Step title="Choose Invitation Type">
+    Select from pre-built templates:
+    - **Standard Assessment Invitation**
+    - **Urgent Assessment Invitation** 
+    - **Follow-up Invitation**
+    - **Retake Invitation**
+  </Step>
+  <Step title="Customize Content">
+    Personalize your invitation:
+    - Subject line and greeting
+    - Assessment details and instructions
+    - Deadline and time requirements
+    - Contact information for support
+  </Step>
+  <Step title="Preview and Test">
+    Review the template and send test emails to yourself
+  </Step>
+</Steps>
+
+### Invitation Content Best Practices
+
+<AccordionGroup>
+  <Accordion title="Clear Subject Lines" icon="envelope">
+    **Effective Subject Examples**
+    - "Action Required: Complete Your JavaScript Assessment"
+    - "[Company Name] Assessment - Due [Date]"
+    - "Next Step: Technical Assessment for [Position]"
+    - "Reminder: Assessment Deadline Tomorrow"
+  </Accordion>
+
+  <Accordion title="Essential Information" icon="info-circle">
+    **Must Include**
+    - Assessment purpose and role
+    - Expected duration
+    - Deadline for completion
+    - Technical requirements
+    - Support contact information
+    - Direct assessment link
+  </Accordion>
+
+  <Accordion title="Professional Tone" icon="user-tie">
+    **Communication Style**
+    - Professional but friendly tone
+    - Clear and concise instructions
+    - Encouraging and supportive language
+    - Branded with company style
+    - Mobile-friendly formatting
+  </Accordion>
+</AccordionGroup>
+
+## Automated Communication Workflows
+
+### Email Sequence Configuration
+
+<Tabs>
+  <Tab title="Invitation Series">
+    **Initial Invitation Sequence**
+    
+    **Day 0**: Initial invitation
+    ```
+    Subject: You're invited to complete the [Role] assessment
+    
+    Dear [Name],
+    
+    You've been selected to take the next step in our hiring process...
+    ```
+    
+    **Day 3**: First reminder
+    ```
+    Subject: Reminder: [Role] assessment due in [Days] days
+    
+    Hi [Name],
+    
+    Just a friendly reminder that your assessment is due...
+    ```
+    
+    **Day 6**: Urgent reminder
+    ```
+    Subject: Last chance: Assessment due tomorrow
+    
+    Dear [Name],
+    
+    Your assessment deadline is approaching...
+    ```
+  </Tab>
+  
+  <Tab title="Progress Updates">
+    **Status Communication**
+    
+    **Assessment Started**
+    ```
+    Subject: Assessment started - Good luck!
+    
+    Hi [Name],
+    
+    We've received confirmation that you've started your assessment...
+    ```
+    
+    **Assessment Completed**
+    ```
+    Subject: Assessment completed successfully
+    
+    Thank you for completing your assessment...
+    ```
+    
+    **Technical Issues**
+    ```
+    Subject: Technical support for your assessment
+    
+    We noticed you may have experienced technical difficulties...
+    ```
+  </Tab>
+  
+  <Tab title="Results & Next Steps">
+    **Outcome Communication**
+    
+    **Results Available**
+    ```
+    Subject: Your assessment results are ready
+    
+    Your assessment has been reviewed...
+    ```
+    
+    **Next Round Invitation**
+    ```
+    Subject: Congratulations! Next interview round
+    
+    Based on your excellent performance...
+    ```
+    
+    **Thank You Message**
+    ```
+    Subject: Thank you for your participation
+    
+    We appreciate the time you invested...
+    ```
+  </Tab>
+</Tabs>
+
+### Automated Triggers
+
+Configure when emails are sent automatically:
+
+<CardGroup cols={2}>
+  <Card title="Time-Based Triggers" icon="clock">
+    - Send invitation immediately upon assignment
+    - Reminder emails at 3 days, 1 day, 2 hours before deadline
+    - Follow-up for incomplete assessments
+    - Deadline extension notifications
+  </Card>
+  
+  <Card title="Event-Based Triggers" icon="bolt">
+    - Assessment started confirmation
+    - Mid-assessment technical issue alerts
+    - Completion confirmation
+    - Score availability notification
+  </Card>
+  
+  <Card title="Behavioral Triggers" icon="user-check">
+    - No login after 48 hours
+    - Assessment paused for extended time
+    - Multiple failed login attempts
+    - Participant requests help
+  </Card>
+  
+  <Card title="Administrative Triggers" icon="cog">
+    - Manual reminder sending
+    - Deadline extensions granted
+    - Assessment reset notifications
+    - Custom message broadcasts
+  </Card>
+</CardGroup>
+
+## Personalization and Dynamic Content
+
+### Variable Insertion
+
+Use dynamic variables to personalize emails:
+
+```handlebars
+Subject: {{firstName}}, your {{assessmentTitle}} assessment awaits
+
+Dear {{firstName}} {{lastName}},
+
+You have been invited to complete the {{assessmentTitle}} assessment 
+for the {{positionTitle}} role at {{companyName}}.
+
+Assessment Details:
+- Duration: {{estimatedDuration}}
+- Questions: {{questionCount}} questions
+- Deadline: {{formattedDeadline}}
+- Time Zone: {{participantTimeZone}}
+
+To begin your assessment, click here:
+{{assessmentUrl}}
+
+Technical Requirements:
+{{#each technicalRequirements}}
+- {{this}}
+{{/each}}
+
+If you have any questions, please contact our support team:
+{{supportEmail}} | {{supportPhone}}
+
+Best regards,
+{{senderName}}
+{{companyName}} Recruitment Team
+```
+
+### Conditional Content
+
+Display different content based on participant data:
+
+<AccordionGroup>
+  <Accordion title="Role-Specific Content" icon="briefcase">
+    **Customize by Position**
+    ```handlebars
+    {{#if positionType "engineering"}}
+    This assessment focuses on coding skills and problem-solving abilities.
+    {{else if positionType "marketing"}}
+    This assessment evaluates creative thinking and analytical skills.
+    {{else}}
+    This assessment covers general aptitude and role-specific competencies.
+    {{/if}}
+    ```
+  </Accordion>
+
+  <Accordion title="Experience Level Adaptation" icon="graduation-cap">
+    **Adjust for Seniority**
+    ```handlebars
+    {{#if experienceLevel "entry"}}
+    Don't worry if you're new to some concepts - we're looking for potential!
+    {{else if experienceLevel "senior"}}
+    We're excited to see your expertise and problem-solving approach.
+    {{/if}}
+    ```
+  </Accordion>
+
+  <Accordion title="Geographic Customization" icon="globe">
+    **Location-Based Content**
+    ```handlebars
+    {{#if region "EMEA"}}
+    All times are shown in CET. The assessment is available 24/7.
+    {{else if region "APAC"}}
+    All times are shown in your local time zone.
+    {{/if}}
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Email Delivery Management
+
+### Delivery Optimization
+
+<Tabs>
+  <Tab title="Timing Optimization">
+    **Best Send Times**
+    - **Business Hours**: 9 AM - 5 PM in recipient's time zone
+    - **Mid-Week**: Tuesday through Thursday for best engagement
+    - **Avoid Holidays**: Automatic holiday calendar integration
+    - **Time Zone Awareness**: Send at optimal local times
+  </Tab>
+  
+  <Tab title="Deliverability">
+    **Ensuring Email Delivery**
+    - **SPF/DKIM Authentication**: Proper email authentication
+    - **Reputation Management**: Monitor sender reputation
+    - **Content Optimization**: Avoid spam trigger words
+    - **List Hygiene**: Remove bounced and invalid emails
+  </Tab>
+  
+  <Tab title="Rate Limiting">
+    **Controlled Sending**
+    - **Batch Processing**: Send in controlled batches
+    - **Throttling**: Respect ISP rate limits
+    - **Queue Management**: Prioritize urgent communications
+    - **Retry Logic**: Handle temporary delivery failures
+  </Tab>
+</Tabs>
+
+### Bounce and Complaint Handling
+
+Manage email delivery issues:
+
+<CardGroup cols={2}>
+  <Card title="Bounce Management" icon="exclamation-triangle">
+    **Handle Delivery Failures**
+    - Automatic bounce detection and categorization
+    - Soft bounce retry mechanisms
+    - Hard bounce list management
+    - Alternative contact method attempts
+  </Card>
+  
+  <Card title="Spam Complaints" icon="shield-alt">
+    **Reputation Protection**
+    - Monitor complaint rates
+    - Automatic unsubscribe processing
+    - Feedback loop integration
+    - Sender reputation tracking
+  </Card>
+</CardGroup>
+
+## Communication Analytics
+
+### Email Performance Metrics
+
+<AccordionGroup>
+  <Accordion title="Delivery Metrics" icon="paper-plane">
+    **Basic Delivery Stats**
+    - **Sent**: Total emails sent
+    - **Delivered**: Successfully delivered emails
+    - **Bounced**: Failed delivery attempts
+    - **Delivery Rate**: Percentage successfully delivered
+  </Accordion>
+
+  <Accordion title="Engagement Metrics" icon="mouse-pointer">
+    **Recipient Interaction**
+    - **Open Rate**: Emails opened vs. delivered
+    - **Click Rate**: Assessment links clicked
+    - **Response Rate**: Assessments started after email
+    - **Conversion Rate**: Completed assessments
+  </Accordion>
+
+  <Accordion title="Performance Analysis" icon="chart-line">
+    **Communication Effectiveness**
+    - **Time to Open**: How quickly emails are opened
+    - **Time to Action**: Delay between email and assessment start
+    - **Template Performance**: Which templates work best
+    - **A/B Test Results**: Comparative template performance
+  </Accordion>
+</AccordionGroup>
+
+### Reporting Dashboard
+
+Track communication effectiveness:
+
+- **Real-time Delivery Status**: Live monitoring of email campaigns
+- **Engagement Heatmaps**: Visual representation of open/click patterns
+- **Conversion Funnels**: From invitation to assessment completion
+- **Comparative Analysis**: Performance across different campaigns
+- **ROI Metrics**: Communication cost vs. assessment completion rates
+
+## Advanced Email Features
+
+### A/B Testing
+
+<Steps>
+  <Step title="Create Test Variants">
+    Design multiple versions of your email:
+    - Different subject lines
+    - Varying call-to-action text
+    - Alternative layouts or designs
+    - Different send times
+  </Step>
+  <Step title="Define Test Parameters">
+    Set up your experiment:
+    - Sample size for each variant
+    - Success metrics to measure
+    - Test duration
+    - Statistical significance threshold
+  </Step>
+  <Step title="Launch and Monitor">
+    Execute the test and track results:
+    - Real-time performance monitoring
+    - Statistical significance tracking
+    - Automatic winner selection
+    - Full campaign rollout
+  </Step>
+</Steps>
+
+### Multi-Language Support
+
+<Tabs>
+  <Tab title="Template Localization">
+    **Language-Specific Templates**
+    - Create templates in multiple languages
+    - Automatic language detection from participant data
+    - Fallback to default language if translation unavailable
+    - Cultural adaptation beyond translation
+  </Tab>
+  
+  <Tab title="Dynamic Translation">
+    **Real-Time Translation**
+    - Integration with translation services
+    - Maintain personalization in translated content
+    - Quality assurance for automated translations
+    - Human review for critical communications
+  </Tab>
+</Tabs>
+
+## Email Security and Compliance
+
+### Data Protection
+
+<AccordionGroup>
+  <Accordion title="Privacy Compliance" icon="user-shield">
+    **GDPR and Privacy Laws**
+    - Consent management for email communications
+    - Right to unsubscribe from non-essential emails
+    - Data retention policies for email logs
+    - Privacy notice inclusion in emails
+  </Accordion>
+
+  <Accordion title="Content Security" icon="lock">
+    **Secure Communications**
+    - Encrypted email transmission
+    - Secure assessment link generation
+    - Anti-phishing measures
+    - Email authentication protocols
+  </Accordion>
+
+  <Accordion title="Audit Trail" icon="history">
+    **Communication Logging**
+    - Complete email delivery logs
+    - Participant interaction tracking
+    - Template version control
+    - Compliance reporting capabilities
+  </Accordion>
+</AccordionGroup>
+
+## Troubleshooting Common Issues
+
+<AccordionGroup>
+  <Accordion title="Low Open Rates" icon="envelope-open">
+    **Improving Email Engagement**
+    - Review subject lines for clarity and urgency
+    - Check sender name and email reputation
+    - Verify emails aren't going to spam folders
+    - Test different send times and days
+    - Personalize content more effectively
+  </Accordion>
+
+  <Accordion title="High Bounce Rates" icon="exclamation">
+    **Delivery Issues**
+    - Validate email addresses before sending
+    - Clean up participant email lists regularly
+    - Check domain reputation and authentication
+    - Monitor blacklist status
+    - Review email content for spam triggers
+  </Accordion>
+
+  <Accordion title="Low Assessment Completion" icon="chart-line-down">
+    **Conversion Problems**
+    - Simplify email design and clear call-to-action
+    - Provide clear instructions and expectations
+    - Include technical support information
+    - Follow up with non-respondents appropriately
+    - Consider alternative communication channels
+  </Accordion>
+</AccordionGroup>
+
+## Integration with External Systems
+
+### CRM Integration
+
+Connect email communications with your CRM:
+- **Salesforce**: Sync email activities and responses
+- **HubSpot**: Track email engagement in contact records
+- **Custom CRM**: API integration for bidirectional data sync
+- **Activity Logging**: Record all communications in participant profiles
+
+### Marketing Automation
+
+Integrate with marketing platforms:
+- **Email Triggers**: Trigger follow-up campaigns based on assessment outcomes
+- **Lead Scoring**: Update lead scores based on email engagement
+- **Nurture Campaigns**: Add participants to appropriate nurture sequences
+- **Analytics Integration**: Combine email metrics with broader marketing analytics
+
+<Note>
+**Email communication is often the first impression candidates have of your assessment process.** Invest time in creating clear, professional, and helpful communications that set appropriate expectations and provide excellent support.
+</Note> 
