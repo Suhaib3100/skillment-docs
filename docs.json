@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "maple",
   "name": "Skillment Platform Guide",
   "description": "Complete guide to using the Skillment assessment platform",
   "openapi": "/api-reference/openapi.json",
