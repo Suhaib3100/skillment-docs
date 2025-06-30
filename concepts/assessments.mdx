@@ -1,0 +1,131 @@
+---
+title: 'Assessments'
+description: 'Learn about assessments in Skillment - how they work, types, and configuration options.'
+---
+
+# Assessments
+
+Assessments are the core component of Skillment's evaluation system. They allow you to create comprehensive tests for candidates with various question types, proctoring features, and detailed analytics.
+
+## What is an Assessment?
+
+An assessment is a structured evaluation that consists of:
+
+- **Questions**: Multiple choice, coding, essay, or file upload questions
+- **Configuration**: Time limits, randomization, proctoring settings
+- **Participants**: Candidates who will take the assessment
+- **Results**: Detailed analytics and performance metrics
+
+## Assessment Types
+
+### 1. Multiple Choice Assessments
+Traditional question-based assessments with predefined answers.
+
+```json
+{
+  "type": "multiple_choice",
+  "questions": [
+    {
+      "question": "What is the capital of France?",
+      "options": ["London", "Berlin", "Paris", "Madrid"],
+      "correct_answer": 2
+    }
+  ]
+}
+```
+
+### 2. Coding Assessments
+Programming challenges with code execution and evaluation.
+
+```json
+{
+  "type": "coding",
+  "questions": [
+    {
+      "question": "Write a function to reverse a string",
+      "language": "python",
+      "test_cases": [
+        {
+          "input": "hello",
+          "expected_output": "olleh"
+        }
+      ]
+    }
+  ]
+}
+```
+
+### 3. Mixed Assessments
+Combinations of different question types in a single assessment.
+
+## Assessment Configuration
+
+### Basic Settings
+- **Title**: Name of the assessment
+- **Description**: Detailed explanation for candidates
+- **Duration**: Time limit in minutes
+- **Instructions**: Guidelines for candidates
+
+### Advanced Settings
+- **Randomization**: Shuffle questions and answer options
+- **Proctoring**: Screen recording, webcam monitoring
+- **Attempts**: Number of allowed attempts
+- **Passing Score**: Minimum score to pass
+
+### Proctoring Options
+- **Screen Recording**: Capture candidate's screen
+- **Webcam Monitoring**: Video surveillance during assessment
+- **Browser Lock**: Prevent switching tabs/windows
+- **Copy-Paste Prevention**: Disable clipboard access
+
+## Assessment Lifecycle
+
+1. **Creation**: Set up questions and configuration
+2. **Invitation**: Send assessment links to candidates
+3. **Execution**: Candidates take the assessment
+4. **Evaluation**: Automatic or manual grading
+5. **Analysis**: Review results and analytics
+
+## Best Practices
+
+### Question Design
+- Use clear, unambiguous language
+- Include appropriate time limits
+- Test questions before deployment
+- Provide detailed instructions
+
+### Security
+- Enable proctoring for high-stakes assessments
+- Use randomization to prevent cheating
+- Set appropriate time limits
+- Monitor for suspicious activity
+
+### User Experience
+- Provide clear instructions
+- Include practice questions
+- Offer technical support
+- Give detailed feedback
+
+## API Integration
+
+Create assessments programmatically using our REST API:
+
+```bash
+POST /api/assessments
+{
+  "title": "Frontend Developer Assessment",
+  "description": "Test your React and JavaScript skills",
+  "duration": 120,
+  "questions": [...],
+  "proctoring": {
+    "screen_recording": true,
+    "webcam_monitoring": true
+  }
+}
+```
+
+## Next Steps
+
+- Learn about [Participants](/concepts/participants) management
+- Explore [Proctoring](/concepts/proctoring) features
+- Check out [API Reference](/api-reference/assessments) for detailed endpoints 

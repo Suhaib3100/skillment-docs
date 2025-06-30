@@ -1,0 +1,43 @@
+---
+title: 'Logout'
+description: 'Logout user and invalidate tokens'
+---
+
+<Note>
+  **Coming Soon**: This endpoint documentation is currently under development. Please check back soon for complete API details.
+</Note>
+
+## Overview
+
+Logout user and invalidate current access tokens.
+
+## Endpoint
+
+```
+POST /api/auth/logout
+```
+
+## Headers
+
+```
+Authorization: Bearer <access_token>
+```
+
+## Response
+
+```json
+{
+  "success": true,
+  "message": "Logout successful"
+}
+```
+
+## Status Codes
+
+- `200` - Logout successful
+- `401` - Unauthorized
+- `500` - Internal server error
+
+---
+
+*This documentation will be updated with complete implementation details soon.* 

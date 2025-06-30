@@ -1,0 +1,230 @@
+---
+title: 'Error Handling'
+description: 'Learn about error handling and response codes in the Skillment API.'
+---
+
+# Error Handling
+
+The Skillment API uses conventional HTTP response codes to indicate the success or failure of an API request. In general, codes in the 2xx range indicate success, codes in the 4xx range indicate an error that resulted from the provided information, and codes in the 5xx range indicate an error with our servers.
+
+## HTTP Status Codes
+
+### Success Responses
+
+| Code | Description |
+|------|-------------|
+| 200 | OK - Request successful |
+| 201 | Created - Resource created successfully |
+| 204 | No Content - Request successful, no content returned |
+
+### Client Errors (4xx)
+
+| Code | Description |
+|------|-------------|
+| 400 | Bad Request - Invalid request syntax or parameters |
+| 401 | Unauthorized - Authentication required or failed |
+| 403 | Forbidden - Access denied, insufficient permissions |
+| 404 | Not Found - Resource not found |
+| 409 | Conflict - Resource conflict (e.g., duplicate email) |
+| 422 | Unprocessable Entity - Validation failed |
+| 429 | Too Many Requests - Rate limit exceeded |
+
+### Server Errors (5xx)
+
+| Code | Description |
+|------|-------------|
+| 500 | Internal Server Error - Unexpected server error |
+| 502 | Bad Gateway - Upstream service error |
+| 503 | Service Unavailable - Service temporarily unavailable |
+
+## Error Response Format
+
+All error responses follow a consistent format:
+
+```json
+{
+  "error": {
+    "code": "validation_error",
+    "message": "Invalid email format",
+    "details": {
+      "field": "email",
+      "value": "invalid-email",
+      "constraint": "must be a valid email address"
+    },
+    "timestamp": "2024-01-15T10:30:00Z",
+    "request_id": "req_123456789"
+  }
+}
+```
+
+### Error Object Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `code` | string | Machine-readable error code |
+| `message` | string | Human-readable error message |
+| `details` | object | Additional error context (optional) |
+| `timestamp` | string | ISO 8601 timestamp |
+| `request_id` | string | Unique request identifier for support |
+
+## Common Error Codes
+
+### Authentication Errors
+
+```json
+{
+  "error": {
+    "code": "authentication_failed",
+    "message": "Invalid API key or token",
+    "details": {
+      "reason": "expired_token"
+    }
+  }
+}
+```
+
+### Validation Errors
+
+```json
+{
+  "error": {
+    "code": "validation_error",
+    "message": "Request validation failed",
+    "details": {
+      "field": "email",
+      "value": "invalid-email",
+      "constraint": "must be a valid email address"
+    }
+  }
+}
+```
+
+### Resource Not Found
+
+```json
+{
+  "error": {
+    "code": "resource_not_found",
+    "message": "Assessment not found",
+    "details": {
+      "resource": "assessment",
+      "id": "assessment_123"
+    }
+  }
+}
+```
+
+### Rate Limiting
+
+```json
+{
+  "error": {
+    "code": "rate_limit_exceeded",
+    "message": "Too many requests",
+    "details": {
+      "limit": 100,
+      "reset_time": "2024-01-15T11:00:00Z"
+    }
+  }
+}
+```
+
+## Handling Errors
+
+### JavaScript/Node.js
+
+```javascript
+try {
+  const response = await fetch('/api/assessments', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(assessmentData)
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    console.error('API Error:', error.error.message);
+    
+    switch (error.error.code) {
+      case 'authentication_failed':
+        // Handle authentication error
+        break;
+      case 'validation_error':
+        // Handle validation error
+        break;
+      case 'rate_limit_exceeded':
+        // Handle rate limiting
+        break;
+      default:
+        // Handle other errors
+    }
+  }
+} catch (error) {
+  console.error('Network error:', error);
+}
+```
+
+### Python
+
+```python
+import requests
+
+try:
+    response = requests.post(
+        'https://api.skillment.in/api/assessments',
+        headers={
+            'Authorization': f'Bearer {api_key}',
+            'Content-Type': 'application/json'
+        },
+        json=assessment_data
+    )
+    
+    if not response.ok:
+        error = response.json()
+        print(f"API Error: {error['error']['message']}")
+        
+        if error['error']['code'] == 'authentication_failed':
+            # Handle authentication error
+            pass
+        elif error['error']['code'] == 'validation_error':
+            # Handle validation error
+            pass
+        elif error['error']['code'] == 'rate_limit_exceeded':
+            # Handle rate limiting
+            pass
+            
+except requests.exceptions.RequestException as e:
+    print(f"Network error: {e}")
+```
+
+## Best Practices
+
+### Error Handling
+- Always check response status codes
+- Parse error responses for detailed information
+- Implement retry logic for transient errors
+- Log errors with request IDs for debugging
+
+### Rate Limiting
+- Respect rate limits and retry after reset time
+- Implement exponential backoff for retries
+- Monitor rate limit headers in responses
+
+### Validation
+- Validate data before sending requests
+- Handle validation errors gracefully
+- Provide user-friendly error messages
+
+## Support
+
+If you encounter persistent errors or need assistance:
+
+1. **Check the error message** for specific guidance
+2. **Note the request ID** for support reference
+3. **Review the API documentation** for correct usage
+4. **Contact support** with error details and request ID
+
+For technical support, email: `support@skillment.in` 

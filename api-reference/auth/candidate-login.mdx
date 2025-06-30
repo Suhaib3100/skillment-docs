@@ -1,0 +1,62 @@
+---
+title: 'Candidate Login'
+description: 'Authenticate candidate for assessment'
+---
+
+<Note>
+  **Coming Soon**: This endpoint documentation is currently under development. Please check back soon for complete API details.
+</Note>
+
+## Overview
+
+Authenticate a candidate for taking an assessment using assessment-specific credentials.
+
+## Endpoint
+
+```
+POST /api/auth/candidate-login
+```
+
+## Request Body
+
+```json
+{
+  "assessmentId": "assessment_123",
+  "candidateId": "candidate_456",
+  "accessCode": "ABC123"
+}
+```
+
+## Response
+
+```json
+{
+  "success": true,
+  "message": "Candidate login successful",
+  "data": {
+    "candidateToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "assessment": {
+      "id": "assessment_123",
+      "title": "JavaScript Assessment",
+      "duration": 60
+    },
+    "candidate": {
+      "id": "candidate_456",
+      "name": "John Doe",
+      "email": "john@example.com"
+    }
+  }
+}
+```
+
+## Status Codes
+
+- `200` - Login successful
+- `401` - Invalid credentials
+- `404` - Assessment not found
+- `400` - Invalid request data
+- `500` - Internal server error
+
+---
+
+*This documentation will be updated with complete implementation details soon.* 

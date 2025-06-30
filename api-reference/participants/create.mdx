@@ -1,0 +1,66 @@
+---
+title: 'Create Participant'
+description: 'Add a new participant'
+---
+
+<Note>
+  **Coming Soon**: This endpoint documentation is currently under development. Please check back soon for complete API details.
+</Note>
+
+## Overview
+
+Add a new participant to your organization.
+
+## Endpoint
+
+```
+POST /api/participants
+```
+
+## Headers
+
+```
+Authorization: Bearer <access_token>
+Content-Type: application/json
+```
+
+## Request Body
+
+```json
+{
+  "name": "Jane Smith",
+  "email": "jane@example.com",
+  "phone": "+1234567890",
+  "department": "Engineering",
+  "position": "Software Developer",
+  "tags": ["frontend", "react"]
+}
+```
+
+## Response
+
+```json
+{
+  "success": true,
+  "message": "Participant created successfully",
+  "data": {
+    "id": "participant_456",
+    "name": "Jane Smith",
+    "email": "jane@example.com",
+    "status": "active",
+    "createdAt": "2024-01-01T12:00:00Z"
+  }
+}
+```
+
+## Status Codes
+
+- `201` - Participant created successfully
+- `400` - Invalid request data
+- `401` - Unauthorized
+- `409` - Participant already exists
+- `500` - Internal server error
+
+---
+
+*This documentation will be updated with complete implementation details soon.* 

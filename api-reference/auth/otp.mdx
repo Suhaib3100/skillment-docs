@@ -1,0 +1,83 @@
+---
+title: 'OTP'
+description: 'One-time password operations'
+---
+
+<Note>
+  **Coming Soon**: This endpoint documentation is currently under development. Please check back soon for complete API details.
+</Note>
+
+## Overview
+
+Generate and verify one-time passwords for enhanced security.
+
+## Endpoints
+
+### Generate OTP
+
+```
+POST /api/auth/otp/generate
+```
+
+#### Request Body
+
+```json
+{
+  "email": "user@example.com",
+  "purpose": "login"
+}
+```
+
+#### Response
+
+```json
+{
+  "success": true,
+  "message": "OTP sent successfully",
+  "data": {
+    "expiresAt": "2024-01-01T12:00:00Z"
+  }
+}
+```
+
+### Verify OTP
+
+```
+POST /api/auth/otp/verify
+```
+
+#### Request Body
+
+```json
+{
+  "email": "user@example.com",
+  "otp": "123456",
+  "purpose": "login"
+}
+```
+
+#### Response
+
+```json
+{
+  "success": true,
+  "message": "OTP verified successfully",
+  "data": {
+    "verified": true,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+  }
+}
+```
+
+## Status Codes
+
+- `200` - Operation successful
+- `400` - Invalid request data
+- `401` - Invalid OTP
+- `404` - OTP not found
+- `410` - OTP expired
+- `500` - Internal server error
+
+---
+
+*This documentation will be updated with complete implementation details soon.* 

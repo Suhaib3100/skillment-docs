@@ -1,0 +1,72 @@
+---
+title: 'Update Assessment'
+description: 'Update assessment details'
+---
+
+<Note>
+  **Coming Soon**: This endpoint documentation is currently under development. Please check back soon for complete API details.
+</Note>
+
+## Overview
+
+Update an existing assessment's details and configuration.
+
+## Endpoint
+
+```
+PUT /api/assessments/{assessmentId}
+```
+
+## Headers
+
+```
+Authorization: Bearer <access_token>
+Content-Type: application/json
+```
+
+## Path Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `assessmentId` | string | Unique identifier of the assessment |
+
+## Request Body
+
+```json
+{
+  "title": "Updated JavaScript Fundamentals",
+  "description": "Updated description for JavaScript basics test",
+  "duration": 90,
+  "settings": {
+    "allowRetake": true,
+    "shuffleQuestions": false,
+    "showResults": true
+  }
+}
+```
+
+## Response
+
+```json
+{
+  "success": true,
+  "message": "Assessment updated successfully",
+  "data": {
+    "id": "assessment_123",
+    "title": "Updated JavaScript Fundamentals",
+    "updatedAt": "2024-01-01T12:00:00Z"
+  }
+}
+```
+
+## Status Codes
+
+- `200` - Assessment updated successfully
+- `400` - Invalid request data
+- `401` - Unauthorized
+- `404` - Assessment not found
+- `500` - Internal server error
+
+---
+
+*This documentation will be updated with complete implementation details soon.* 

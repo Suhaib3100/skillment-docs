@@ -1,0 +1,72 @@
+---
+title: 'Get Participant'
+description: 'Retrieve participant details'
+---
+
+<Note>
+  **Coming Soon**: This endpoint documentation is currently under development. Please check back soon for complete API details.
+</Note>
+
+## Overview
+
+Retrieve detailed information about a specific participant.
+
+## Endpoint
+
+```
+GET /api/participants/{participantId}
+```
+
+## Headers
+
+```
+Authorization: Bearer <access_token>
+```
+
+## Path Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `participantId` | string | Unique identifier of the participant |
+
+## Response
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": "participant_123",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "phone": "+1234567890",
+    "department": "Engineering",
+    "position": "Software Developer",
+    "status": "active",
+    "tags": ["frontend", "react"],
+    "assessmentsTaken": 5,
+    "averageScore": 78.5,
+    "lastActive": "2024-01-01T12:00:00Z",
+    "createdAt": "2024-01-01T10:00:00Z",
+    "updatedAt": "2024-01-01T12:00:00Z",
+    "recentAssessments": [
+      {
+        "id": "assessment_123",
+        "title": "JavaScript Fundamentals",
+        "score": 85,
+        "completedAt": "2024-01-01T11:00:00Z"
+      }
+    ]
+  }
+}
+```
+
+## Status Codes
+
+- `200` - Participant retrieved successfully
+- `401` - Unauthorized
+- `404` - Participant not found
+- `500` - Internal server error
+
+---
+
+*This documentation will be updated with complete implementation details soon.* 

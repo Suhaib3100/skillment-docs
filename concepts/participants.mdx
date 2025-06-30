@@ -1,0 +1,192 @@
+---
+title: 'Participants'
+description: 'Learn about participant management in Skillment - how to invite, track, and manage candidates.'
+---
+
+# Participants
+
+Participants are the candidates who take assessments in Skillment. Effective participant management is crucial for successful assessment delivery and result analysis.
+
+## What are Participants?
+
+Participants are individuals who:
+- Receive assessment invitations
+- Complete assessments
+- Generate results and analytics
+- Can be organized into groups or teams
+
+## Participant Information
+
+### Basic Details
+- **Name**: Full name of the candidate
+- **Email**: Primary contact and login identifier
+- **Phone**: Optional contact information
+- **Organization**: Company or institution affiliation
+
+### Assessment-Specific Data
+- **Assessment Status**: Not started, in progress, completed
+- **Attempts**: Number of times assessment was attempted
+- **Score**: Final assessment score
+- **Time Taken**: Duration of assessment completion
+
+## Participant Management
+
+### 1. Individual Invitations
+Send personalized invitations to specific candidates:
+
+```json
+{
+  "email": "candidate@example.com",
+  "name": "John Doe",
+  "assessment_id": "assessment_123",
+  "expires_at": "2024-12-31T23:59:59Z"
+}
+```
+
+### 2. Bulk Import
+Upload multiple participants at once using CSV or Excel files:
+
+```csv
+email,name,phone,organization
+john@example.com,John Doe,+1234567890,Acme Corp
+jane@example.com,Jane Smith,+1234567891,Tech Inc
+```
+
+### 3. Team Management
+Organize participants into teams for group assessments:
+
+```json
+{
+  "team_name": "Frontend Developers",
+  "participants": [
+    "john@example.com",
+    "jane@example.com",
+    "bob@example.com"
+  ]
+}
+```
+
+## Invitation Process
+
+### 1. Send Invitation
+Participants receive email invitations with:
+- Assessment details and instructions
+- Unique login credentials
+- Expiration date and time
+- Technical requirements
+
+### 2. Assessment Access
+Participants can access assessments through:
+- Direct email links
+- Dashboard login
+- Mobile-responsive interface
+
+### 3. Progress Tracking
+Monitor participant progress in real-time:
+- Login status
+- Assessment completion percentage
+- Time remaining
+- Technical issues
+
+## Participant Experience
+
+### Before Assessment
+- Receive clear instructions
+- Test system compatibility
+- Access practice questions
+- Contact support if needed
+
+### During Assessment
+- Intuitive interface
+- Progress indicators
+- Time management tools
+- Technical support access
+
+### After Assessment
+- Immediate feedback (if enabled)
+- Detailed score breakdown
+- Certificate generation
+- Result sharing options
+
+## Security Features
+
+### Authentication
+- Email-based login
+- OTP verification
+- Session management
+- Secure token handling
+
+### Proctoring Integration
+- Identity verification
+- Behavior monitoring
+- Cheating prevention
+- Audit trails
+
+## Analytics and Reporting
+
+### Individual Reports
+- Detailed performance metrics
+- Question-by-question analysis
+- Time spent on each section
+- Improvement recommendations
+
+### Group Analytics
+- Comparative performance
+- Team rankings
+- Statistical analysis
+- Trend identification
+
+## API Integration
+
+### Create Participants
+```bash
+POST /api/participants
+{
+  "email": "candidate@example.com",
+  "name": "John Doe",
+  "assessment_id": "assessment_123"
+}
+```
+
+### Bulk Operations
+```bash
+POST /api/participants/bulk
+{
+  "participants": [
+    {"email": "john@example.com", "name": "John Doe"},
+    {"email": "jane@example.com", "name": "Jane Smith"}
+  ],
+  "assessment_id": "assessment_123"
+}
+```
+
+### Export Results
+```bash
+GET /api/participants/export?assessment_id=assessment_123&format=csv
+```
+
+## Best Practices
+
+### Communication
+- Send clear, professional invitations
+- Provide detailed instructions
+- Offer technical support
+- Follow up on incomplete assessments
+
+### Data Management
+- Maintain accurate participant information
+- Regular data cleanup
+- Secure data handling
+- Compliance with privacy regulations
+
+### User Experience
+- Test the participant interface
+- Provide practice assessments
+- Offer multiple contact methods
+- Gather feedback for improvements
+
+## Next Steps
+
+- Learn about [Assessments](/concepts/assessments) creation
+- Explore [Proctoring](/concepts/proctoring) features
+- Check out [API Reference](/api-reference/participants) for detailed endpoints 

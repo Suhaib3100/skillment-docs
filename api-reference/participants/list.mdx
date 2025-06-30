@@ -1,0 +1,74 @@
+---
+title: 'List Participants'
+description: 'Retrieve list of participants'
+---
+
+<Note>
+  **Coming Soon**: This endpoint documentation is currently under development. Please check back soon for complete API details.
+</Note>
+
+## Overview
+
+Retrieve a paginated list of participants in your organization.
+
+## Endpoint
+
+```
+GET /api/participants
+```
+
+## Headers
+
+```
+Authorization: Bearer <access_token>
+```
+
+## Query Parameters
+
+| Parameter | Type | Description | Default |
+|-----------|------|-------------|---------|
+| `page` | number | Page number | `1` |
+| `limit` | number | Items per page | `20` |
+| `search` | string | Search by name or email | - |
+| `status` | string | Filter by status (active, inactive) | - |
+| `sortBy` | string | Sort field (name, email, createdAt) | `createdAt` |
+| `sortOrder` | string | Sort order (asc, desc) | `desc` |
+
+## Response
+
+```json
+{
+  "success": true,
+  "data": {
+    "participants": [
+      {
+        "id": "participant_123",
+        "name": "John Doe",
+        "email": "john@example.com",
+        "phone": "+1234567890",
+        "status": "active",
+        "assessmentsTaken": 5,
+        "averageScore": 78.5,
+        "lastActive": "2024-01-01T12:00:00Z",
+        "createdAt": "2024-01-01T10:00:00Z"
+      }
+    ],
+    "pagination": {
+      "page": 1,
+      "limit": 20,
+      "total": 150,
+      "pages": 8
+    }
+  }
+}
+```
+
+## Status Codes
+
+- `200` - Participants retrieved successfully
+- `401` - Unauthorized
+- `500` - Internal server error
+
+---
+
+*This documentation will be updated with complete implementation details soon.* 

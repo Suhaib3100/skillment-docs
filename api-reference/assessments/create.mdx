@@ -1,0 +1,74 @@
+---
+title: 'Create Assessment'
+description: 'Create a new assessment'
+---
+
+<Note>
+  **Coming Soon**: This endpoint documentation is currently under development. Please check back soon for complete API details.
+</Note>
+
+## Overview
+
+Create a new assessment for evaluating candidates.
+
+## Endpoint
+
+```
+POST /api/assessments
+```
+
+## Headers
+
+```
+Authorization: Bearer <access_token>
+Content-Type: application/json
+```
+
+## Request Body
+
+```json
+{
+  "title": "JavaScript Fundamentals",
+  "description": "Test knowledge of JavaScript basics",
+  "duration": 60,
+  "questions": [
+    {
+      "type": "multiple_choice",
+      "question": "What is the output of console.log(typeof [])?",
+      "options": ["object", "array", "undefined", "string"],
+      "correctAnswer": 0
+    }
+  ],
+  "settings": {
+    "allowRetake": false,
+    "shuffleQuestions": true,
+    "showResults": true
+  }
+}
+```
+
+## Response
+
+```json
+{
+  "success": true,
+  "message": "Assessment created successfully",
+  "data": {
+    "id": "assessment_123",
+    "title": "JavaScript Fundamentals",
+    "createdAt": "2024-01-01T12:00:00Z",
+    "status": "draft"
+  }
+}
+```
+
+## Status Codes
+
+- `201` - Assessment created successfully
+- `400` - Invalid request data
+- `401` - Unauthorized
+- `500` - Internal server error
+
+---
+
+*This documentation will be updated with complete implementation details soon.* 

@@ -1,0 +1,55 @@
+---
+title: 'Register'
+description: 'Register a new user account'
+---
+
+<Note>
+  **Coming Soon**: This endpoint documentation is currently under development. Please check back soon for complete API details.
+</Note>
+
+## Overview
+
+Register a new user account with the Skillment platform.
+
+## Endpoint
+
+```
+POST /api/auth/register
+```
+
+## Request Body
+
+```json
+{
+  "email": "user@example.com",
+  "password": "securepassword",
+  "firstName": "John",
+  "lastName": "Doe",
+  "organizationName": "Example Corp"
+}
+```
+
+## Response
+
+```json
+{
+  "success": true,
+  "message": "User registered successfully",
+  "data": {
+    "userId": "user_123",
+    "email": "user@example.com",
+    "organizationId": "org_456"
+  }
+}
+```
+
+## Status Codes
+
+- `201` - User created successfully
+- `400` - Invalid request data
+- `409` - User already exists
+- `500` - Internal server error
+
+---
+
+*This documentation will be updated with complete implementation details soon.* 

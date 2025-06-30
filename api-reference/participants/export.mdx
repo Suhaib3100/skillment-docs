@@ -1,0 +1,200 @@
+---
+title: 'Export Participant Data'
+description: 'Export participant information and results'
+---
+
+## Overview
+
+Export participant data for reporting, analysis, and integration with other systems.
+
+## Export Options
+
+### Quick Export
+
+Export all participants with basic information:
+
+1. Go to **Participants** page
+2. Click **Export** button
+3. Choose format: CSV, Excel, or PDF
+4. Download the file
+
+**Included Data:**
+- Name, Email, Phone
+- Department, Position
+- Status, Tags
+- Created Date
+
+### Custom Export
+
+Export specific data with filters:
+
+1. Click **Advanced Export** button
+2. Select data fields to include
+3. Apply filters (department, status, date range)
+4. Choose export format
+5. Set file options (encoding, delimiter)
+6. Generate and download
+
+### Assessment Results Export
+
+Export participant performance data:
+
+1. Go to **Assessments** → **Results**
+2. Select assessment(s)
+3. Click **Export Results**
+4. Choose data granularity:
+   - Summary (scores only)
+   - Detailed (question-level responses)
+   - Comprehensive (all metadata)
+5. Download the report
+
+## Export Formats
+
+### CSV Format
+
+Best for spreadsheet analysis and data processing:
+
+```csv
+Name,Email,Department,Assessment,Score,Completed Date
+John Doe,john@example.com,Engineering,JavaScript Basics,85,2024-01-01
+Jane Smith,jane@example.com,Design,UI Fundamentals,92,2024-01-02
+```
+
+### Excel Format
+
+Includes multiple sheets and formatting:
+
+- **Participants**: Basic participant information
+- **Results**: Assessment scores and completion data
+- **Analytics**: Performance metrics and trends
+- **Summary**: Executive overview
+
+### PDF Format
+
+Formatted reports for presentations and documentation:
+
+- Professional layout with charts and graphs
+- Executive summary section
+- Detailed participant breakdowns
+- Performance analytics
+
+### JSON Format
+
+For system integrations and API consumption:
+
+```json
+{
+  "participants": [
+    {
+      "id": "participant_123",
+      "name": "John Doe",
+      "email": "john@example.com",
+      "assessments": [
+        {
+          "id": "assessment_123",
+          "title": "JavaScript Basics",
+          "score": 85,
+          "completedAt": "2024-01-01T10:00:00Z"
+        }
+      ]
+    }
+  ]
+}
+```
+
+## Export Scenarios
+
+### HR Reporting
+
+Export participant data for HR systems:
+
+1. Select **HR Export** template
+2. Include: Personal info, department, position
+3. Format: Excel with multiple sheets
+4. Schedule recurring exports
+
+### Compliance Audits
+
+Export data for regulatory compliance:
+
+1. Choose **Compliance Export**
+2. Include: All assessment results, timestamps
+3. Format: PDF with audit trail
+4. Add digital signatures if required
+
+### Performance Analysis
+
+Export for detailed performance analysis:
+
+1. Select **Analytics Export**
+2. Include: Scores, time spent, question responses
+3. Format: CSV for statistical analysis
+4. Add custom metrics and calculations
+
+### System Integration
+
+Export for third-party system integration:
+
+1. Choose **API Export**
+2. Include: Structured data with IDs
+3. Format: JSON with API schema
+4. Set up automated exports
+
+## Scheduling Exports
+
+### Automated Exports
+
+Set up recurring exports:
+
+1. Go to **Settings** → **Exports**
+2. Click **Schedule Export**
+3. Configure:
+   - Frequency (daily, weekly, monthly)
+   - Data selection and filters
+   - Export format and destination
+   - Notification preferences
+4. Save the schedule
+
+### Export Notifications
+
+Receive notifications when exports are ready:
+
+- Email notifications with download links
+- Dashboard alerts for completed exports
+- Integration webhooks for automated processing
+
+## Data Privacy and Security
+
+### Export Controls
+
+- **Access Logging**: All exports are logged for audit purposes
+- **Data Encryption**: Exports are encrypted during transfer
+- **Access Controls**: Only authorized users can export sensitive data
+- **Retention Policies**: Exported files are automatically deleted after specified period
+
+### Compliance Features
+
+- **GDPR Compliance**: Export personal data for data subject requests
+- **Data Minimization**: Export only necessary data fields
+- **Audit Trails**: Complete history of all export activities
+- **Secure Delivery**: Encrypted file delivery options
+
+## Best Practices
+
+### Export Planning
+
+- **Define Purpose**: Clearly identify what data is needed and why
+- **Minimize Data**: Export only necessary fields to reduce file size
+- **Regular Schedule**: Set up automated exports for routine reporting
+- **Version Control**: Keep track of export formats and schemas
+
+### Data Management
+
+- **File Organization**: Use consistent naming conventions
+- **Storage Management**: Archive old exports and clean up temporary files
+- **Access Control**: Limit access to exported files based on need
+- **Backup Strategy**: Keep copies of important exports
+
+---
+
+*Need help with data exports or reporting? Contact our support team.* 

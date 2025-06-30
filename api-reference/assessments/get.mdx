@@ -1,0 +1,72 @@
+---
+title: 'Get Assessment'
+description: 'Retrieve assessment details'
+---
+
+<Note>
+  **Coming Soon**: This endpoint documentation is currently under development. Please check back soon for complete API details.
+</Note>
+
+## Overview
+
+Retrieve detailed information about a specific assessment.
+
+## Endpoint
+
+```
+GET /api/assessments/{assessmentId}
+```
+
+## Headers
+
+```
+Authorization: Bearer <access_token>
+```
+
+## Path Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `assessmentId` | string | Unique identifier of the assessment |
+
+## Response
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": "assessment_123",
+    "title": "JavaScript Fundamentals",
+    "description": "Test knowledge of JavaScript basics",
+    "duration": 60,
+    "status": "active",
+    "createdAt": "2024-01-01T12:00:00Z",
+    "updatedAt": "2024-01-01T12:00:00Z",
+    "questions": [
+      {
+        "id": "question_1",
+        "type": "multiple_choice",
+        "question": "What is the output of console.log(typeof [])?",
+        "options": ["object", "array", "undefined", "string"],
+        "correctAnswer": 0
+      }
+    ],
+    "settings": {
+      "allowRetake": false,
+      "shuffleQuestions": true,
+      "showResults": true
+    }
+  }
+}
+```
+
+## Status Codes
+
+- `200` - Assessment retrieved successfully
+- `401` - Unauthorized
+- `404` - Assessment not found
+- `500` - Internal server error
+
+---
+
+*This documentation will be updated with complete implementation details soon.* 

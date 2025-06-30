@@ -1,16 +1,13 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Skillment API Documentation",
+  "name": "Skillment Documentation",
+  "description": "Complete guide to using the Skillment assessment platform",
   "openapi": "/api-reference/openapi.json",
   "colors": {
     "primary": "#3B82F6",
     "light": "#60A5FA",
-    "dark": "#1E40AF",
-    "anchors": {
-      "from": "#3B82F6",
-      "to": "#1E40AF"
-    }
+    "dark": "#1E40AF"
   },
   "favicon": "/favicon.svg",
   "api": {
@@ -39,6 +36,12 @@
               "concepts/assessments",
               "concepts/participants",
               "concepts/proctoring"
+            ]
+          },
+          {
+            "group": "Development",
+            "pages": [
+              "development"
             ]
           }
         ]
@@ -101,44 +104,7 @@
           {
             "group": "Organizations",
             "pages": [
-              "api-reference/organizations/validate",
-              "api-reference/organizations/get",
-              "api-reference/organizations/update",
-              "api-reference/organizations/logo"
-            ]
-          },
-          {
-            "group": "Team Management",
-            "pages": [
-              "api-reference/team/list",
-              "api-reference/team/invite",
-              "api-reference/team/update",
-              "api-reference/team/delete",
-              "api-reference/team/invitation"
-            ]
-          },
-          {
-            "group": "Email & Notifications",
-            "pages": [
-              "api-reference/email/templates",
-              "api-reference/email/send",
-              "api-reference/email/credentials",
-              "api-reference/email/logs"
-            ]
-          },
-          {
-            "group": "Proctoring",
-            "pages": [
-              "api-reference/proctoring/events",
-              "api-reference/proctoring/media"
-            ]
-          },
-          {
-            "group": "Billing",
-            "pages": [
-              "api-reference/billing/subscription",
-              "api-reference/billing/upgrade",
-              "api-reference/billing/cancel"
+              "api-reference/organizations/validate"
             ]
           }
         ]
@@ -150,16 +116,7 @@
             "group": "Frontend SDKs",
             "pages": [
               "sdks/react-components",
-              "sdks/javascript-client",
-              "sdks/code-runner"
-            ]
-          },
-          {
-            "group": "Libraries",
-            "pages": [
-              "sdks/api-client",
-              "sdks/proctoring-sdk",
-              "sdks/email-service"
+              "sdks/javascript-client"
             ]
           }
         ]
@@ -172,16 +129,18 @@
             "pages": [
               "guides/assessment-creation",
               "guides/participant-management",
-              "guides/proctoring-setup",
-              "guides/webhooks"
+              "guides/proctoring-setup"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "Examples",
+        "groups": [
           {
-            "group": "Examples",
+            "group": "Workflow Examples",
             "pages": [
-              "examples/complete-workflow",
-              "examples/coding-assessment",
-              "examples/bulk-operations"
+              "examples/complete-workflow"
             ]
           }
         ]
@@ -241,4 +200,4 @@
     "name": "Dashboard",
     "url": "https://skillment.in/dashboard"
   }
-}
+}   

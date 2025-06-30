@@ -1,0 +1,412 @@
+---
+title: 'Complete Workflow Example'
+description: 'End-to-end example of creating and managing assessments'
+---
+
+## Overview
+
+This guide walks you through a complete workflow from setting up your organization to analyzing assessment results.
+
+## Workflow Overview
+
+1. **Organization Setup**: Create and configure your organization
+2. **Assessment Creation**: Build your first assessment
+3. **Participant Management**: Add and organize participants
+4. **Assessment Execution**: Run the assessment
+5. **Results Analysis**: Review and analyze results
+
+## Step 1: Organization Setup
+
+### Create Organization
+
+```javascript
+// Register your organization
+const response = await fetch('https://api.skillment.in/api/auth/register', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    email: 'admin@company.com',
+    password: 'securepassword',
+    organizationName: 'TechCorp',
+    firstName: 'John',
+    lastName: 'Admin'
+  })
+});
+
+const { accessToken, organizationId } = await response.json();
+```
+
+### Configure Settings
+
+```javascript
+// Set up organization settings
+await fetch(`https://api.skillment.in/api/organizations/${organizationId}`, {
+  method: 'PUT',
+  headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    settings: {
+      proctoringEnabled: true,
+      emailNotifications: true,
+      timezone: 'UTC'
+    }
+  })
+});
+```
+
+## Step 2: Assessment Creation
+
+### Create Assessment
+
+```javascript
+// Create a new assessment
+const assessment = await fetch('https://api.skillment.in/api/assessments', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    title: 'JavaScript Developer Assessment',
+    description: 'Comprehensive test of JavaScript skills',
+    duration: 90,
+    type: 'mixed',
+    settings: {
+      proctoringEnabled: true,
+      randomizeQuestions: true,
+      showResults: true
+    }
+  })
+});
+```
+
+### Add Questions
+
+```javascript
+// Add multiple choice questions
+const mcqQuestion = await fetch('https://api.skillment.in/api/questions', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    title: 'JavaScript Variables',
+    type: 'multiple_choice',
+    question: 'Which keyword is used to declare a variable that cannot be reassigned?',
+    options: ['var', 'let', 'const', 'function'],
+    correctAnswer: 2,
+    category: 'programming',
+    difficulty: 'easy'
+  })
+});
+
+// Add coding question
+const codingQuestion = await fetch('https://api.skillment.in/api/questions', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    title: 'Array Reverse',
+    type: 'coding',
+    question: 'Write a function that reverses an array without using the reverse() method.',
+    language: 'javascript',
+    starterCode: 'function reverseArray(arr) {\n  // Your code here\n}',
+    testCases: [
+      {
+        input: '[1, 2, 3, 4, 5]',
+        expectedOutput: '[5, 4, 3, 2, 1]'
+      }
+    ],
+    category: 'programming',
+    difficulty: 'medium'
+  })
+});
+```
+
+## Step 3: Participant Management
+
+### Add Participants
+
+```javascript
+// Add individual participant
+const participant = await fetch('https://api.skillment.in/api/participants', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    name: 'Jane Smith',
+    email: 'jane@example.com',
+    department: 'Engineering',
+    position: 'Frontend Developer',
+    tags: ['javascript', 'react', 'frontend']
+  })
+});
+
+// Bulk import participants
+const bulkImport = await fetch('https://api.skillment.in/api/participants/bulk', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    participants: [
+      {
+        name: 'John Doe',
+        email: 'john@example.com',
+        department: 'Engineering'
+      },
+      {
+        name: 'Alice Johnson',
+        email: 'alice@example.com',
+        department: 'Design'
+      }
+    ]
+  })
+});
+```
+
+### Assign to Assessment
+
+```javascript
+// Assign participants to assessment
+await fetch(`https://api.skillment.in/api/assessments/${assessmentId}/candidates`, {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    participantIds: [participant1Id, participant2Id],
+    sendInvitation: true,
+    customMessage: 'Please complete this assessment by Friday.'
+  })
+});
+```
+
+## Step 4: Assessment Execution
+
+### Send Invitations
+
+```javascript
+// Send assessment invitations
+await fetch(`https://api.skillment.in/api/email/send`, {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    template: 'assessment_invitation',
+    recipients: ['jane@example.com', 'john@example.com'],
+    data: {
+      assessmentTitle: 'JavaScript Developer Assessment',
+      assessmentUrl: 'https://skillment.in/assessment/123',
+      deadline: '2024-01-15'
+    }
+  })
+});
+```
+
+### Monitor Progress
+
+```javascript
+// Set up WebSocket connection for real-time monitoring
+const socket = new WebSocket('wss://api.skillment.in/ws');
+
+socket.onmessage = (event) => {
+  const data = JSON.parse(event.data);
+  
+  switch (data.type) {
+    case 'assessment.started':
+      console.log('Assessment started:', data.participantId);
+      break;
+    case 'assessment.completed':
+      console.log('Assessment completed:', data.participantId);
+      break;
+    case 'proctoring.violation':
+      console.log('Proctoring violation:', data);
+      break;
+  }
+};
+```
+
+## Step 5: Results Analysis
+
+### Get Assessment Results
+
+```javascript
+// Get assessment statistics
+const stats = await fetch(`https://api.skillment.in/api/assessments/${assessmentId}/stats`, {
+  headers: {
+    'Authorization': `Bearer ${accessToken}`
+  }
+});
+
+const assessmentStats = await stats.json();
+console.log('Average score:', assessmentStats.averageScore);
+console.log('Completion rate:', assessmentStats.completionRate);
+```
+
+### Export Results
+
+```javascript
+// Export participant results
+const exportResults = await fetch(`https://api.skillment.in/api/participants/export`, {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    format: 'csv',
+    filters: {
+      assessmentId: assessmentId,
+      status: 'completed'
+    },
+    fields: ['name', 'email', 'score', 'completionTime', 'startedAt']
+  })
+});
+
+const resultsBlob = await exportResults.blob();
+// Download the results file
+```
+
+### Analyze Performance
+
+```javascript
+// Get detailed question analysis
+const questionStats = await fetch(`https://api.skillment.in/api/assessments/${assessmentId}/questions/stats`, {
+  headers: {
+    'Authorization': `Bearer ${accessToken}`
+  }
+});
+
+const questionAnalysis = await questionStats.json();
+
+// Identify difficult questions
+const difficultQuestions = questionAnalysis.filter(q => q.successRate < 0.5);
+console.log('Questions with low success rate:', difficultQuestions);
+```
+
+## Complete Example with SDK
+
+```javascript
+import { SkillmentClient } from '@skillment/javascript-client';
+
+async function completeWorkflow() {
+  // Initialize client
+  const client = new SkillmentClient({
+    apiKey: 'your-api-key'
+  });
+
+  // 1. Create assessment
+  const assessment = await client.assessments.create({
+    title: 'JavaScript Developer Assessment',
+    duration: 90,
+    type: 'mixed'
+  });
+
+  // 2. Add questions
+  await client.questions.create({
+    assessmentId: assessment.id,
+    title: 'JavaScript Variables',
+    type: 'multiple_choice',
+    question: 'Which keyword is used to declare a variable that cannot be reassigned?',
+    options: ['var', 'let', 'const', 'function'],
+    correctAnswer: 2
+  });
+
+  // 3. Add participants
+  const participant = await client.participants.create({
+    name: 'Jane Smith',
+    email: 'jane@example.com'
+  });
+
+  // 4. Assign participants
+  await client.assessments.assignParticipants(assessment.id, [participant.id]);
+
+  // 5. Send invitations
+  await client.email.send({
+    template: 'assessment_invitation',
+    recipients: [participant.email],
+    data: {
+      assessmentTitle: assessment.title,
+      assessmentUrl: `https://skillment.in/assessment/${assessment.id}`
+    }
+  });
+
+  // 6. Monitor progress
+  client.on('assessment.completed', (data) => {
+    console.log('Assessment completed:', data);
+  });
+
+  // 7. Get results
+  const results = await client.assessments.getResults(assessment.id);
+  console.log('Assessment results:', results);
+}
+
+completeWorkflow().catch(console.error);
+```
+
+## Best Practices
+
+### Assessment Design
+
+- **Clear Instructions**: Provide detailed instructions for participants
+- **Appropriate Difficulty**: Match difficulty to target audience
+- **Time Management**: Give adequate time for completion
+- **Question Variety**: Mix different question types
+
+### Participant Experience
+
+- **Clear Communication**: Send clear, professional invitations
+- **Technical Support**: Provide support for technical issues
+- **Practice Sessions**: Offer practice assessments
+- **Feedback**: Provide constructive feedback
+
+### Data Management
+
+- **Regular Backups**: Export and backup important data
+- **Privacy Compliance**: Follow data protection regulations
+- **Access Control**: Limit access to sensitive data
+- **Audit Trails**: Maintain complete audit logs
+
+## Troubleshooting
+
+### Common Issues
+
+**Participants not receiving invitations:**
+- Check email addresses are correct
+- Verify email settings and spam filters
+- Resend invitations if needed
+
+**Assessment access problems:**
+- Verify participant credentials
+- Check assessment permissions
+- Ensure assessment is active
+
+**Technical issues:**
+- Check API connectivity
+- Verify authentication tokens
+- Review error logs
+
+### Getting Help
+
+- **Documentation**: Review API documentation
+- **Support Team**: Contact support for technical issues
+- **Community Forums**: Check community for solutions
+- **Training Resources**: Access training materials
+
+---
+
+*Need help implementing this workflow? Contact our support team.* 

@@ -1,0 +1,46 @@
+---
+title: 'JavaScript Client SDK'
+description: 'Integrate Skillment assessments with JavaScript and Node.js'
+---
+
+## Overview
+
+Use our JavaScript SDK to easily integrate Skillment assessments into your web applications and Node.js backend services.
+
+## Installation
+
+```bash
+npm install @skillment/javascript-client
+```
+
+## Quick Start
+
+```javascript
+import { SkillmentClient } from '@skillment/javascript-client';
+
+const client = new SkillmentClient({
+  apiKey: 'your-api-key'
+});
+
+// Create assessment
+const assessment = await client.assessments.create({
+  title: 'JavaScript Test',
+  duration: 60
+});
+```
+
+## Features
+
+- **Assessment Management**: Create, update, and manage assessments
+- **Participant Management**: Add and manage participants
+- **Real-time Monitoring**: WebSocket connections for live updates
+- **Code Execution**: Run code in multiple programming languages
+- **Proctoring Integration**: Monitor assessment integrity
+
+## Documentation
+
+For complete documentation, visit our [API Reference](/api-reference/introduction).
+
+---
+
+*Need help with JavaScript integration? Contact our support team.* 

@@ -1,0 +1,109 @@
+---
+title: 'Assessment Candidates'
+description: 'Manage candidates for an assessment'
+---
+
+<Note>
+  **Coming Soon**: This endpoint documentation is currently under development. Please check back soon for complete API details.
+</Note>
+
+## Overview
+
+Manage candidates assigned to an assessment and their results.
+
+## Endpoints
+
+### List Candidates
+
+```
+GET /api/assessments/{assessmentId}/candidates
+```
+
+#### Headers
+
+```
+Authorization: Bearer <access_token>
+```
+
+#### Path Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `assessmentId` | string | Unique identifier of the assessment |
+
+#### Query Parameters
+
+| Parameter | Type | Description | Default |
+|-----------|------|-------------|---------|
+| `page` | number | Page number | `1` |
+| `limit` | number | Items per page | `20` |
+| `status` | string | Filter by status (invited, started, completed) | - |
+
+#### Response
+
+```json
+{
+  "success": true,
+  "data": {
+    "candidates": [
+      {
+        "id": "candidate_123",
+        "name": "John Doe",
+        "email": "john@example.com",
+        "status": "completed",
+        "score": 85,
+        "startedAt": "2024-01-01T10:00:00Z",
+        "completedAt": "2024-01-01T11:00:00Z"
+      }
+    ],
+    "pagination": {
+      "page": 1,
+      "limit": 20,
+      "total": 150,
+      "pages": 8
+    }
+  }
+}
+```
+
+### Add Candidate
+
+```
+POST /api/assessments/{assessmentId}/candidates
+```
+
+#### Request Body
+
+```json
+{
+  "name": "Jane Smith",
+  "email": "jane@example.com",
+  "phone": "+1234567890"
+}
+```
+
+#### Response
+
+```json
+{
+  "success": true,
+  "message": "Candidate added successfully",
+  "data": {
+    "id": "candidate_456",
+    "invitationSent": true
+  }
+}
+```
+
+## Status Codes
+
+- `200` - Operation successful
+- `201` - Candidate added successfully
+- `400` - Invalid request data
+- `401` - Unauthorized
+- `404` - Assessment not found
+- `500` - Internal server error
+
+---
+
+*This documentation will be updated with complete implementation details soon.* 

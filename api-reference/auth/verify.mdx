@@ -1,0 +1,52 @@
+---
+title: 'Verify'
+description: 'Verify user email or token'
+---
+
+<Note>
+  **Coming Soon**: This endpoint documentation is currently under development. Please check back soon for complete API details.
+</Note>
+
+## Overview
+
+Verify user email address or validate authentication tokens.
+
+## Endpoint
+
+```
+POST /api/auth/verify
+```
+
+## Request Body
+
+```json
+{
+  "token": "verification_token_here",
+  "type": "email"
+}
+```
+
+## Response
+
+```json
+{
+  "success": true,
+  "message": "Verification successful",
+  "data": {
+    "verified": true,
+    "userId": "user_123"
+  }
+}
+```
+
+## Status Codes
+
+- `200` - Verification successful
+- `400` - Invalid token
+- `401` - Token expired
+- `404` - Token not found
+- `500` - Internal server error
+
+---
+
+*This documentation will be updated with complete implementation details soon.* 

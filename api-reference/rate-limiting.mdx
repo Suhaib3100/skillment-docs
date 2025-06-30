@@ -1,0 +1,292 @@
+---
+title: 'Rate Limiting'
+description: 'Learn about rate limiting in the Skillment API and how to handle it properly.'
+---
+
+# Rate Limiting
+
+The Skillment API implements rate limiting to ensure fair usage and maintain service quality for all users. Rate limits are applied per API key and help prevent abuse while ensuring reliable service.
+
+## Rate Limit Overview
+
+### Default Limits
+
+| Plan | Requests per Minute | Requests per Hour | Requests per Day |
+|------|-------------------|------------------|------------------|
+| Free | 60 | 1,000 | 10,000 |
+| Starter | 120 | 5,000 | 50,000 |
+| Professional | 300 | 15,000 | 150,000 |
+| Enterprise | Custom | Custom | Custom |
+
+### Endpoint-Specific Limits
+
+Some endpoints have specific rate limits:
+
+| Endpoint | Limit | Window |
+|----------|-------|--------|
+| Authentication | 10 requests | 1 minute |
+| Assessment Creation | 20 requests | 1 minute |
+| Bulk Operations | 5 requests | 1 minute |
+| File Uploads | 50 requests | 1 hour |
+
+## Rate Limit Headers
+
+API responses include rate limit information in headers:
+
+```
+X-RateLimit-Limit: 120
+X-RateLimit-Remaining: 95
+X-RateLimit-Reset: 1642234567
+X-RateLimit-Reset-Time: 2024-01-15T11:00:00Z
+```
+
+### Header Descriptions
+
+| Header | Description |
+|--------|-------------|
+| `X-RateLimit-Limit` | Maximum requests allowed in the window |
+| `X-RateLimit-Remaining` | Number of requests remaining in current window |
+| `X-RateLimit-Reset` | Unix timestamp when the limit resets |
+| `X-RateLimit-Reset-Time` | ISO 8601 timestamp when the limit resets |
+
+## Handling Rate Limits
+
+### Rate Limit Exceeded Response
+
+When you exceed the rate limit, you'll receive a `429 Too Many Requests` response:
+
+```json
+{
+  "error": {
+    "code": "rate_limit_exceeded",
+    "message": "Too many requests",
+    "details": {
+      "limit": 120,
+      "remaining": 0,
+      "reset_time": "2024-01-15T11:00:00Z",
+      "retry_after": 60
+    }
+  }
+}
+```
+
+### Retry Strategy
+
+Implement exponential backoff when hitting rate limits:
+
+```javascript
+async function makeRequestWithRetry(url, options, maxRetries = 3) {
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    try {
+      const response = await fetch(url, options);
+      
+      if (response.status === 429) {
+        const error = await response.json();
+        const retryAfter = error.error.details.retry_after || 60;
+        
+        console.log(`Rate limited. Retrying in ${retryAfter} seconds...`);
+        await new Promise(resolve => setTimeout(resolve, retryAfter * 1000));
+        continue;
+      }
+      
+      return response;
+    } catch (error) {
+      if (attempt === maxRetries - 1) throw error;
+      
+      const delay = Math.pow(2, attempt) * 1000; // Exponential backoff
+      await new Promise(resolve => setTimeout(resolve, delay));
+    }
+  }
+}
+```
+
+### Python Example
+
+```python
+import requests
+import time
+import math
+
+def make_request_with_retry(url, headers, data=None, max_retries=3):
+    for attempt in range(max_retries):
+        try:
+            response = requests.post(url, headers=headers, json=data)
+            
+            if response.status_code == 429:
+                error = response.json()
+                retry_after = error['error']['details'].get('retry_after', 60)
+                
+                print(f"Rate limited. Retrying in {retry_after} seconds...")
+                time.sleep(retry_after)
+                continue
+                
+            return response
+            
+        except requests.exceptions.RequestException as e:
+            if attempt == max_retries - 1:
+                raise e
+                
+            delay = math.pow(2, attempt)  # Exponential backoff
+            time.sleep(delay)
+```
+
+## Best Practices
+
+### Monitor Rate Limits
+
+Always check rate limit headers to avoid hitting limits:
+
+```javascript
+const response = await fetch('/api/assessments', options);
+const remaining = response.headers.get('X-RateLimit-Remaining');
+const resetTime = response.headers.get('X-RateLimit-Reset-Time');
+
+console.log(`Remaining requests: ${remaining}`);
+console.log(`Reset time: ${resetTime}`);
+```
+
+### Implement Caching
+
+Cache responses to reduce API calls:
+
+```javascript
+const cache = new Map();
+
+async function getCachedAssessment(id) {
+  const cacheKey = `assessment_${id}`;
+  const cached = cache.get(cacheKey);
+  
+  if (cached && Date.now() - cached.timestamp < 5 * 60 * 1000) {
+    return cached.data; // Return cached data if less than 5 minutes old
+  }
+  
+  const response = await fetch(`/api/assessments/${id}`);
+  const data = await response.json();
+  
+  cache.set(cacheKey, {
+    data,
+    timestamp: Date.now()
+  });
+  
+  return data;
+}
+```
+
+### Batch Operations
+
+Use bulk endpoints when possible to reduce API calls:
+
+```javascript
+// Instead of multiple individual requests
+for (const participant of participants) {
+  await createParticipant(participant);
+}
+
+// Use bulk endpoint
+await createParticipantsBulk(participants);
+```
+
+### Optimize Request Frequency
+
+- Implement request queuing for high-frequency operations
+- Use webhooks for real-time updates instead of polling
+- Cache frequently accessed data
+- Batch related operations
+
+## Rate Limit Monitoring
+
+### Dashboard Monitoring
+
+Monitor your rate limit usage in the Skillment dashboard:
+
+- Real-time request count
+- Rate limit status
+- Historical usage patterns
+- Alerts for approaching limits
+
+### Programmatic Monitoring
+
+Track rate limits in your application:
+
+```javascript
+class RateLimitMonitor {
+  constructor() {
+    this.requests = [];
+  }
+  
+  recordRequest(endpoint) {
+    this.requests.push({
+      endpoint,
+      timestamp: Date.now()
+    });
+    
+    // Clean old requests (older than 1 hour)
+    this.requests = this.requests.filter(
+      req => Date.now() - req.timestamp < 60 * 60 * 1000
+    );
+  }
+  
+  getRequestCount(endpoint, windowMinutes = 60) {
+    const cutoff = Date.now() - (windowMinutes * 60 * 1000);
+    return this.requests.filter(
+      req => req.endpoint === endpoint && req.timestamp > cutoff
+    ).length;
+  }
+  
+  isApproachingLimit(endpoint, limit, threshold = 0.8) {
+    const count = this.getRequestCount(endpoint);
+    return count >= limit * threshold;
+  }
+}
+```
+
+## Upgrading Limits
+
+### Plan Upgrades
+
+If you consistently hit rate limits, consider upgrading your plan:
+
+1. **Starter Plan**: 2x increase in limits
+2. **Professional Plan**: 5x increase in limits
+3. **Enterprise Plan**: Custom limits based on needs
+
+### Contact Sales
+
+For enterprise customers with high-volume needs:
+
+- Custom rate limit configurations
+- Dedicated infrastructure
+- Priority support
+- SLA guarantees
+
+Contact: `sales@skillment.in`
+
+## Troubleshooting
+
+### Common Issues
+
+**Frequent 429 Errors**
+- Check if you're making too many requests
+- Implement proper retry logic
+- Consider upgrading your plan
+
+**Unexpected Rate Limiting**
+- Verify your API key and plan
+- Check endpoint-specific limits
+- Review your request patterns
+
+**Performance Impact**
+- Implement caching strategies
+- Use bulk operations
+- Optimize request frequency
+
+### Support
+
+If you need help with rate limiting:
+
+1. Check your current usage in the dashboard
+2. Review the rate limit headers in responses
+3. Implement proper retry logic
+4. Contact support with specific error details
+
+For technical support: `support@skillment.in` 

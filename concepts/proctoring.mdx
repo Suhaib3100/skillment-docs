@@ -1,0 +1,253 @@
+---
+title: 'Proctoring'
+description: 'Learn about proctoring features in Skillment - screen recording, webcam monitoring, and cheating prevention.'
+---
+
+# Proctoring
+
+Proctoring is a comprehensive monitoring system that ensures assessment integrity by preventing cheating and maintaining academic honesty during online assessments.
+
+## What is Proctoring?
+
+Proctoring in Skillment includes:
+
+- **Screen Recording**: Captures candidate's screen activity
+- **Webcam Monitoring**: Video surveillance during assessment
+- **Browser Lock**: Prevents switching tabs or applications
+- **Behavior Analysis**: AI-powered suspicious activity detection
+- **Audit Trails**: Complete logs of assessment sessions
+
+## Proctoring Features
+
+### 1. Screen Recording
+Continuous capture of the candidate's screen during assessment:
+
+```json
+{
+  "screen_recording": {
+    "enabled": true,
+    "quality": "high",
+    "frame_rate": 1,
+    "storage_duration": "30_days"
+  }
+}
+```
+
+**Benefits:**
+- Review candidate's work process
+- Detect unauthorized applications
+- Verify assessment completion
+- Provide evidence for disputes
+
+### 2. Webcam Monitoring
+Real-time video surveillance of candidates:
+
+```json
+{
+  "webcam_monitoring": {
+    "enabled": true,
+    "resolution": "720p",
+    "frame_rate": 1,
+    "face_detection": true
+  }
+}
+```
+
+**Features:**
+- Identity verification
+- Face presence detection
+- Multiple person detection
+- Suspicious behavior alerts
+
+### 3. Browser Lock
+Prevents candidates from accessing unauthorized resources:
+
+```json
+{
+  "browser_lock": {
+    "enabled": true,
+    "fullscreen_required": true,
+    "tab_switching_prevented": true,
+    "copy_paste_disabled": true
+  }
+}
+```
+
+**Security Measures:**
+- Fullscreen mode enforcement
+- Tab switching prevention
+- Copy-paste disable
+- Print screen blocking
+
+### 4. Behavior Analysis
+AI-powered detection of suspicious activities:
+
+```json
+{
+  "behavior_analysis": {
+    "enabled": true,
+    "eye_tracking": true,
+    "head_movement": true,
+    "typing_patterns": true
+  }
+}
+```
+
+**Detection Capabilities:**
+- Unusual eye movements
+- Excessive head turning
+- Irregular typing patterns
+- Multiple face detection
+
+## Proctoring Levels
+
+### Basic Proctoring
+Essential monitoring for low-stakes assessments:
+- Screen recording
+- Basic browser lock
+- Session logging
+
+### Standard Proctoring
+Comprehensive monitoring for most assessments:
+- Screen recording + webcam
+- Advanced browser lock
+- Behavior analysis
+- Real-time alerts
+
+### Advanced Proctoring
+Maximum security for high-stakes assessments:
+- All standard features
+- AI-powered cheating detection
+- Live proctor monitoring
+- Advanced analytics
+
+## Implementation
+
+### Assessment Configuration
+Enable proctoring when creating assessments:
+
+```bash
+POST /api/assessments
+{
+  "title": "Secure Assessment",
+  "proctoring": {
+    "level": "standard",
+    "screen_recording": true,
+    "webcam_monitoring": true,
+    "browser_lock": true
+  }
+}
+```
+
+### Participant Experience
+Candidates must grant permissions:
+- Camera access for webcam monitoring
+- Screen sharing for recording
+- Browser permissions for lock features
+
+### Technical Requirements
+- Modern web browser (Chrome, Firefox, Safari, Edge)
+- Camera and microphone access
+- Stable internet connection
+- Sufficient system resources
+
+## Monitoring Dashboard
+
+### Real-time Monitoring
+- Live participant feeds
+- Suspicious activity alerts
+- Technical issue notifications
+- Assessment progress tracking
+
+### Review Interface
+- Playback recorded sessions
+- Flag suspicious moments
+- Generate incident reports
+- Export evidence
+
+### Analytics
+- Cheating attempt statistics
+- Technical issue analysis
+- Performance correlation
+- Improvement recommendations
+
+## Privacy and Compliance
+
+### Data Protection
+- Encrypted storage of recordings
+- Automatic deletion after retention period
+- Secure access controls
+- GDPR compliance
+
+### Consent Management
+- Clear privacy policy
+- Explicit consent collection
+- Right to data deletion
+- Transparent data usage
+
+### Audit Trails
+- Complete session logs
+- Access history tracking
+- Modification records
+- Compliance reporting
+
+## API Integration
+
+### Proctoring Events
+```bash
+POST /api/proctoring/events
+{
+  "assessment_id": "assessment_123",
+  "participant_id": "participant_456",
+  "event_type": "suspicious_activity",
+  "details": {
+    "type": "multiple_faces_detected",
+    "timestamp": "2024-01-15T10:30:00Z"
+  }
+}
+```
+
+### Media Management
+```bash
+GET /api/proctoring/media?assessment_id=assessment_123&participant_id=participant_456
+```
+
+## Best Practices
+
+### Setup
+- Test proctoring features before deployment
+- Provide clear instructions to candidates
+- Offer technical support
+- Have backup plans for technical issues
+
+### Monitoring
+- Regular review of flagged sessions
+- Consistent application of policies
+- Timely response to incidents
+- Continuous improvement of detection
+
+### Communication
+- Clear explanation of proctoring requirements
+- Transparent privacy policies
+- Support contact information
+- Appeal process for false positives
+
+## Troubleshooting
+
+### Common Issues
+- Camera/microphone permissions
+- Browser compatibility
+- Network connectivity
+- System resource limitations
+
+### Solutions
+- Clear setup instructions
+- Technical support documentation
+- Alternative assessment options
+- Grace period for technical issues
+
+## Next Steps
+
+- Learn about [Assessments](/concepts/assessments) configuration
+- Explore [Participants](/concepts/participants) management
+- Check out [API Reference](/api-reference/proctoring) for detailed endpoints 

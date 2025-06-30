@@ -1,0 +1,84 @@
+---
+title: 'Assessment Statistics'
+description: 'Get assessment performance statistics'
+---
+
+<Note>
+  **Coming Soon**: This endpoint documentation is currently under development. Please check back soon for complete API details.
+</Note>
+
+## Overview
+
+Retrieve comprehensive statistics and analytics for an assessment.
+
+## Endpoint
+
+```
+GET /api/assessments/{assessmentId}/stats
+```
+
+## Headers
+
+```
+Authorization: Bearer <access_token>
+```
+
+## Path Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `assessmentId` | string | Unique identifier of the assessment |
+
+## Query Parameters
+
+| Parameter | Type | Description | Default |
+|-----------|------|-------------|---------|
+| `period` | string | Time period for stats (day, week, month, year) | `month` |
+| `startDate` | string | Start date (ISO format) | - |
+| `endDate` | string | End date (ISO format) | - |
+
+## Response
+
+```json
+{
+  "success": true,
+  "data": {
+    "assessmentId": "assessment_123",
+    "totalAttempts": 150,
+    "completedAttempts": 142,
+    "averageScore": 78.5,
+    "passRate": 85.2,
+    "averageTime": 45.2,
+    "questionStats": [
+      {
+        "questionId": "question_1",
+        "correctAnswers": 120,
+        "incorrectAnswers": 30,
+        "averageTime": 2.5
+      }
+    ],
+    "timeDistribution": {
+      "0-30min": 45,
+      "30-60min": 67,
+      "60-90min": 38
+    },
+    "scoreDistribution": {
+      "0-50": 15,
+      "51-70": 35,
+      "71-90": 65,
+      "91-100": 27
+    }
+  }
+}
+```
+
+## Status Codes
+
+- `200` - Statistics retrieved successfully
+- `401` - Unauthorized
+- `404` - Assessment not found
+- `500` - Internal server error
+
+---
+
+*This documentation will be updated with complete implementation details soon.* 

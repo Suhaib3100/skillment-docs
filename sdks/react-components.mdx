@@ -1,0 +1,380 @@
+---
+title: 'React Components'
+description: 'Integrate assessments into your React applications'
+---
+
+## Overview
+
+Use our React components to seamlessly integrate Skillment assessments into your existing React applications.
+
+## Installation
+
+Install the React components package:
+
+```bash
+npm install @skillment/react-components
+# or
+yarn add @skillment/react-components
+```
+
+## Quick Start
+
+### Basic Integration
+
+```jsx
+import { AssessmentWidget } from '@skillment/react-components';
+
+function App() {
+  return (
+    <div>
+      <h1>My Application</h1>
+      <AssessmentWidget 
+        assessmentId="your-assessment-id"
+        onComplete={(result) => console.log('Assessment completed:', result)}
+      />
+    </div>
+  );
+}
+```
+
+### With Authentication
+
+```jsx
+import { AssessmentWidget, SkillmentProvider } from '@skillment/react-components';
+
+function App() {
+  return (
+    <SkillmentProvider apiKey="your-api-key">
+      <AssessmentWidget 
+        assessmentId="your-assessment-id"
+        participantId="participant-id"
+        onComplete={handleCompletion}
+      />
+    </SkillmentProvider>
+  );
+}
+```
+
+## Available Components
+
+### AssessmentWidget
+
+The main component for displaying assessments:
+
+```jsx
+<AssessmentWidget
+  assessmentId="assessment-123"
+  participantId="participant-456"
+  onComplete={(result) => handleCompletion(result)}
+  onError={(error) => handleError(error)}
+  config={{
+    theme: 'dark',
+    showProgress: true,
+    allowRetake: false
+  }}
+/>
+```
+
+**Props:**
+- `assessmentId` (required): The assessment to display
+- `participantId` (optional): Participant identifier
+- `onComplete`: Callback when assessment is completed
+- `onError`: Callback for error handling
+- `config`: Configuration options
+
+### AssessmentList
+
+Display a list of available assessments:
+
+```jsx
+<AssessmentList
+  onSelect={(assessment) => setSelectedAssessment(assessment)}
+  filters={{
+    category: 'programming',
+    difficulty: 'medium'
+  }}
+/>
+```
+
+### ParticipantLogin
+
+Handle participant authentication:
+
+```jsx
+<ParticipantLogin
+  assessmentId="assessment-123"
+  onLogin={(participant) => setParticipant(participant)}
+  onError={(error) => handleError(error)}
+/>
+```
+
+### ResultsDisplay
+
+Show assessment results:
+
+```jsx
+<ResultsDisplay
+  resultId="result-123"
+  showDetails={true}
+  onShare={(result) => shareResult(result)}
+/>
+```
+
+## Configuration Options
+
+### Theme Configuration
+
+```jsx
+const themeConfig = {
+  primary: '#3B82F6',
+  secondary: '#6B7280',
+  background: '#FFFFFF',
+  text: '#1F2937',
+  borderRadius: '8px',
+  fontFamily: 'Inter, sans-serif'
+};
+
+<AssessmentWidget
+  assessmentId="assessment-123"
+  config={{ theme: themeConfig }}
+/>
+```
+
+### Proctoring Settings
+
+```jsx
+<AssessmentWidget
+  assessmentId="assessment-123"
+  config={{
+    proctoring: {
+      enabled: true,
+      webcam: true,
+      screenShare: true,
+      audio: false
+    }
+  }}
+/>
+```
+
+### Custom Styling
+
+```jsx
+<AssessmentWidget
+  assessmentId="assessment-123"
+  config={{
+    styles: {
+      container: {
+        maxWidth: '800px',
+        margin: '0 auto',
+        padding: '20px'
+      },
+      button: {
+        backgroundColor: '#3B82F6',
+        color: 'white',
+        padding: '12px 24px'
+      }
+    }
+  }}
+/>
+```
+
+## Event Handling
+
+### Assessment Events
+
+```jsx
+<AssessmentWidget
+  assessmentId="assessment-123"
+  onStart={(assessment) => console.log('Assessment started:', assessment)}
+  onQuestionChange={(question) => console.log('Question changed:', question)}
+  onAnswerSubmit={(answer) => console.log('Answer submitted:', answer)}
+  onComplete={(result) => console.log('Assessment completed:', result)}
+  onError={(error) => console.error('Assessment error:', error)}
+/>
+```
+
+### Progress Tracking
+
+```jsx
+<AssessmentWidget
+  assessmentId="assessment-123"
+  onProgress={(progress) => {
+    console.log(`Progress: ${progress.current}/${progress.total}`);
+    updateProgressBar(progress);
+  }}
+/>
+```
+
+## Integration Examples
+
+### Dashboard Integration
+
+```jsx
+import { AssessmentWidget, AssessmentList } from '@skillment/react-components';
+
+function Dashboard() {
+  const [selectedAssessment, setSelectedAssessment] = useState(null);
+
+  return (
+    <div className="dashboard">
+      <div className="sidebar">
+        <AssessmentList
+          onSelect={setSelectedAssessment}
+          filters={{ status: 'active' }}
+        />
+      </div>
+      <div className="main-content">
+        {selectedAssessment && (
+          <AssessmentWidget
+            assessmentId={selectedAssessment.id}
+            onComplete={handleCompletion}
+          />
+        )}
+      </div>
+    </div>
+  );
+}
+```
+
+### Learning Management System
+
+```jsx
+function LMSIntegration() {
+  const [participant, setParticipant] = useState(null);
+  const [assessment, setAssessment] = useState(null);
+
+  return (
+    <div>
+      {!participant ? (
+        <ParticipantLogin
+          assessmentId={assessment?.id}
+          onLogin={setParticipant}
+        />
+      ) : (
+        <AssessmentWidget
+          assessmentId={assessment.id}
+          participantId={participant.id}
+          onComplete={handleCompletion}
+        />
+      )}
+    </div>
+  );
+}
+```
+
+### Custom Branding
+
+```jsx
+function BrandedAssessment() {
+  return (
+    <div className="company-branding">
+      <header className="company-header">
+        <img src="/logo.png" alt="Company Logo" />
+        <h1>Company Assessment Portal</h1>
+      </header>
+      
+      <AssessmentWidget
+        assessmentId="assessment-123"
+        config={{
+          theme: {
+            primary: '#1E40AF',
+            background: '#F8FAFC'
+          },
+          branding: {
+            logo: '/company-logo.png',
+            colors: ['#1E40AF', '#3B82F6', '#60A5FA']
+          }
+        }}
+      />
+    </div>
+  );
+}
+```
+
+## Error Handling
+
+### Error Boundaries
+
+```jsx
+import { ErrorBoundary } from '@skillment/react-components';
+
+function App() {
+  return (
+    <ErrorBoundary
+      fallback={<div>Something went wrong with the assessment.</div>}
+    >
+      <AssessmentWidget assessmentId="assessment-123" />
+    </ErrorBoundary>
+  );
+}
+```
+
+### Custom Error Handling
+
+```jsx
+<AssessmentWidget
+  assessmentId="assessment-123"
+  onError={(error) => {
+    if (error.code === 'NETWORK_ERROR') {
+      showOfflineMessage();
+    } else if (error.code === 'AUTH_ERROR') {
+      redirectToLogin();
+    } else {
+      showGenericError(error.message);
+    }
+  }}
+/>
+```
+
+## Best Practices
+
+### Performance Optimization
+
+- **Lazy Loading**: Load components only when needed
+- **Memoization**: Use React.memo for expensive components
+- **Bundle Splitting**: Separate assessment code from main app
+- **Caching**: Cache assessment data when appropriate
+
+### Security Considerations
+
+- **API Key Management**: Store API keys securely
+- **Input Validation**: Validate all user inputs
+- **HTTPS**: Always use HTTPS in production
+- **Session Management**: Handle sessions properly
+
+### Accessibility
+
+- **Keyboard Navigation**: Ensure all components are keyboard accessible
+- **Screen Readers**: Test with screen reader software
+- **Color Contrast**: Maintain sufficient color contrast
+- **Focus Management**: Manage focus appropriately
+
+## Troubleshooting
+
+### Common Issues
+
+**Component not rendering:**
+- Check API key configuration
+- Verify assessment ID is correct
+- Check network connectivity
+
+**Authentication errors:**
+- Verify participant credentials
+- Check assessment access permissions
+- Ensure proper session handling
+
+**Styling issues:**
+- Check CSS conflicts
+- Verify theme configuration
+- Test in different browsers
+
+### Getting Help
+
+- **Documentation**: Check component documentation
+- **Examples**: Review integration examples
+- **Support**: Contact support for technical issues
+- **Community**: Check community forums
+
+---
+
+*Need help with React integration? Contact our support team.* 

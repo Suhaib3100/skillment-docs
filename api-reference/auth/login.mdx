@@ -1,0 +1,57 @@
+---
+title: 'Login'
+description: 'Authenticate user and get access token'
+---
+
+<Note>
+  **Coming Soon**: This endpoint documentation is currently under development. Please check back soon for complete API details.
+</Note>
+
+## Overview
+
+Authenticate a user and receive an access token for API requests.
+
+## Endpoint
+
+```
+POST /api/auth/login
+```
+
+## Request Body
+
+```json
+{
+  "email": "user@example.com",
+  "password": "securepassword"
+}
+```
+
+## Response
+
+```json
+{
+  "success": true,
+  "message": "Login successful",
+  "data": {
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "user": {
+      "id": "user_123",
+      "email": "user@example.com",
+      "firstName": "John",
+      "lastName": "Doe"
+    }
+  }
+}
+```
+
+## Status Codes
+
+- `200` - Login successful
+- `401` - Invalid credentials
+- `400` - Invalid request data
+- `500` - Internal server error
+
+---
+
+*This documentation will be updated with complete implementation details soon.* 

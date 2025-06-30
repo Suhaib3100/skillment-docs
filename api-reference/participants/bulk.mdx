@@ -1,0 +1,158 @@
+---
+title: 'Bulk Participant Operations'
+description: 'Manage multiple participants efficiently'
+---
+
+## Overview
+
+Perform operations on multiple participants simultaneously to save time and ensure consistency across your organization.
+
+## Available Bulk Operations
+
+### Bulk Import
+
+Import participants from CSV or Excel files:
+
+1. Go to **Participants** page
+2. Click **Import Participants** button
+3. Download the template file or use your own
+4. Upload your file with participant data
+5. Review and map columns if needed
+6. Click **Import** to add participants
+
+**Required Columns:**
+- Name
+- Email
+- Department (optional)
+- Position (optional)
+- Tags (optional)
+
+### Bulk Update
+
+Update multiple participants at once:
+
+1. Select participants using checkboxes
+2. Click **Bulk Actions** dropdown
+3. Choose **Update Selected**
+4. Modify common fields:
+   - Department assignment
+   - Tags and categories
+   - Status (Active/Inactive)
+   - Assessment assignments
+5. Click **Apply to Selected**
+
+### Bulk Assignment
+
+Assign multiple participants to assessments:
+
+1. Select participants from the list
+2. Click **Assign to Assessment**
+3. Choose target assessment(s)
+4. Set invitation preferences:
+   - Send immediate invitations
+   - Schedule for later
+   - Custom message
+5. Click **Assign**
+
+### Bulk Export
+
+Export participant data for reporting:
+
+1. Select participants or use filters
+2. Click **Export** button
+3. Choose export format:
+   - CSV for spreadsheet analysis
+   - PDF for reports
+   - JSON for integrations
+4. Select data fields to include
+5. Download the file
+
+## Bulk Operation Templates
+
+### CSV Import Template
+
+```csv
+Name,Email,Department,Position,Phone,Tags
+John Doe,john@example.com,Engineering,Developer,+1234567890,"frontend,react"
+Jane Smith,jane@example.com,Design,UI Designer,+1234567891,"design,figma"
+```
+
+### Assessment Assignment Template
+
+```json
+{
+  "assessmentId": "assessment_123",
+  "participants": ["participant_1", "participant_2"],
+  "settings": {
+    "sendInvitation": true,
+    "customMessage": "Please complete this assessment by Friday",
+    "allowRetake": false
+  }
+}
+```
+
+## Best Practices
+
+### Data Preparation
+
+- **Validate Emails**: Ensure all email addresses are valid before import
+- **Consistent Formatting**: Use standardized department names and tags
+- **Duplicate Check**: Review for duplicate entries before importing
+- **Backup**: Export current data before bulk operations
+
+### Operation Planning
+
+- **Test First**: Try operations on a small group before bulk application
+- **Schedule Wisely**: Avoid bulk operations during peak assessment times
+- **Communicate**: Inform participants about bulk changes
+- **Monitor**: Check results after bulk operations
+
+### Error Handling
+
+- **Partial Success**: Some operations may succeed while others fail
+- **Error Reports**: Review error logs for failed operations
+- **Retry Logic**: Re-run failed operations after fixing issues
+- **Rollback**: Keep backups for critical operations
+
+## Common Use Cases
+
+### Onboarding New Team
+
+1. Import new team members via CSV
+2. Assign department and position tags
+3. Send welcome assessments
+4. Set up monitoring and reporting
+
+### Department Reorganization
+
+1. Export current participant data
+2. Update department assignments in bulk
+3. Reassign relevant assessments
+4. Update reporting structures
+
+### Assessment Campaigns
+
+1. Filter participants by criteria
+2. Bulk assign to specific assessments
+3. Send personalized invitations
+4. Monitor completion rates
+
+## Integration Workflows
+
+### HR System Integration
+
+- Export participant data from HR systems
+- Import into Skillment platform
+- Sync changes back to HR system
+- Maintain data consistency
+
+### Learning Management Systems
+
+- Import participants from LMS
+- Assign skill assessments
+- Export results back to LMS
+- Track learning progress
+
+---
+
+*Need help with bulk operations or data management? Contact our support team.* 

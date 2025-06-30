@@ -1,0 +1,51 @@
+---
+title: 'Delete Assessment'
+description: 'Delete an assessment'
+---
+
+<Note>
+  **Coming Soon**: This endpoint documentation is currently under development. Please check back soon for complete API details.
+</Note>
+
+## Overview
+
+Delete an assessment and all associated data.
+
+## Endpoint
+
+```
+DELETE /api/assessments/{assessmentId}
+```
+
+## Headers
+
+```
+Authorization: Bearer <access_token>
+```
+
+## Path Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `assessmentId` | string | Unique identifier of the assessment |
+
+## Response
+
+```json
+{
+  "success": true,
+  "message": "Assessment deleted successfully"
+}
+```
+
+## Status Codes
+
+- `200` - Assessment deleted successfully
+- `401` - Unauthorized
+- `404` - Assessment not found
+- `409` - Assessment has active sessions
+- `500` - Internal server error
+
+---
+
+*This documentation will be updated with complete implementation details soon.* 
