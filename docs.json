@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Skillment Documentation",
+  "name": "Skillment Platform Guide",
   "description": "Complete guide to using the Skillment assessment platform",
   "openapi": "/api-reference/openapi.json",
   "colors": {
@@ -11,7 +11,7 @@
   },
   "favicon": "/favicon.svg",
   "api": {
-    "baseUrl": "https://api.skillment.in/api",
+    "baseUrl": "https://skillment.in",
     "auth": {
       "method": "bearer"
     }
@@ -22,7 +22,7 @@
         "tab": "Getting Started",
         "groups": [
           {
-            "group": "Introduction",
+            "group": "Welcome",
             "pages": [
               "index",
               "quickstart",
@@ -30,117 +30,113 @@
             ]
           },
           {
-            "group": "Core Concepts",
+            "group": "Platform Overview",
             "pages": [
               "concepts/organizations",
               "concepts/assessments",
               "concepts/participants",
               "concepts/proctoring"
             ]
+          }
+        ]
+      },
+      {
+        "tab": "Platform Usage",
+        "groups": [
+          {
+            "group": "Organization Setup",
+            "pages": [
+              "guides/organization-setup",
+              "guides/team-management",
+              "guides/billing-subscription"
+            ]
           },
           {
-            "group": "Development",
+            "group": "Assessment Management",
             "pages": [
-              "development"
+              "guides/assessment-creation",
+              "guides/question-bank",
+              "guides/assessment-settings",
+              "guides/assessment-monitoring"
+            ]
+          },
+          {
+            "group": "Participant Management",
+            "pages": [
+              "guides/participant-management",
+              "guides/bulk-operations",
+              "guides/email-communications"
+            ]
+          },
+          {
+            "group": "Security & Proctoring",
+            "pages": [
+              "guides/proctoring-setup",
+              "guides/security-settings",
+              "guides/compliance-management"
             ]
           }
         ]
       },
       {
-        "tab": "API Reference",
+        "tab": "Analytics & Reports",
         "groups": [
           {
-            "group": "Overview",
+            "group": "Performance Analytics",
+            "pages": [
+              "guides/assessment-analytics",
+              "guides/participant-reports",
+              "guides/performance-dashboard"
+            ]
+          },
+          {
+            "group": "Data Management",
+            "pages": [
+              "guides/data-export",
+              "guides/reporting-tools",
+              "guides/data-backup"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Integration",
+        "groups": [
+          {
+            "group": "SDKs & Libraries",
+            "pages": [
+              "sdks/react-components",
+              "sdks/javascript-client"
+            ]
+          },
+          {
+            "group": "API Reference",
             "pages": [
               "api-reference/introduction",
               "api-reference/errors",
               "api-reference/rate-limiting"
             ]
-          },
-          {
-            "group": "Authentication",
-            "pages": [
-              "api-reference/auth/register",
-              "api-reference/auth/login",
-              "api-reference/auth/verify",
-              "api-reference/auth/logout",
-              "api-reference/auth/candidate-login",
-              "api-reference/auth/otp"
-            ]
-          },
-          {
-            "group": "Assessments",
-            "pages": [
-              "api-reference/assessments/list",
-              "api-reference/assessments/create",
-              "api-reference/assessments/get",
-              "api-reference/assessments/update",
-              "api-reference/assessments/delete",
-              "api-reference/assessments/stats",
-              "api-reference/assessments/candidates"
-            ]
-          },
-          {
-            "group": "Participants",
-            "pages": [
-              "api-reference/participants/list",
-              "api-reference/participants/create",
-              "api-reference/participants/get",
-              "api-reference/participants/update",
-              "api-reference/participants/delete",
-              "api-reference/participants/bulk",
-              "api-reference/participants/export"
-            ]
-          },
-          {
-            "group": "Questions",
-            "pages": [
-              "api-reference/questions/list",
-              "api-reference/questions/create",
-              "api-reference/questions/update",
-              "api-reference/questions/delete"
-            ]
-          },
-          {
-            "group": "Organizations",
-            "pages": [
-              "api-reference/organizations/validate"
-            ]
           }
         ]
       },
       {
-        "tab": "SDKs & Tools",
+        "tab": "Examples & Templates",
         "groups": [
           {
-            "group": "Frontend SDKs",
+            "group": "Use Case Examples",
             "pages": [
-              "sdks/react-components",
-              "sdks/javascript-client"
+              "examples/complete-workflow",
+              "examples/hiring-process",
+              "examples/educational-testing",
+              "examples/certification-program"
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Guides",
-        "groups": [
+          },
           {
-            "group": "Integration Guides",
+            "group": "Best Practices",
             "pages": [
-              "guides/assessment-creation",
-              "guides/participant-management",
-              "guides/proctoring-setup"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Examples",
-        "groups": [
-          {
-            "group": "Workflow Examples",
-            "pages": [
-              "examples/complete-workflow"
+              "guides/best-practices",
+              "guides/security-best-practices",
+              "guides/performance-optimization"
             ]
           }
         ]
@@ -160,7 +156,7 @@
         },
         {
           "anchor": "GitHub",
-          "href": "https://github.com/skillment",
+          "href": "https://github.com/skillment-in",
           "icon": "github"
         }
       ]
@@ -180,14 +176,14 @@
     "primary": {
       "type": "button",
       "label": "Get Started",
-      "href": "https://skillment.in/register"
+      "href": "https://skillment.in/sign-up"
     }
   },
   "footer": {
     "socials": {
       "x": "https://x.com/skillment",
-      "github": "https://github.com/skillment",
-      "linkedin": "https://linkedin.com/company/skillment"
+      "github": "https://github.com/skillment-in",
+      "linkedin": "https://linkedin.com/company/skillment-in"
     }
   },
   "topbarLinks": [
@@ -198,6 +194,6 @@
   ],
   "topbarCtaButton": {
     "name": "Dashboard",
-    "url": "https://skillment.in/dashboard"
+    "url": "https://app.skillment.in"
   }
 }   
