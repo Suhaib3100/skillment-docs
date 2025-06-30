@@ -1,13 +1,13 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "maple",
+  "theme": "mint",
   "name": "Skillment Platform Guide",
   "description": "Complete guide to using the Skillment assessment platform",
   "openapi": "/api-reference/openapi.json",
   "colors": {
-    "primary": "#3B82F6",
-    "light": "#60A5FA",
-    "dark": "#1E40AF"
+    "primary": "#FF5722",
+    "light": "#FF7043",
+    "dark": "#D84315"
   },
   "favicon": "/favicon.svg",
   "api": {
