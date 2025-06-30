@@ -1,0 +1,364 @@
+---
+title: 'Question Bank Management'
+description: 'Create, organize, and manage your question libraries for assessments'
+---
+
+## Overview
+
+The question bank is your central repository for assessment questions. Build a comprehensive library of coding problems, multiple-choice questions, and custom evaluations that can be reused across multiple assessments.
+
+## Getting Started with Question Bank
+
+### Accessing Question Bank
+
+<Steps>
+  <Step title="Navigate to Question Bank">
+    Go to **Questions** → **Question Bank** in your dashboard
+  </Step>
+  <Step title="Browse Categories">
+    Explore pre-built questions organized by:
+    - **Programming Language** (JavaScript, Python, Java, etc.)
+    - **Difficulty Level** (Beginner, Intermediate, Advanced)
+    - **Question Type** (Coding, MCQ, Open-ended)
+    - **Topic/Domain** (Algorithms, Web Development, etc.)
+  </Step>
+  <Step title="Create Custom Collections">
+    Organize questions into custom folders and tags
+  </Step>
+</Steps>
+
+## Question Types
+
+<AccordionGroup>
+  <Accordion title="Coding Questions" icon="code">
+    **Interactive Programming Challenges**
+    - Code execution in multiple languages
+    - Automated test case validation
+    - Real-time syntax checking
+    - Custom input/output examples
+    - Performance benchmarking
+  </Accordion>
+
+  <Accordion title="Multiple Choice Questions" icon="list-check">
+    **Traditional Assessment Questions**
+    - Single or multiple correct answers
+    - Randomized option order
+    - Image and code snippet support
+    - Explanation feedback
+    - Time limits per question
+  </Accordion>
+
+  <Accordion title="Open-ended Questions" icon="edit">
+    **Subjective Evaluation Questions**
+    - Essay-style responses
+    - File upload submissions
+    - Manual grading workflow
+    - Rubric-based scoring
+    - Collaborative review process
+  </Accordion>
+
+  <Accordion title="System Design Questions" icon="sitemap">
+    **Architecture and Design Challenges**
+    - Whiteboarding interface
+    - Component libraries
+    - Collaborative design tools
+    - Time-based submissions
+    - Structured evaluation criteria
+  </Accordion>
+</AccordionGroup>
+
+## Creating Custom Questions
+
+### Coding Question Creation
+
+<Tabs>
+  <Tab title="Question Setup">
+    **Basic Information**
+    ```yaml
+    Title: "Array Sum Challenge"
+    Difficulty: Intermediate
+    Language: JavaScript, Python, Java
+    Topic: Arrays, Algorithms
+    Estimated Time: 15 minutes
+    ```
+  </Tab>
+  <Tab title="Problem Statement">
+    **Clear Problem Description**
+    - Problem context and requirements
+    - Input/output specifications
+    - Constraints and edge cases
+    - Example test cases
+    - Hints for candidates (optional)
+  </Tab>
+  <Tab title="Test Cases">
+    **Automated Validation**
+    ```javascript
+    // Public Test Cases (visible to candidates)
+    testCase1: {
+      input: [1, 2, 3, 4, 5],
+      expectedOutput: 15,
+      description: "Sum of positive numbers"
+    }
+    
+    // Hidden Test Cases (for evaluation)
+    testCase2: {
+      input: [-1, -2, 3, 4],
+      expectedOutput: 6,
+      description: "Mixed positive and negative"
+    }
+    ```
+  </Tab>
+  <Tab title="Scoring">
+    **Evaluation Criteria**
+    - Correctness weight: 70%
+    - Time complexity: 20%
+    - Code quality: 10%
+    - Bonus for optimal solution
+  </Tab>
+</Tabs>
+
+### MCQ Question Creation
+
+Build effective multiple-choice questions:
+
+<Steps>
+  <Step title="Write Clear Question">
+    Create unambiguous question text with proper context
+  </Step>
+  <Step title="Design Answer Options">
+    - 4-5 answer choices
+    - Only one correct answer (or specify multiple)
+    - Plausible distractors
+    - Avoid "all of the above" options
+  </Step>
+  <Step title="Add Explanations">
+    Provide detailed explanations for:
+    - Why the correct answer is right
+    - Why incorrect answers are wrong
+    - Additional learning resources
+  </Step>
+  <Step title="Set Difficulty">
+    Calibrate difficulty based on:
+    - Expected candidate knowledge level
+    - Time required to answer
+    - Concept complexity
+  </Step>
+</Steps>
+
+## Organizing Your Question Bank
+
+### Folder Structure
+
+Create a logical organization system:
+
+```
+📁 Question Bank
+├── 📁 Programming Languages
+│   ├── 📁 JavaScript
+│   │   ├── 📁 Fundamentals
+│   │   ├── 📁 ES6+ Features
+│   │   └── 📁 Framework Specific
+│   ├── 📁 Python
+│   │   ├── 📁 Data Structures
+│   │   ├── 📁 Web Development
+│   │   └── 📁 Machine Learning
+│   └── 📁 Java
+├── 📁 System Design
+├── 📁 Database Concepts
+└── 📁 General Aptitude
+```
+
+### Tagging System
+
+Use tags for flexible organization:
+- **Skill Tags**: `algorithms`, `debugging`, `optimization`
+- **Level Tags**: `entry-level`, `mid-level`, `senior`
+- **Company Tags**: `frontend-role`, `backend-role`, `fullstack`
+- **Time Tags**: `quick-screen`, `detailed-assessment`
+
+## Question Quality Management
+
+### Question Review Process
+
+<Steps>
+  <Step title="Author Creates Question">
+    Subject matter expert drafts the question
+  </Step>
+  <Step title="Peer Review">
+    Colleague reviews for accuracy and clarity
+  </Step>
+  <Step title="Candidate Testing">
+    Test question with sample candidates
+  </Step>
+  <Step title="Statistical Analysis">
+    Analyze performance data and difficulty
+  </Step>
+  <Step title="Continuous Improvement">
+    Update based on feedback and results
+  </Step>
+</Steps>
+
+### Quality Metrics
+
+Monitor question effectiveness:
+
+<CardGroup cols={2}>
+  <Card title="Difficulty Calibration" icon="balance-scale">
+    - **Pass Rate**: 60-80% for good questions
+    - **Time Analysis**: Average completion time
+    - **Discrimination**: Separates strong/weak candidates
+  </Card>
+  <Card title="Content Validity" icon="check-circle">
+    - **Relevance**: Matches job requirements
+    - **Clarity**: Clear, unambiguous instructions
+    - **Fairness**: No bias or unfair advantages
+  </Card>
+</CardGroup>
+
+## Importing and Exporting Questions
+
+### Bulk Import
+
+Import questions from various sources:
+
+<Tabs>
+  <Tab title="CSV Import">
+    **Spreadsheet Format**
+    ```csv
+    title,description,type,difficulty,language,tags
+    "Array Sum","Calculate sum of array","coding","medium","javascript","arrays,algorithms"
+    "Variable Scope","Which variable is accessible?","mcq","easy","javascript","fundamentals"
+    ```
+  </Tab>
+  <Tab title="JSON Import">
+    **Structured Format**
+    ```json
+    {
+      "question": {
+        "title": "Binary Tree Traversal",
+        "type": "coding",
+        "difficulty": "hard",
+        "languages": ["python", "java"],
+        "testCases": [...],
+        "solution": "..."
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="Platform Migration">
+    **From Other Platforms**
+    - HackerRank export compatibility
+    - LeetCode problem adaptation
+    - Custom platform migration tools
+    - Data validation and cleanup
+  </Tab>
+</Tabs>
+
+### Export Options
+
+Share questions or create backups:
+- **PDF Export**: Formatted question sheets
+- **Excel Export**: Structured data for analysis
+- **JSON Export**: Platform-agnostic format
+- **Assessment Templates**: Pre-configured question sets
+
+## Collaborative Question Development
+
+### Team Collaboration
+
+<AccordionGroup>
+  <Accordion title="Question Ownership" icon="user">
+    - **Primary Author**: Creates and maintains question
+    - **Reviewers**: Provide feedback and validation
+    - **Approvers**: Final approval for publication
+    - **Usage Tracking**: Monitor who uses questions
+  </Accordion>
+
+  <Accordion title="Version Control" icon="code-branch">
+    - **Question Versioning**: Track changes over time
+    - **Change History**: Audit trail of modifications
+    - **Rollback Capability**: Revert to previous versions
+    - **Branch Management**: Test variations safely
+  </Accordion>
+
+  <Accordion title="Review Workflows" icon="tasks">
+    - **Peer Review**: Expert validation process
+    - **Feedback Integration**: Incorporate suggestions
+    - **Quality Gates**: Standards compliance checks
+    - **Publication Pipeline**: Automated quality assurance
+  </Accordion>
+</AccordionGroup>
+
+### Feedback and Improvement
+
+Continuously improve question quality:
+
+1. **Candidate Feedback**: Post-assessment question ratings
+2. **Performance Analytics**: Statistical performance analysis
+3. **Expert Reviews**: Subject matter expert validation
+4. **Industry Updates**: Keep questions current with technology trends
+
+## Advanced Question Features
+
+### Dynamic Question Generation
+
+Create adaptive questions:
+- **Parameter Randomization**: Generate unique variations
+- **Difficulty Scaling**: Adjust complexity automatically
+- **Context Adaptation**: Customize for specific roles
+- **Personalization**: Tailor to candidate background
+
+### AI-Assisted Question Creation
+
+Leverage AI for question development:
+- **Question Suggestions**: AI-powered content recommendations
+- **Difficulty Estimation**: Automated difficulty calibration
+- **Similarity Detection**: Identify duplicate questions
+- **Quality Scoring**: Automated quality assessment
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Question Writing" icon="pencil">
+    - **Clear Instructions**: Unambiguous requirements
+    - **Realistic Scenarios**: Job-relevant problems
+    - **Appropriate Scope**: Suitable for time limit
+    - **Fair Assessment**: Test intended skills only
+  </Accordion>
+
+  <Accordion title="Test Case Design" icon="vial">
+    - **Edge Cases**: Test boundary conditions
+    - **Performance Cases**: Large input validation
+    - **Error Handling**: Invalid input testing
+    - **Hidden Cases**: Prevent hardcoding solutions
+  </Accordion>
+
+  <Accordion title="Maintenance" icon="wrench">
+    - **Regular Reviews**: Quarterly question audits
+    - **Performance Monitoring**: Track effectiveness metrics
+    - **Content Updates**: Keep questions current
+    - **Feedback Integration**: Continuous improvement
+  </Accordion>
+</AccordionGroup>
+
+## Question Analytics
+
+### Performance Insights
+
+Track question effectiveness:
+- **Success Rates**: Percentage of correct answers
+- **Time Distribution**: How long candidates take
+- **Common Mistakes**: Frequent error patterns
+- **Difficulty Validation**: Actual vs. expected difficulty
+
+### Usage Analytics
+
+Monitor question utilization:
+- **Usage Frequency**: Most/least used questions
+- **Assessment Distribution**: Where questions appear
+- **Team Preferences**: Department-specific usage patterns
+- **Seasonal Trends**: Time-based usage patterns
+
+<Note>
+**Building a quality question bank takes time.** Start with a small, well-curated set of questions and expand gradually based on your assessment needs and candidate feedback.
+</Note> 

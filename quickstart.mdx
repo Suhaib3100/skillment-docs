@@ -1,522 +1,188 @@
 ---
-title: "Quick Start Guide"
-description: "Get up and running with Skillment API in 10 minutes"
+title: 'Quick Start Guide'
+description: 'Get up and running with Skillment in 5 minutes'
 ---
 
-# Quick Start Guide
+## Welcome to Skillment!
 
-This guide will walk you through creating your first assessment with the Skillment API. You'll learn how to:
+This quick start guide will help you create your first assessment and invite participants in just a few minutes. By the end of this guide, you'll have a fully functional assessment ready to use.
 
-- Register an organization and get API credentials
-- Create your first coding assessment
-- Add participants and send invitations
-- Monitor assessment progress
+## Step 1: Access Your Dashboard
 
-<Note>
-**Prerequisites**: You'll need a valid email address and basic familiarity with REST APIs and cURL commands.
-</Note>
+After signing up at [skillment.in](https://skillment.in/sign-up), log in to your dashboard at [app.skillment.in](https://app.skillment.in).
 
-## Step 1: Register Your Organization
-
-First, let's register your organization and create an admin account:
-
-<CodeGroup>
-```bash cURL
-curl -X POST https://api.skillment.in/api/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{
-    "email": "admin@mycompany.com",
-    "password": "securePassword123",
-    "firstName": "John",
-    "lastName": "Doe",
-    "phone": "+1234567890",
-    "gender": "male",
-    "orgName": "my-tech-company",
-    "orgType": "technology",
-    "orgSize": "50-100",
-    "plan": "free",
-    "termsAccepted": true,
-    "newsletterOptIn": false
-  }'
-```
-
-```javascript JavaScript
-const response = await fetch('https://api.skillment.in/api/auth/register', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    email: 'admin@mycompany.com',
-    password: 'securePassword123',
-    firstName: 'John',
-    lastName: 'Doe',
-    phone: '+1234567890',
-    gender: 'male',
-    orgName: 'my-tech-company',
-    orgType: 'technology',
-    orgSize: '50-100',
-    plan: 'free',
-    termsAccepted: true,
-    newsletterOptIn: false
-  })
-});
-
-const data = await response.json();
-console.log('Registration successful:', data);
-```
-
-```python Python
-import requests
-
-url = "https://api.skillment.in/api/auth/register"
-payload = {
-    "email": "admin@mycompany.com",
-    "password": "securePassword123",
-    "firstName": "John",
-    "lastName": "Doe",
-    "phone": "+1234567890",
-    "gender": "male",
-    "orgName": "my-tech-company",
-    "orgType": "technology",
-    "orgSize": "50-100",
-    "plan": "free",
-    "termsAccepted": True,
-    "newsletterOptIn": False
-}
-
-response = requests.post(url, json=payload)
-data = response.json()
-print("Registration successful:", data)
-```
-</CodeGroup>
-
-**Response:**
-```json
-{
-  "success": true,
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "user": {
-    "id": "user_123",
-    "email": "admin@mycompany.com",
-    "firstName": "John",
-    "lastName": "Doe",
-    "orgName": "my-tech-company",
-    "role": "admin"
-  },
-  "organization": {
-    "id": "org_456",
-    "name": "my-tech-company",
-    "plan": "free"
-  },
-  "redirectUrl": "https://my-tech-company.skillment.in/dashboard"
-}
-```
-
-<Tip>
-**Save your token!** Copy the `token` from the response - you'll need it for all subsequent API calls. The token is valid for 7 days.
-</Tip>
+<Frame>
+  <img src="/images/dashboard-overview.png" alt="Skillment Dashboard" />
+</Frame>
 
 ## Step 2: Create Your First Assessment
 
-Now let's create a coding assessment for JavaScript developers:
+<Steps>
+  <Step title="Navigate to Assessments">
+    Click on "Assessments" in the left sidebar, then click "Create New Assessment"
+  </Step>
+  <Step title="Basic Information">
+    Fill in your assessment details:
+    - **Title**: "JavaScript Developer Test"
+    - **Description**: "Basic JavaScript skills assessment"
+    - **Duration**: 60 minutes
+    - **Type**: Coding Assessment
+  </Step>
+  <Step title="Add Questions">
+    Choose from our question bank or create custom questions:
+    - Select "Add from Question Bank"
+    - Filter by "JavaScript" and "Beginner"
+    - Add 3-5 coding problems
+  </Step>
+  <Step title="Configure Settings">
+    Set up assessment rules:
+    - **Proctoring**: Enable basic monitoring
+    - **Browser**: Lock browser during test
+    - **Time Limit**: 60 minutes
+    - **Attempts**: 1 attempt allowed
+  </Step>
+</Steps>
 
-<CodeGroup>
-```bash cURL
-curl -X POST https://api.skillment.in/api/assessments \
-  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "title": "JavaScript Developer Assessment",
-    "description": "Test JavaScript fundamentals and problem-solving skills",
-    "type": "coding",
-    "duration": 60,
-    "questions": [
-      {
-        "type": "coding",
-        "question": "Write a function that returns the sum of two numbers",
-        "difficulty": "Easy",
-        "marks": 10,
-        "timeLimit": 15,
-        "starterCode": {
-          "javascript": "function sum(a, b) {\n  // Your code here\n}",
-          "python": "def sum(a, b):\n    # Your code here\n    pass"
-        },
-        "testCases": [
-          {
-            "input": "sum(2, 3)",
-            "expectedOutput": "5",
-            "isVisible": true
-          },
-          {
-            "input": "sum(-1, 1)",
-            "expectedOutput": "0",
-            "isVisible": true
-          },
-          {
-            "input": "sum(100, 200)",
-            "expectedOutput": "300",
-            "isVisible": false
-          }
-        ]
-      }
-    ],
-    "settings": {
-      "proctoringEnabled": true,
-      "randomizeQuestions": false,
-      "showResults": false
-    }
-  }'
-```
+## Step 3: Invite Participants
 
-```javascript JavaScript
-const assessmentData = {
-  title: "JavaScript Developer Assessment",
-  description: "Test JavaScript fundamentals and problem-solving skills",
-  type: "coding",
-  duration: 60,
-  questions: [
-    {
-      type: "coding",
-      question: "Write a function that returns the sum of two numbers",
-      difficulty: "Easy",
-      marks: 10,
-      timeLimit: 15,
-      starterCode: {
-        javascript: "function sum(a, b) {\n  // Your code here\n}",
-        python: "def sum(a, b):\n    # Your code here\n    pass"
-      },
-      testCases: [
-        {
-          input: "sum(2, 3)",
-          expectedOutput: "5",
-          isVisible: true
-        },
-        {
-          input: "sum(-1, 1)",
-          expectedOutput: "0",
-          isVisible: true
-        },
-        {
-          input: "sum(100, 200)",
-          expectedOutput: "300",
-          isVisible: false
-        }
-      ]
-    }
-  ],
-  settings: {
-    proctoringEnabled: true,
-    randomizeQuestions: false,
-    showResults: false
-  }
-};
+<Steps>
+  <Step title="Go to Participants">
+    Click "Participants" in the sidebar, then "Add Participants"
+  </Step>
+  <Step title="Add Participant Details">
+    Enter participant information:
+    ```
+    Name: John Doe
+    Email: john.doe@example.com
+    Role: Frontend Developer Candidate
+    ```
+  </Step>
+  <Step title="Assign Assessment">
+    Select the assessment you just created and set:
+    - **Start Date**: Immediate or scheduled
+    - **Deadline**: 7 days from now
+    - **Instructions**: Custom message for the candidate
+  </Step>
+  <Step title="Send Invitations">
+    Click "Send Invitations" to automatically email participants with:
+    - Assessment link
+    - Login credentials
+    - Instructions and guidelines
+  </Step>
+</Steps>
 
-const response = await fetch('https://api.skillment.in/api/assessments', {
-  method: 'POST',
-  headers: {
-    'Authorization': `Bearer ${token}`,
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(assessmentData)
-});
+## Step 4: Monitor Progress
 
-const assessment = await response.json();
-console.log('Assessment created:', assessment);
-```
-</CodeGroup>
-
-**Response:**
-```json
-{
-  "id": "assessment_789",
-  "title": "JavaScript Developer Assessment",
-  "description": "Test JavaScript fundamentals and problem-solving skills",
-  "type": "coding",
-  "duration": 60,
-  "status": "draft",
-  "questions": [...],
-  "settings": {...},
-  "createdAt": "2024-01-15T10:00:00Z",
-  "organizationId": "org_456"
-}
-```
-
-## Step 3: Add Participants
-
-Let's add some candidates who will take the assessment:
-
-<CodeGroup>
-```bash cURL (Single Participant)
-curl -X POST https://api.skillment.in/api/participants \
-  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "firstName": "Alice",
-    "lastName": "Johnson",
-    "email": "alice.johnson@email.com",
-    "phone": "+1234567890",
-    "tags": ["frontend", "javascript", "react"]
-  }'
-```
-
-```bash cURL (Bulk Participants)
-curl -X POST https://api.skillment.in/api/participants/bulk \
-  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "participants": [
-      {
-        "firstName": "Alice",
-        "lastName": "Johnson",
-        "email": "alice.johnson@email.com",
-        "tags": ["frontend", "javascript"]
-      },
-      {
-        "firstName": "Bob",
-        "lastName": "Smith",
-        "email": "bob.smith@email.com",
-        "tags": ["backend", "node.js"]
-      }
-    ]
-  }'
-```
-
-```javascript JavaScript
-// Add single participant
-const participantData = {
-  firstName: "Alice",
-  lastName: "Johnson",
-  email: "alice.johnson@email.com",
-  phone: "+1234567890",
-  tags: ["frontend", "javascript", "react"]
-};
-
-const response = await fetch('https://api.skillment.in/api/participants', {
-  method: 'POST',
-  headers: {
-    'Authorization': `Bearer ${token}`,
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(participantData)
-});
-
-const participant = await response.json();
-console.log('Participant added:', participant);
-```
-</CodeGroup>
-
-## Step 4: Assign Assessment to Participants
-
-Now let's assign our assessment to the participants:
-
-<CodeGroup>
-```bash cURL
-curl -X POST https://api.skillment.in/api/assessments/assessment_789/assign \
-  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "participantIds": ["participant_101", "participant_102"],
-    "sendInvitation": true,
-    "customMessage": "Please complete this assessment by tomorrow."
-  }'
-```
-
-```javascript JavaScript
-const assignmentData = {
-  participantIds: ["participant_101", "participant_102"],
-  sendInvitation: true,
-  customMessage: "Please complete this assessment by tomorrow."
-};
-
-const response = await fetch('https://api.skillment.in/api/assessments/assessment_789/assign', {
-  method: 'POST',
-  headers: {
-    'Authorization': `Bearer ${token}`,
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(assignmentData)
-});
-
-const result = await response.json();
-console.log('Assignment successful:', result);
-```
-</CodeGroup>
-
-## Step 5: Send Candidate Credentials
-
-Generate and send login credentials to candidates:
-
-<CodeGroup>
-```bash cURL
-curl -X POST https://api.skillment.in/api/email/send-credentials \
-  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "participantId": "participant_101",
-    "assessmentId": "assessment_789"
-  }'
-```
-
-```javascript JavaScript
-const credentialsData = {
-  participantId: "participant_101",
-  assessmentId: "assessment_789"
-};
-
-const response = await fetch('https://api.skillment.in/api/email/send-credentials', {
-  method: 'POST',
-  headers: {
-    'Authorization': `Bearer ${token}`,
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(credentialsData)
-});
-
-const result = await response.json();
-console.log('Credentials sent:', result);
-```
-</CodeGroup>
-
-## Step 6: Monitor Assessment Progress
-
-Check the status of your assessment and participant progress:
-
-<CodeGroup>
-```bash cURL (Assessment Stats)
-curl -X GET https://api.skillment.in/api/assessments/stats \
-  -H "Authorization: Bearer YOUR_TOKEN_HERE"
-```
-
-```bash cURL (Assessment Candidates)
-curl -X GET https://api.skillment.in/api/assessments/assessment_789/candidates \
-  -H "Authorization: Bearer YOUR_TOKEN_HERE"
-```
-
-```javascript JavaScript
-// Get assessment statistics
-const statsResponse = await fetch('https://api.skillment.in/api/assessments/stats', {
-  headers: {
-    'Authorization': `Bearer ${token}`,
-  }
-});
-const stats = await statsResponse.json();
-console.log('Assessment stats:', stats);
-
-// Get candidates for specific assessment
-const candidatesResponse = await fetch('https://api.skillment.in/api/assessments/assessment_789/candidates', {
-  headers: {
-    'Authorization': `Bearer ${token}`,
-  }
-});
-const candidates = await candidatesResponse.json();
-console.log('Assessment candidates:', candidates);
-```
-</CodeGroup>
-
-## What's Next?
-
-Congratulations! You've successfully:
-
-✅ Created your organization and got API access  
-✅ Built your first coding assessment  
-✅ Added participants and sent invitations  
-✅ Set up monitoring for assessment progress  
-
-### Explore Advanced Features
+Once participants start taking assessments:
 
 <CardGroup cols={2}>
-  <Card
-    title="Advanced Proctoring"
-    icon="shield-check"
-    href="/guides/proctoring-setup"
-  >
-    Set up face detection, tab monitoring, and violation tracking
+  <Card title="Real-time Monitoring" icon="eye">
+    Watch live progress, detect violations, and see current status
   </Card>
-  <Card
-    title="Complex Assessments"
-    icon="clipboard-list"
-    href="/guides/assessment-creation"
-  >
-    Create mixed assessments with MCQ and coding questions
-  </Card>
-  <Card
-    title="Bulk Operations"
-    icon="users"
-    href="/examples/bulk-operations"
-  >
-    Manage hundreds of participants with bulk operations
-  </Card>
-  <Card
-    title="Webhooks"
-    icon="webhook"
-    href="/guides/webhooks"
-  >
-    Get real-time notifications about assessment events
+  <Card title="Instant Notifications" icon="bell">
+    Get alerts for assessment starts, submissions, and security violations
   </Card>
 </CardGroup>
 
-### Try Our SDKs
+## Step 5: Review Results
 
-Speed up your integration with our pre-built libraries:
+After assessment completion:
 
-<CodeGroup>
-```bash npm
-npm install @skillment/js-client
+<Steps>
+  <Step title="Access Results">
+    Go to "Results" tab in your assessment dashboard
+  </Step>
+  <Step title="Review Performance">
+    See detailed analytics:
+    - Code execution results
+    - Time spent per question
+    - Overall scores and rankings
+  </Step>
+  <Step title="Export Data">
+    Download reports in PDF or Excel format for further analysis
+  </Step>
+</Steps>
+
+## Sample Assessment Flow
+
+Here's what your participant will experience:
+
+```mermaid
+graph TD
+    A[Receive Email Invitation] --> B[Click Assessment Link]
+    B --> C[System Compatibility Check]
+    C --> D[Identity Verification]
+    D --> E[Assessment Guidelines]
+    E --> F[Start Assessment]
+    F --> G[Answer Questions]
+    G --> H[Submit Assessment]
+    H --> I[Thank You Page]
 ```
 
-```bash yarn
-yarn add @skillment/js-client
-```
-
-```bash pip
-pip install skillment-python
-```
-</CodeGroup>
-
-## Common Issues & Solutions
+## Quick Tips for Success
 
 <AccordionGroup>
-  <Accordion title="Authentication Error (401)">
-    **Problem**: Getting unauthorized errors  
-    **Solution**: Check that your token is valid and properly formatted in the Authorization header:
-    ```bash
-    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-    ```
+  <Accordion title="Choose the Right Questions" icon="lightbulb">
+    Start with questions that match your candidates' expected skill level. Use our difficulty ratings to guide your selection.
   </Accordion>
-  
-  <Accordion title="Organization Name Already Exists">
-    **Problem**: Getting conflict error during registration  
-    **Solution**: Organization names must be unique. Try a different name or check availability:
-    ```bash
-    curl -X GET https://api.skillment.in/api/organizations/validate/my-org-name
-    ```
+
+  <Accordion title="Set Realistic Time Limits" icon="clock">
+    Allow 10-15 minutes per coding question and 2-3 minutes per MCQ. Test the assessment yourself first.
   </Accordion>
-  
-  <Accordion title="Question Validation Errors">
-    **Problem**: Assessment creation fails with validation errors  
-    **Solution**: Ensure all required fields are provided:
-    - `question` text is not empty
-    - `difficulty` is one of: "Easy", "Medium", "Hard"
-    - For coding questions: at least one test case is provided
-    - `marks` is a positive number
+
+  <Accordion title="Configure Proctoring Appropriately" icon="shield">
+    For initial assessments, use basic monitoring. Enable advanced proctoring for final rounds or high-stakes evaluations.
+  </Accordion>
+
+  <Accordion title="Communicate Clearly" icon="message">
+    Send clear instructions to participants including technical requirements and what to expect during the assessment.
   </Accordion>
 </AccordionGroup>
 
-## Need Help?
+## What's Next?
 
-<CardGroup cols={3}>
-  <Card title="API Reference" icon="book" href="/api-reference/introduction">
-    Complete API documentation
+Now that you've created your first assessment, explore these advanced features:
+
+<CardGroup cols={2}>
+  <Card
+    title="Question Bank Management"
+    icon="database"
+    href="/guides/question-bank"
+  >
+    Create custom questions and build your organization's question library
   </Card>
-  <Card title="Support" icon="life-ring" href="mailto:support@skillment.in">
-    Email our support team
+  <Card
+    title="Advanced Proctoring"
+    icon="video"
+    href="/guides/proctoring-setup"
+  >
+    Set up AI-powered monitoring and violation detection
   </Card>
-  <Card title="Examples" icon="code" href="/examples/complete-workflow">
-    More code examples
+  <Card
+    title="Team Collaboration"
+    icon="users"
+    href="/guides/team-management"
+  >
+    Add team members and manage permissions
+  </Card>
+  <Card
+    title="Analytics Dashboard"
+    icon="chart-bar"
+    href="/guides/assessment-analytics"
+  >
+    Dive deep into performance metrics and insights
   </Card>
 </CardGroup>
 
+## Need Help?
+
 <Note>
-**Rate Limits**: The free plan includes 100 API requests per minute. If you need higher limits, consider upgrading to our Elite plan.
+  **Stuck on something?** Our support team is available at [support@skillment.in](mailto:support@skillment.in), or check out our detailed guides for step-by-step instructions.
 </Note>
+
+## Common Next Steps
+
+- **Bulk Import Participants**: Upload CSV files with hundreds of candidates
+- **Custom Branding**: Add your organization's logo and colors
+- **Integration Setup**: Connect with your ATS or HRMS system
+- **Advanced Reporting**: Set up automated report generation

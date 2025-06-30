@@ -1,0 +1,298 @@
+---
+title: 'Team Management'
+description: 'Manage team members, roles, and collaborative workflows in your organization'
+---
+
+## Overview
+
+Skillment's team management features allow you to collaborate effectively with colleagues, assign roles, and maintain organized workflows across your assessment programs.
+
+## Adding Team Members
+
+### Invite New Members
+
+<Steps>
+  <Step title="Access Team Settings">
+    Go to **Settings** → **Team Management** in your dashboard
+  </Step>
+  <Step title="Send Invitations">
+    Click "Invite Team Member" and enter:
+    - **Email Address**
+    - **Role** (Admin, Manager, or Viewer)
+    - **Departments** (optional)
+    - **Welcome Message** (optional)
+  </Step>
+  <Step title="Set Permissions">
+    Configure what the team member can access:
+    - Assessment creation and editing
+    - Participant management
+    - Results viewing
+    - Organization settings
+  </Step>
+</Steps>
+
+### Bulk Team Import
+
+For larger organizations, import team members via CSV:
+
+```csv
+email,firstName,lastName,role,department
+john@company.com,John,Doe,Manager,Engineering
+jane@company.com,Jane,Smith,Admin,HR
+mike@company.com,Mike,Wilson,Viewer,Marketing
+```
+
+## Team Roles & Permissions
+
+<AccordionGroup>
+  <Accordion title="Organization Admin" icon="crown">
+    **Full Access**: All features, billing, team management, organization settings
+    - Create and manage all assessments
+    - Add/remove team members
+    - Access billing and subscription settings
+    - Configure organization-wide policies
+    - Export all data and reports
+  </Accordion>
+
+  <Accordion title="Assessment Manager" icon="user-tie">
+    **Assessment Management**: Create assessments, manage participants, view results
+    - Create and edit assessments
+    - Manage participants and invitations
+    - View and export assessment results
+    - Configure proctoring settings
+    - Cannot modify team or billing settings
+  </Accordion>
+
+  <Accordion title="Assessment Viewer" icon="eye">
+    **Read-Only Access**: View assessments and results only
+    - View assessment details and questions
+    - See participant lists and progress
+    - Access results and analytics
+    - Export reports (with limitations)
+    - Cannot create or modify assessments
+  </Accordion>
+
+  <Accordion title="Department Lead" icon="users">
+    **Department-Specific Access**: Manage assessments within assigned departments
+    - Full access to department assessments
+    - Manage department participants
+    - View department analytics
+    - Cannot access other departments
+  </Accordion>
+</AccordionGroup>
+
+## Collaborative Workflows
+
+### Assessment Collaboration
+
+**Multiple Reviewers**: Assign different team members to review different aspects:
+
+<CardGroup cols={2}>
+  <Card title="Technical Review" icon="code">
+    **Engineering Managers** review coding questions and test cases
+  </Card>
+  <Card title="Content Review" icon="spell-check">
+    **HR Team** reviews assessment descriptions and participant communications
+  </Card>
+  <Card title="Results Analysis" icon="chart-line">
+    **Hiring Managers** analyze results and make hiring decisions
+  </Card>
+  <Card title="Process Oversight" icon="tasks">
+    **Team Leads** monitor overall assessment progress and timelines
+  </Card>
+</CardGroup>
+
+### Approval Workflows
+
+Set up assessment approval processes:
+
+1. **Creator** builds the assessment
+2. **Reviewer** validates content and settings
+3. **Approver** gives final approval to launch
+4. **Publisher** sends invitations to participants
+
+## Team Communication
+
+### Built-in Notifications
+
+Team members receive notifications for:
+- Assessment status changes
+- New participant registrations
+- Assessment completions
+- Security violations
+- Deadline reminders
+
+### Comment System
+
+Collaborate directly within assessments:
+
+```
+💬 Comments on Assessments
+@john.doe - "Should we increase the time limit for Question 3?"
+@jane.smith - "Agreed, 15 minutes seems more appropriate"
+@mike.wilson - "Updated to 15 minutes ✅"
+```
+
+## Department Management
+
+### Organize by Departments
+
+Structure your team by departments:
+
+<Tabs>
+  <Tab title="Engineering">
+    - **Focus**: Technical assessments, coding challenges
+    - **Team**: Engineering Managers, Senior Developers
+    - **Assessments**: JavaScript, Python, System Design
+  </Tab>
+  <Tab title="Human Resources">
+    - **Focus**: Behavioral assessments, culture fit
+    - **Team**: HR Managers, Recruiters
+    - **Assessments**: Personality tests, Situational judgment
+  </Tab>
+  <Tab title="Marketing">
+    - **Focus**: Creative assessments, campaign analysis
+    - **Team**: Marketing Managers, Content Creators
+    - **Assessments**: Writing samples, Campaign strategy
+  </Tab>
+</Tabs>
+
+### Cross-Department Collaboration
+
+Enable cross-functional hiring:
+- **Shared Assessment Pool**: Access assessments across departments
+- **Joint Reviews**: Multiple departments can review the same candidate
+- **Unified Reporting**: Consolidated views of all department activities
+
+## Activity Monitoring
+
+### Team Activity Dashboard
+
+Monitor team productivity and collaboration:
+
+<AccordionGroup>
+  <Accordion title="Assessment Creation" icon="plus">
+    - Number of assessments created per team member
+    - Average time from creation to launch
+    - Most active creators and contributors
+  </Accordion>
+
+  <Accordion title="Participant Management" icon="users">
+    - Invitation volumes by team member
+    - Response rates and follow-up efficiency
+    - Participant communication quality
+  </Accordion>
+
+  <Accordion title="Results Processing" icon="chart-bar">
+    - Time to review completed assessments
+    - Decision-making speed
+    - Result export and sharing frequency
+  </Accordion>
+</AccordionGroup>
+
+### Team Performance Metrics
+
+Track collaborative effectiveness:
+- **Assessment Quality Score**: Based on participant feedback
+- **Time to Hire**: From assessment creation to decision
+- **Team Utilization**: How effectively resources are used
+- **Collaboration Index**: Frequency of cross-team interactions
+
+## Security & Access Control
+
+### IP Restrictions
+
+Limit team access by location:
+```
+Office IP: 203.0.113.0/24
+VPN Range: 198.51.100.0/24
+Home Office: 192.0.2.1
+```
+
+### Two-Factor Authentication
+
+Require 2FA for team members:
+- **SMS Verification**
+- **Authenticator Apps**
+- **Email Confirmation**
+- **Hardware Keys** (Enterprise)
+
+### Session Management
+
+Control team member sessions:
+- **Session Timeout**: Auto-logout after inactivity
+- **Concurrent Sessions**: Limit simultaneous logins
+- **Device Management**: Track and manage logged-in devices
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Role Assignment" icon="user-shield">
+    - Start with minimal permissions and expand as needed
+    - Regularly review and update role assignments
+    - Use department structure to organize access
+    - Document role responsibilities clearly
+  </Accordion>
+
+  <Accordion title="Onboarding New Members" icon="user-plus">
+    - Provide comprehensive platform training
+    - Assign a mentor for the first few assessments
+    - Start with observer role before granting creator access
+    - Schedule regular check-ins during first month
+  </Accordion>
+
+  <Accordion title="Communication Guidelines" icon="comments">
+    - Use @mentions for urgent items requiring attention
+    - Keep assessment comments focused and actionable
+    - Document important decisions in assessment notes
+    - Schedule regular team sync meetings
+  </Accordion>
+</AccordionGroup>
+
+## Troubleshooting
+
+### Common Issues
+
+<AccordionGroup>
+  <Accordion title="Team Member Can't Access Assessment" icon="lock">
+    **Solution**: Check role permissions and department assignments
+    1. Verify the member has appropriate role
+    2. Confirm assessment is in their department
+    3. Check for any IP restrictions
+  </Accordion>
+
+  <Accordion title="Notifications Not Working" icon="bell-slash">
+    **Solution**: Review notification settings
+    1. Check user's notification preferences
+    2. Verify email address is correct
+    3. Look for emails in spam folder
+  </Accordion>
+
+  <Accordion title="Collaboration Conflicts" icon="exclamation-triangle">
+    **Solution**: Implement clear workflows
+    1. Define assessment ownership clearly
+    2. Use approval workflows for sensitive assessments
+    3. Communicate changes in team channels
+  </Accordion>
+</AccordionGroup>
+
+## Advanced Team Features
+
+### API Access for Teams
+
+Enterprise teams can use API tokens:
+- **Team-Specific Tokens**: Scoped to team member permissions
+- **Service Accounts**: For automated workflows
+- **Audit Logging**: Track all API usage by team members
+
+### Custom Integrations
+
+Connect with your existing tools:
+- **Slack Integration**: Assessment notifications in team channels
+- **Microsoft Teams**: Embedded assessment widgets
+- **ATS Integration**: Sync candidate data automatically
+- **HRMS Connection**: Employee assessment workflows
+
+<Note>
+**Need more advanced team features?** Contact our sales team at [sales@skillment.in](mailto:sales@skillment.in) to discuss Enterprise plans with advanced collaboration tools.
+</Note> 

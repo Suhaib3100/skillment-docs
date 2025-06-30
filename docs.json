@@ -33,7 +33,7 @@
             "group": "Platform Overview",
             "pages": [
               "concepts/organizations",
-              "concepts/assessments",
+              "concepts/assessments", 
               "concepts/participants",
               "concepts/proctoring"
             ]
@@ -46,13 +46,12 @@
           {
             "group": "Organization Setup",
             "pages": [
-              "guides/organization-setup",
               "guides/team-management",
               "guides/billing-subscription"
             ]
           },
           {
-            "group": "Assessment Management",
+            "group": "Assessment Management", 
             "pages": [
               "guides/assessment-creation",
               "guides/question-bank",
@@ -63,7 +62,7 @@
           {
             "group": "Participant Management",
             "pages": [
-              "guides/participant-management",
+              "guides/participant-management", 
               "guides/bulk-operations",
               "guides/email-communications"
             ]
@@ -79,13 +78,13 @@
         ]
       },
       {
-        "tab": "Analytics & Reports",
+        "tab": "Analytics & Reports", 
         "groups": [
           {
             "group": "Performance Analytics",
             "pages": [
               "guides/assessment-analytics",
-              "guides/participant-reports",
+              "guides/participant-reports", 
               "guides/performance-dashboard"
             ]
           },
@@ -113,26 +112,25 @@
             "group": "API Reference",
             "pages": [
               "api-reference/introduction",
-              "api-reference/errors",
-              "api-reference/rate-limiting"
+              "api-reference/errors"
             ]
           }
         ]
       },
       {
-        "tab": "Examples & Templates",
+        "tab": "Examples & Best Practices",
         "groups": [
           {
             "group": "Use Case Examples",
             "pages": [
               "examples/complete-workflow",
-              "examples/hiring-process",
+              "examples/hiring-process", 
               "examples/educational-testing",
               "examples/certification-program"
             ]
           },
           {
-            "group": "Best Practices",
+            "group": "Best Practices & Tips",
             "pages": [
               "guides/best-practices",
               "guides/security-best-practices",

@@ -1,197 +1,132 @@
 ---
-title: "Welcome to Skillment API"
-description: "Build powerful assessment platforms with our comprehensive API suite"
+title: Welcome to Skillment
+description: 'Your complete platform for creating, managing, and conducting online assessments'
 ---
 
 <img
   className="block dark:hidden"
   src="/images/hero-light.png"
-  alt="Skillment API Documentation"
+  alt="Hero Light"
 />
 <img
   className="hidden dark:block"
   src="/images/hero-dark.png"
-  alt="Skillment API Documentation"
+  alt="Hero Dark"
 />
 
-# Welcome to Skillment API Documentation
+## What is Skillment?
 
-Skillment is a comprehensive assessment platform that enables organizations to create, manage, and conduct technical assessments with advanced proctoring capabilities. Our API provides everything you need to integrate assessment functionality into your applications.
+Skillment is a comprehensive online assessment platform designed to help organizations conduct secure, scalable, and insightful evaluations. Whether you're hiring new talent, training employees, or conducting educational assessments, Skillment provides all the tools you need.
 
-## What You Can Build
+## Who is Skillment for?
 
 <CardGroup cols={2}>
   <Card
-    title="Assessment Platforms"
-    icon="clipboard-list"
-    href="/guides/assessment-creation"
-  >
-    Create coding assessments, MCQ tests, and mixed evaluations with real-time code execution
-  </Card>
-  <Card
-    title="Candidate Management"
+    title="HR Teams & Recruiters"
     icon="users"
-    href="/guides/participant-management"
+    href="/concepts/assessments"
   >
-    Manage participants, bulk operations, and automated email communications
+    Streamline your hiring process with coding assessments, aptitude tests, and behavioral evaluations.
   </Card>
   <Card
-    title="Proctored Exams"
-    icon="eye"
-    href="/guides/proctoring-setup"
+    title="Educational Institutions"
+    icon="graduation-cap"
+    href="/examples/educational-testing"
   >
-    Implement advanced proctoring with face detection, tab monitoring, and violation tracking
+    Create and manage online exams, quizzes, and certification programs with advanced proctoring.
   </Card>
   <Card
-    title="Team Collaboration"
-    icon="user-group"
-    href="/api-reference/team/list"
+    title="Training Organizations"
+    icon="chalkboard-teacher"
+    href="/examples/certification-program"
   >
-    Multi-user organizations with role-based access control and team management
+    Design skill assessments and certification tests to evaluate learner progress.
+  </Card>
+  <Card
+    title="Enterprise Teams"
+    icon="building"
+    href="/examples/hiring-process"
+  >
+    Assess internal talent, conduct performance evaluations, and manage team skills.
   </Card>
 </CardGroup>
-
-## Quick Start Guide
-
-Get up and running with Skillment API in minutes:
-
-<Steps>
-  <Step title="Authentication">
-    Register your organization and get your API credentials
-    ```bash
-    curl -X POST https://api.skillment.in/api/auth/register \
-      -H "Content-Type: application/json" \
-      -d '{"email": "admin@company.com", "orgName": "my-company", ...}'
-    ```
-  </Step>
-  <Step title="Create Assessment">
-    Build your first assessment with questions and test cases
-    ```bash
-    curl -X POST https://api.skillment.in/api/assessments \
-      -H "Authorization: Bearer YOUR_TOKEN" \
-      -H "Content-Type: application/json" \
-      -d '{"title": "JavaScript Developer Test", "type": "coding", ...}'
-    ```
-  </Step>
-  <Step title="Add Participants">
-    Invite candidates to take your assessment
-    ```bash
-    curl -X POST https://api.skillment.in/api/participants \
-      -H "Authorization: Bearer YOUR_TOKEN" \
-      -d '{"firstName": "John", "lastName": "Doe", "email": "john@company.com"}'
-    ```
-  </Step>
-</Steps>
 
 ## Key Features
 
 <AccordionGroup>
-  <Accordion title="Real-time Code Execution" icon="play">
-    Execute code in multiple programming languages (Python, JavaScript, Java, C++) with real-time output streaming and test case validation.
+  <Accordion title="Assessment Creation" icon="file-plus">
+    Create custom assessments with coding questions, multiple choice, and open-ended questions. Use our question bank or import your own content.
   </Accordion>
-  
-  <Accordion title="Advanced Proctoring" icon="shield-check">
-    Comprehensive monitoring including face detection, tab switching prevention, fullscreen enforcement, and violation tracking.
+
+  <Accordion title="Advanced Proctoring" icon="eye">
+    Ensure assessment integrity with AI-powered proctoring, browser lockdown, and real-time monitoring capabilities.
   </Accordion>
-  
-  <Accordion title="Flexible Assessment Types" icon="list-check">
-    Support for coding questions, multiple choice questions, and mixed assessments with customizable difficulty levels and time limits.
+
+  <Accordion title="Participant Management" icon="user-group">
+    Easily invite candidates, manage participant data, and track assessment progress in real-time.
   </Accordion>
-  
-  <Accordion title="Organization Management" icon="building">
-    Multi-tenant architecture with organization isolation, team management, and role-based permissions.
-  </Accordion>
-  
-  <Accordion title="Email Automation" icon="envelope">
-    Automated email workflows for invitations, credentials, reminders, and result notifications with customizable templates.
-  </Accordion>
-  
-  <Accordion title="Analytics & Reporting" icon="chart-bar">
-    Comprehensive analytics on assessment performance, candidate progress, and organizational metrics.
+
+  <Accordion title="Analytics & Reports" icon="chart-bar">
+    Get detailed insights with performance analytics, automated scoring, and comprehensive reporting tools.
   </Accordion>
 </AccordionGroup>
 
-## Popular Use Cases
+## Getting Started
+
+Ready to start using Skillment? Here's how to begin:
+
+<Steps>
+  <Step title="Sign Up">
+    Create your organization account at [skillment.in](https://skillment.in/sign-up)
+  </Step>
+  <Step title="Set Up Your Organization">
+    Configure your organization settings, team members, and assessment preferences
+  </Step>
+  <Step title="Create Your First Assessment">
+    Use our assessment creation wizard to build your first evaluation
+  </Step>
+  <Step title="Invite Participants">
+    Send assessment invitations and manage your participant pool
+  </Step>
+  <Step title="Monitor & Analyze">
+    Track assessment progress and review detailed performance analytics
+  </Step>
+</Steps>
+
+## Quick Links
 
 <CardGroup cols={3}>
-  <Card title="Technical Hiring" icon="briefcase">
-    Screen software developers with coding challenges and real-time assessments
-  </Card>
-  <Card title="Educational Testing" icon="graduation-cap">
-    Create secure online exams for educational institutions with proctoring
-  </Card>
-  <Card title="Certification Programs" icon="certificate">
-    Build certification assessments with advanced security and monitoring
-  </Card>
-</CardGroup>
-
-## Architecture Overview
-
-Skillment is built as a modern, scalable platform:
-
-- **Backend API**: RESTful API built with Express.js and Prisma ORM
-- **Real-time Code Execution**: WebSocket-based code runner supporting multiple languages
-- **Multi-tenant**: Organization-based isolation with secure data separation
-- **Scalable**: Designed to handle thousands of concurrent assessments
-
-## Base URLs
-
-<CodeGroup>
-```bash Production
-https://api.skillment.in/api
-```
-
-```bash Staging
-https://staging-api.skillment.in/api
-```
-
-```bash Code Runner (WebSocket)
-wss://code-runner.skillment.in
-```
-</CodeGroup>
-
-## Next Steps
-
-<CardGroup cols={2}>
   <Card
-    title="Quick Start"
+    title="Quick Start Guide"
     icon="rocket"
     href="/quickstart"
   >
-    Get your first assessment up and running in 5 minutes
+    Get up and running in 5 minutes
   </Card>
   <Card
-    title="Authentication"
-    icon="key"
-    href="/authentication"
+    title="Create Assessment"
+    icon="plus"
+    href="/guides/assessment-creation"
   >
-    Learn how to authenticate with the Skillment API
+    Step-by-step assessment creation guide
   </Card>
   <Card
-    title="API Reference"
-    icon="code"
-    href="/api-reference/introduction"
+    title="Dashboard"
+    icon="chart-line"
+    href="https://app.skillment.in"
   >
-    Explore all available endpoints and their parameters
-  </Card>
-  <Card
-    title="SDKs & Libraries"
-    icon="puzzle-piece"
-    href="/sdks/javascript-client"
-  >
-    Use our pre-built SDKs for faster integration
+    Access your Skillment dashboard
   </Card>
 </CardGroup>
 
-## Support
+## Need Help?
 
-Need help? We're here for you:
+Our support team is here to help you succeed:
 
-- **Documentation**: Comprehensive guides and API reference
-- **Email Support**: [support@skillment.in](mailto:support@skillment.in)
-- **Sales Inquiries**: [sales@skillment.in](mailto:sales@skillment.in)
-- **GitHub**: [github.com/skillment](https://github.com/skillment)
+- **Documentation**: Browse our comprehensive guides and tutorials
+- **Email Support**: Contact us at [support@skillment.in](mailto:support@skillment.in)
+- **Sales Inquiries**: Reach out to [sales@skillment.in](mailto:sales@skillment.in)
 
 <Note>
-**New to Skillment?** Start with our [Quick Start Guide](/quickstart) to get up and running in minutes, or explore our [complete workflow example](/examples/complete-workflow) to see the full power of the platform.
+  **New to online assessments?** Check out our [best practices guide](/guides/best-practices) to learn industry standards and proven strategies.
 </Note>

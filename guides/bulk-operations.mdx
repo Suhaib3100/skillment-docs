@@ -1,0 +1,469 @@
+---
+title: 'Bulk Operations'
+description: 'Efficiently manage large numbers of participants and assessments with bulk operations'
+---
+
+## Overview
+
+Bulk operations enable you to manage hundreds or thousands of participants efficiently. Whether you're conducting campus recruitment, organization-wide assessments, or large-scale certification programs, bulk features save time and ensure consistency.
+
+## Bulk Participant Management
+
+### Importing Participants
+
+<Tabs>
+  <Tab title="CSV Upload">
+    **Spreadsheet Import**
+    Upload participant data via CSV file:
+    ```csv
+    firstName,lastName,email,role,department,phone,customField1
+    John,Doe,john.doe@email.com,Software Engineer,Engineering,+1234567890,Frontend
+    Jane,Smith,jane.smith@email.com,Data Analyst,Analytics,+1234567891,Python
+    Mike,Johnson,mike.j@email.com,Product Manager,Product,+1234567892,Growth
+    ```
+    
+    **Required Fields**: firstName, lastName, email
+    **Optional Fields**: role, department, phone, custom attributes
+  </Tab>
+  
+  <Tab title="API Import">
+    **Programmatic Import**
+    Use API for system integration:
+    ```javascript
+    const participants = [
+      {
+        firstName: "John",
+        lastName: "Doe", 
+        email: "john.doe@email.com",
+        metadata: {
+          role: "Software Engineer",
+          department: "Engineering"
+        }
+      }
+      // ... more participants
+    ];
+    
+    await skillment.participants.bulkCreate(participants);
+    ```
+  </Tab>
+  
+  <Tab title="ATS Integration">
+    **Direct System Sync**
+    Connect with your ATS:
+    - Workday integration
+    - BambooHR sync
+    - Greenhouse connection
+    - Custom HRMS integration
+    - Real-time participant sync
+  </Tab>
+</Tabs>
+
+### Data Validation
+
+Automated validation ensures data quality:
+
+<AccordionGroup>
+  <Accordion title="Email Validation" icon="envelope-check">
+    **Email Address Verification**
+    - Format validation (RFC 5322 compliance)
+    - Domain existence verification
+    - Duplicate email detection
+    - Blacklist checking
+    - Deliverability scoring
+  </Accordion>
+
+  <Accordion title="Data Completeness" icon="clipboard-check">
+    **Required Field Validation**
+    - Missing required fields identification
+    - Data type validation
+    - Field length constraints
+    - Custom validation rules
+    - Error reporting with line numbers
+  </Accordion>
+
+  <Accordion title="Duplicate Detection" icon="copy">
+    **Prevent Duplicate Entries**
+    - Email-based duplicate detection
+    - Fuzzy name matching
+    - Custom field duplicate checking
+    - Merge suggestion for similar entries
+    - Override options for legitimate duplicates
+  </Accordion>
+</AccordionGroup>
+
+## Bulk Assessment Assignment
+
+### Mass Assessment Invitation
+
+<Steps>
+  <Step title="Select Participants">
+    Choose participants for assessment:
+    - Filter by department, role, or custom fields
+    - Upload participant list via CSV
+    - Select from existing participant database
+    - Use advanced search and filtering
+  </Step>
+  
+  <Step title="Choose Assessment">
+    Select or create assessment:
+    - Use existing assessment templates
+    - Create new assessment for the batch
+    - Customize settings for the group
+    - Set group-specific instructions
+  </Step>
+  
+  <Step title="Configure Settings">
+    Set bulk assignment parameters:
+    - Start and end dates for the assessment window
+    - Time zone considerations for global participants
+    - Reminder schedule and frequency
+    - Custom invitation message
+  </Step>
+  
+  <Step title="Send Invitations">
+    Launch bulk invitation process:
+    - Preview invitation emails before sending
+    - Schedule send time for optimal delivery
+    - Track delivery and open rates
+    - Monitor initial response rates
+  </Step>
+</Steps>
+
+### Scheduling Options
+
+<CardGroup cols={2}>
+  <Card title="Immediate Delivery" icon="bolt">
+    **Instant Invitation Send**
+    - Send invitations immediately
+    - Best for urgent assessments
+    - Real-time delivery tracking
+    - Immediate participant access
+  </Card>
+  
+  <Card title="Scheduled Delivery" icon="calendar-alt">
+    **Time-Based Distribution**
+    - Schedule specific send times
+    - Consider time zones for global participants
+    - Batch delivery to manage server load
+    - Optimal timing for recipient engagement
+  </Card>
+  
+  <Card title="Staggered Release" icon="layer-group">
+    **Phased Distribution**
+    - Release in multiple waves
+    - Manage assessment capacity
+    - A/B testing different approaches
+    - Progressive rollout for large groups
+  </Card>
+  
+  <Card title="Custom Triggers" icon="cog">
+    **Event-Based Activation**
+    - Trigger on specific dates/events
+    - Conditional logic based on data
+    - Integration with external systems
+    - Automated workflow activation
+  </Card>
+</CardGroup>
+
+## Bulk Communication
+
+### Email Campaign Management
+
+<AccordionGroup>
+  <Accordion title="Invitation Emails" icon="paper-plane">
+    **Assessment Invitations**
+    - Personalized invitation templates
+    - Dynamic content insertion (name, role, etc.)
+    - Assessment details and instructions
+    - Technical requirements checklist
+    - Support contact information
+  </Accordion>
+
+  <Accordion title="Reminder Campaigns" icon="bell">
+    **Automated Reminders**
+    - Multiple reminder schedule options
+    - Escalating urgency in messaging
+    - Personalized reminder content
+    - Different cadence for different groups
+    - Automatic pause for completed assessments
+  </Accordion>
+
+  <Accordion title="Status Updates" icon="info-circle">
+    **Progress Communication**
+    - Assessment start confirmations
+    - Progress milestone notifications
+    - Technical issue alerts
+    - Completion confirmations
+    - Next steps instructions
+  </Accordion>
+
+  <Accordion title="Result Notifications" icon="chart-line">
+    **Outcome Communication**
+    - Result availability notifications
+    - Performance summary (if enabled)
+    - Next steps in hiring process
+    - Feedback and improvement areas
+    - Thank you and follow-up messages
+  </Accordion>
+</AccordionGroup>
+
+### Message Personalization
+
+Customize bulk communications:
+
+```handlebars
+Subject: {{firstName}}, Your {{assessmentTitle}} Assessment is Ready
+
+Dear {{firstName}},
+
+You have been invited to complete the {{assessmentTitle}} assessment 
+for the {{roleName}} position at {{organizationName}}.
+
+Assessment Details:
+- Duration: {{estimatedTime}}
+- Deadline: {{deadline}}
+- Technical Requirements: {{requirements}}
+
+Please complete by {{formattedDeadline}}.
+
+Best regards,
+{{senderName}}
+{{organizationName}} Team
+```
+
+## Bulk Result Processing
+
+### Automated Scoring
+
+<Tabs>
+  <Tab title="Instant Scoring">
+    **Real-Time Results**
+    - Immediate scoring for objective questions
+    - Automated code execution validation
+    - Performance benchmarking
+    - Percentile calculations
+    - Pass/fail determination
+  </Tab>
+  
+  <Tab title="Batch Processing">
+    **Scheduled Result Processing**
+    - Process results in batches for efficiency
+    - Advanced analytics calculations
+    - Cross-participant comparisons
+    - Statistical analysis
+    - Report generation
+  </Tab>
+  
+  <Tab title="Manual Review">
+    **Human Evaluation**
+    - Queue subjective questions for review
+    - Collaborative scoring workflows
+    - Quality assurance processes
+    - Bias detection and mitigation
+    - Final score compilation
+  </Tab>
+</Tabs>
+
+### Bulk Result Actions
+
+<CardGroup cols={2}>
+  <Card title="Export & Reporting" icon="download">
+    **Data Export Options**
+    - Excel/CSV export for analysis
+    - PDF reports for stakeholders
+    - Custom report formats
+    - Automated report delivery
+    - Integration with ATS systems
+  </Card>
+  
+  <Card title="Decision Workflows" icon="route">
+    **Automated Decision Making**
+    - Score-based qualification rules
+    - Automatic advancement to next rounds
+    - Rejection letter automation
+    - Interview scheduling integration
+    - Candidate pool management
+  </Card>
+</CardGroup>
+
+## Performance Optimization
+
+### System Efficiency
+
+<AccordionGroup>
+  <Accordion title="Batch Processing" icon="server">
+    **Optimized Operations**
+    - Process operations in batches for efficiency
+    - Queue management for large operations
+    - Progress tracking and status updates
+    - Error handling and retry mechanisms
+    - Resource allocation optimization
+  </Accordion>
+
+  <Accordion title="Load Balancing" icon="balance-scale">
+    **Capacity Management**
+    - Distribute load across assessment sessions
+    - Stagger assessment start times
+    - Monitor system resource usage
+    - Auto-scaling during peak periods
+    - Graceful degradation strategies
+  </Accordion>
+
+  <Accordion title="Caching Strategies" icon="memory">
+    **Performance Enhancement**
+    - Cache frequently accessed data
+    - Optimize database queries
+    - Reduce redundant processing
+    - Improve response times
+    - Minimize server resource usage
+  </Accordion>
+</AccordionGroup>
+
+### Monitoring Bulk Operations
+
+Track large-scale operations:
+
+- **Progress Indicators**: Real-time progress bars and status updates
+- **Error Monitoring**: Track and resolve bulk operation failures
+- **Performance Metrics**: Monitor system performance during bulk operations
+- **Resource Usage**: CPU, memory, and bandwidth utilization
+- **Success Rates**: Completion and delivery success tracking
+
+## Advanced Bulk Features
+
+### Segmentation and Targeting
+
+<Tabs>
+  <Tab title="Department-Based">
+    **Organizational Segmentation**
+    - Group by department or team
+    - Role-specific assessment assignments
+    - Hierarchical organization structure
+    - Cross-functional team assessments
+    - Custom organizational mapping
+  </Tab>
+  
+  <Tab title="Skill-Based">
+    **Competency Segmentation**
+    - Group by skill level or experience
+    - Progressive difficulty assignments
+    - Specialized assessment tracks
+    - Certification pathway management
+    - Skill gap analysis groups
+  </Tab>
+  
+  <Tab title="Geographic">
+    **Location-Based Grouping**
+    - Time zone consideration
+    - Regional compliance requirements
+    - Language preference groups
+    - Local hiring team assignments
+    - Cultural adaptation needs
+  </Tab>
+</Tabs>
+
+### Conditional Logic
+
+Implement smart bulk operations:
+
+- **Dynamic Assignment**: Assign different assessments based on participant data
+- **Conditional Messaging**: Customize communications based on segments
+- **Progressive Workflows**: Multi-stage assessment processes
+- **Adaptive Timing**: Adjust schedules based on participant preferences
+- **Smart Routing**: Direct participants to appropriate next steps
+
+## Error Handling and Recovery
+
+### Bulk Operation Failures
+
+<AccordionGroup>
+  <Accordion title="Partial Failure Recovery" icon="first-aid">
+    **Resilient Operations**
+    - Continue processing despite individual failures
+    - Track and report failed operations
+    - Retry mechanisms for transient failures
+    - Manual intervention options
+    - Data integrity preservation
+  </Accordion>
+
+  <Accordion title="Rollback Capabilities" icon="undo">
+    **Operation Reversal**
+    - Undo bulk operations if needed
+    - Selective rollback for specific items
+    - Version control for bulk changes
+    - Audit trail maintenance
+    - Data recovery procedures
+  </Accordion>
+
+  <Accordion title="Error Reporting" icon="exclamation-triangle">
+    **Comprehensive Error Tracking**
+    - Detailed error logs with context
+    - Categorized error types
+    - Resolution recommendations
+    - Success/failure summaries
+    - Exportable error reports
+  </Accordion>
+</AccordionGroup>
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Data Preparation" icon="database">
+    - Clean and validate data before bulk import
+    - Use consistent naming conventions
+    - Include all required fields
+    - Test with small batches first
+    - Maintain backup copies of original data
+  </Accordion>
+
+  <Accordion title="Communication Strategy" icon="megaphone">
+    - Send clear instructions and expectations
+    - Provide technical support information
+    - Set realistic deadlines with buffer time
+    - Use multiple communication channels
+    - Follow up with non-respondents
+  </Accordion>
+
+  <Accordion title="Monitoring and Support" icon="headset">
+    - Monitor system performance during bulk operations
+    - Have support team available during assessment periods
+    - Prepare for increased support volume
+    - Document common issues and solutions
+    - Maintain communication with stakeholders
+  </Accordion>
+</AccordionGroup>
+
+## Troubleshooting Common Issues
+
+<AccordionGroup>
+  <Accordion title="Import Failures" icon="file-excel">
+    **Data Import Issues**
+    - Check CSV format and encoding (UTF-8)
+    - Verify required fields are present
+    - Remove special characters causing parsing errors
+    - Ensure email addresses are properly formatted
+    - Check for hidden characters or spaces
+  </Accordion>
+
+  <Accordion title="Email Delivery Problems" icon="envelope-open-text">
+    **Communication Issues**
+    - Verify email addresses are valid and active
+    - Check spam/junk folders for delivery
+    - Ensure sender domain reputation is good
+    - Review email content for spam triggers
+    - Monitor bounce rates and adjust accordingly
+  </Accordion>
+
+  <Accordion title="Performance Degradation" icon="tachometer-alt">
+    **System Performance Issues**
+    - Reduce batch sizes for large operations
+    - Schedule bulk operations during off-peak hours
+    - Monitor system resources and scale if needed
+    - Implement progressive loading strategies
+    - Consider geographic distribution of load
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+**Start small and scale up.** Test bulk operations with a small group first to validate your process, then gradually increase batch sizes as you gain confidence and optimize performance.
+</Note> 

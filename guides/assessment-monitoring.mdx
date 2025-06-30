@@ -1,0 +1,413 @@
+---
+title: 'Assessment Monitoring'
+description: 'Monitor live assessments, track participant progress, and manage ongoing evaluations'
+---
+
+## Overview
+
+Real-time assessment monitoring allows you to oversee active evaluations, track participant progress, detect issues early, and ensure assessment integrity throughout the process.
+
+## Monitoring Dashboard
+
+### Live Assessment Overview
+
+Access the monitoring dashboard to see:
+
+<CardGroup cols={2}>
+  <Card title="Active Assessments" icon="play-circle">
+    - Currently running assessments
+    - Number of active participants
+    - Progress statistics
+    - Time remaining for each assessment
+  </Card>
+  <Card title="Participant Status" icon="users">
+    - Who's currently taking assessments
+    - Individual progress percentages
+    - Time spent and remaining
+    - Current question or section
+  </Card>
+  <Card title="System Health" icon="heartbeat">
+    - Server performance metrics
+    - Response time monitoring
+    - Error rate tracking
+    - Capacity utilization
+  </Card>
+  <Card title="Security Alerts" icon="shield-alt">
+    - Real-time violation notifications
+    - Suspicious activity patterns
+    - Automated intervention triggers
+    - Manual review requirements
+  </Card>
+</CardGroup>
+
+### Assessment Progress Tracking
+
+<Steps>
+  <Step title="Overall Progress">
+    Monitor assessment completion rates:
+    - Total participants invited
+    - Started vs. not started
+    - In progress vs. completed
+    - Submission success rates
+  </Step>
+  <Step title="Individual Tracking">
+    Track each participant's journey:
+    - Login time and assessment start
+    - Time spent per question/section
+    - Navigation patterns and behavior
+    - Pause/resume activities
+  </Step>
+  <Step title="Performance Metrics">
+    Real-time performance indicators:
+    - Average completion time
+    - Question difficulty analysis
+    - Drop-off points identification
+    - Success rate trends
+  </Step>
+</Steps>
+
+## Real-Time Participant Monitoring
+
+### Live Status Indicators
+
+<Tabs>
+  <Tab title="Progress Status">
+    **Participant States**
+    - 🟢 **Active**: Currently answering questions
+    - 🟡 **Paused**: Temporarily inactive
+    - 🔴 **Issues**: Technical problems detected
+    - ⚪ **Idle**: No activity for extended period
+    - ✅ **Completed**: Successfully submitted
+  </Tab>
+  <Tab title="Time Tracking">
+    **Time Management**
+    - Time elapsed since start
+    - Remaining time in assessment
+    - Time per question analysis
+    - Pacing compared to average
+    - Overtime warnings and alerts
+  </Tab>
+  <Tab title="Technical Status">
+    **System Health**
+    - Connection quality
+    - Browser compatibility
+    - Device performance
+    - Network stability
+    - Platform responsiveness
+  </Tab>
+</Tabs>
+
+### Detailed Participant View
+
+Click on any participant to see:
+
+<AccordionGroup>
+  <Accordion title="Current Activity" icon="eye">
+    - Current question being answered
+    - Time spent on current question
+    - Answer progress and completion
+    - Code execution attempts (for coding questions)
+    - Navigation history within assessment
+  </Accordion>
+
+  <Accordion title="Progress History" icon="history">
+    - Complete timeline of assessment activity
+    - Question-by-question progress
+    - Time allocation across sections
+    - Pause/resume events
+    - Answer revision patterns
+  </Accordion>
+
+  <Accordion title="Performance Metrics" icon="chart-line">
+    - Current score (if real-time scoring enabled)
+    - Completion percentage
+    - Compared to peer performance
+    - Difficulty level analysis
+    - Projected final score
+  </Accordion>
+
+  <Accordion title="Security Events" icon="shield">
+    - Violation history and types
+    - Browser focus loss events
+    - Suspicious activity indicators
+    - Automated responses triggered
+    - Manual intervention notes
+  </Accordion>
+</AccordionGroup>
+
+## Security Monitoring
+
+### Violation Detection
+
+Monitor various security events:
+
+<CardGroup cols={2}>
+  <Card title="Browser Violations" icon="window-restore">
+    - Tab switching attempts
+    - Window focus loss
+    - Browser navigation attempts
+    - Developer tools usage
+    - Full-screen exit attempts
+  </Card>
+  <Card title="Behavioral Anomalies" icon="exclamation-triangle">
+    - Unusual typing patterns
+    - Copy/paste attempts
+    - Extended idle periods
+    - Rapid answer changes
+    - Atypical navigation patterns
+  </Card>
+  <Card title="Technical Issues" icon="wrench">
+    - Connection interruptions
+    - Browser crashes
+    - System performance problems
+    - Audio/video disruptions
+    - Device compatibility issues
+  </Card>
+  <Card title="Content Violations" icon="ban">
+    - External resource access attempts
+    - Unauthorized tool usage
+    - Communication app detection
+    - Screen sharing indicators
+    - Virtual machine detection
+  </Card>
+</CardGroup>
+
+### Automated Response System
+
+Configure automatic actions for violations:
+
+1. **Warning System**: Progressive alerts to participants
+2. **Assessment Pause**: Temporary suspension for investigation
+3. **Screen Recording**: Capture evidence of violations
+4. **Escalation Alerts**: Notify monitoring team immediately
+5. **Forced Submission**: End assessment if severe violations occur
+
+## Intervention Capabilities
+
+### Direct Participant Support
+
+<AccordionGroup>
+  <Accordion title="Technical Assistance" icon="headset">
+    **Real-Time Help**
+    - Live chat support during assessments
+    - Technical troubleshooting guidance
+    - Browser/system issue resolution
+    - Connection problem assistance
+    - Emergency contact escalation
+  </Accordion>
+
+  <Accordion title="Assessment Management" icon="cog">
+    **Administrative Controls**
+    - Grant time extensions for technical issues
+    - Reset assessment for legitimate problems
+    - Pause assessment for investigation
+    - Manually submit on participant's behalf
+    - Override security restrictions when appropriate
+  </Accordion>
+
+  <Accordion title="Communication Tools" icon="comments">
+    **Participant Communication**
+    - Send messages to specific participants
+    - Broadcast announcements to all active participants
+    - Provide clarifications on questions
+    - Share technical updates or instructions
+    - Document communication for record-keeping
+  </Accordion>
+</AccordionGroup>
+
+### Assessment Control
+
+Administrative powers during live assessments:
+
+- **Time Extensions**: Add extra time for technical difficulties
+- **Question Clarifications**: Provide additional context if needed
+- **Assessment Reset**: Restart assessment from beginning
+- **Partial Submission**: Accept incomplete assessments
+- **Emergency Pause**: Temporarily halt all assessment activity
+
+## Analytics and Insights
+
+### Real-Time Analytics
+
+<Tabs>
+  <Tab title="Performance Trends">
+    **Live Performance Data**
+    - Average scores by question
+    - Completion time distributions
+    - Difficulty level validation
+    - Drop-off point analysis
+    - Success rate by participant segment
+  </Tab>
+  <Tab title="Question Analytics">
+    **Question-Level Insights**
+    - Time spent per question
+    - Success rates by question
+    - Common wrong answers
+    - Code execution patterns
+    - Help request frequency
+  </Tab>
+  <Tab title="System Performance">
+    **Platform Metrics**
+    - Response time monitoring
+    - Server load balancing
+    - Error rate tracking
+    - Capacity utilization
+    - Geographic performance variations
+  </Tab>
+</Tabs>
+
+### Predictive Insights
+
+Leverage real-time data for predictions:
+- **Completion Time Estimates**: Predict when participants will finish
+- **Performance Forecasting**: Early indicators of final scores
+- **Drop-off Risk**: Identify participants likely to abandon
+- **Technical Issue Prediction**: Anticipate system problems
+- **Resource Planning**: Optimize support team allocation
+
+## Team Collaboration
+
+### Monitoring Team Roles
+
+<AccordionGroup>
+  <Accordion title="Assessment Monitor" icon="user-shield">
+    **Primary Oversight**
+    - Monitor all active assessments
+    - Respond to automated alerts
+    - Make real-time intervention decisions
+    - Document significant events
+    - Escalate complex issues
+  </Accordion>
+
+  <Accordion title="Technical Support" icon="tools">
+    **Problem Resolution**
+    - Handle technical support requests
+    - Troubleshoot participant issues
+    - Coordinate with IT infrastructure team
+    - Maintain platform performance
+    - Implement emergency fixes
+  </Accordion>
+
+  <Accordion title="Subject Matter Expert" icon="graduation-cap">
+    **Content Oversight**
+    - Clarify question content when needed
+    - Validate assessment fairness
+    - Approve scoring adjustments
+    - Review security violations
+    - Ensure assessment quality
+  </Accordion>
+</AccordionGroup>
+
+### Collaboration Tools
+
+Enable effective team coordination:
+- **Shared Monitoring Dashboard**: Team visibility into all assessments
+- **Internal Chat**: Quick communication during monitoring
+- **Incident Logging**: Document and track all interventions
+- **Escalation Workflows**: Clear paths for complex issues
+- **Shift Handovers**: Seamless transition between monitoring teams
+
+## Reporting and Documentation
+
+### Live Reporting
+
+Generate real-time reports:
+
+<CardGroup cols={2}>
+  <Card title="Assessment Status Report" icon="clipboard-list">
+    - Overall completion statistics
+    - Participant progress summary
+    - Technical issue summary
+    - Security violation report
+  </Card>
+  <Card title="Performance Dashboard" icon="tachometer-alt">
+    - Real-time score distributions
+    - Question performance metrics
+    - Time utilization analysis
+    - Comparative benchmarking
+  </Card>
+  <Card title="Incident Log" icon="exclamation">
+    - Security violations and responses
+    - Technical issues and resolutions
+    - Participant support interactions
+    - Administrative interventions
+  </Card>
+  <Card title="System Health Report" icon="server">
+    - Platform performance metrics
+    - Capacity utilization
+    - Error rates and types
+    - Geographic performance data
+  </Card>
+</CardGroup>
+
+### Documentation Standards
+
+Maintain comprehensive records:
+- **Event Timestamps**: Precise timing of all activities
+- **Intervention Details**: What actions were taken and why
+- **Communication Records**: All participant interactions
+- **Decision Rationale**: Justification for administrative decisions
+- **Follow-up Actions**: Required post-assessment activities
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Proactive Monitoring" icon="radar">
+    - Monitor trends, not just individual events
+    - Set up predictive alerts for potential issues
+    - Maintain awareness of assessment context and importance
+    - Keep stakeholders informed of significant developments
+  </Accordion>
+
+  <Accordion title="Balanced Intervention" icon="balance-scale">
+    - Intervene when necessary but avoid over-management
+    - Prioritize participant experience while maintaining integrity
+    - Document all decisions and rationale
+    - Be consistent in applying policies across participants
+  </Accordion>
+
+  <Accordion title="Communication Excellence" icon="bullhorn">
+    - Provide clear, timely communication to participants
+    - Keep internal team informed of important developments
+    - Document all significant communications
+    - Follow up on commitments and promises made
+  </Accordion>
+</AccordionGroup>
+
+## Common Monitoring Scenarios
+
+<AccordionGroup>
+  <Accordion title="Technical Difficulties" icon="laptop-medical">
+    **Scenario**: Participant experiences browser crash during assessment
+    **Response**:
+    1. Verify the technical issue through monitoring logs
+    2. Contact participant immediately via chat/phone
+    3. Grant time extension equal to downtime
+    4. Document incident and resolution
+    5. Follow up to ensure successful completion
+  </Accordion>
+
+  <Accordion title="Security Violation" icon="shield-exclamation">
+    **Scenario**: Automated system detects tab switching violation
+    **Response**:
+    1. Review violation details and context
+    2. Determine if violation was intentional or accidental
+    3. Issue appropriate warning or intervention
+    4. Document decision rationale
+    5. Continue monitoring participant closely
+  </Accordion>
+
+  <Accordion title="Performance Issues" icon="chart-line-down">
+    **Scenario**: System response times increasing during peak usage
+    **Response**:
+    1. Monitor system performance metrics
+    2. Coordinate with infrastructure team
+    3. Implement load balancing adjustments
+    4. Communicate with active participants if needed
+    5. Document performance incident for future planning
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+**Effective monitoring requires balance.** Stay vigilant for issues while avoiding micromanagement. Focus on maintaining assessment integrity and participant experience simultaneously.
+</Note> 

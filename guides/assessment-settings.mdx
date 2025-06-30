@@ -1,0 +1,414 @@
+---
+title: 'Assessment Settings'
+description: 'Configure assessment rules, timing, security, and participant experience'
+---
+
+## Overview
+
+Assessment settings control how participants experience your evaluation, from time limits and question randomization to security measures and result processing. Proper configuration ensures fair, secure, and effective assessments.
+
+## Basic Assessment Configuration
+
+### General Settings
+
+<Steps>
+  <Step title="Assessment Information">
+    Set basic details:
+    - **Title**: Clear, descriptive name
+    - **Description**: Instructions for participants
+    - **Instructions**: Pre-assessment guidelines
+    - **Duration**: Total time allowed
+    - **Language**: Interface language
+  </Step>
+  <Step title="Scheduling">
+    Control when assessments are available:
+    - **Start Date/Time**: When assessment becomes available
+    - **End Date/Time**: Last moment for submission
+    - **Time Zone**: Participant location consideration
+    - **Grace Period**: Extra time for technical issues
+  </Step>
+  <Step title="Attempts">
+    Limit assessment attempts:
+    - **Number of Attempts**: Usually 1 for hiring
+    - **Retake Policy**: Conditions for additional attempts
+    - **Cooling Period**: Time between attempts
+    - **Best Score**: Which attempt score to use
+  </Step>
+</Steps>
+
+## Question Presentation
+
+### Question Order
+
+<AccordionGroup>
+  <Accordion title="Sequential Order" icon="list-ol">
+    **Fixed Question Sequence**
+    - Questions appear in predefined order
+    - Consistent experience for all candidates
+    - Easier to design progressive difficulty
+    - Simpler for analysis and comparison
+  </Accordion>
+
+  <Accordion title="Randomized Order" icon="random">
+    **Shuffled Question Sequence**
+    - Questions appear in random order
+    - Reduces cheating through communication
+    - Each candidate gets unique sequence
+    - Maintains assessment integrity
+  </Accordion>
+
+  <Accordion title="Question Pools" icon="layer-group">
+    **Dynamic Question Selection**
+    - Select random questions from larger pool
+    - Different candidates get different questions
+    - Maintains consistent difficulty level
+    - Prevents question sharing
+  </Accordion>
+</AccordionGroup>
+
+### Answer Options
+
+Configure multiple-choice question behavior:
+- **Option Randomization**: Shuffle answer choices
+- **Partial Credit**: Award points for partially correct answers
+- **Negative Marking**: Deduct points for wrong answers
+- **Skip Allowance**: Allow candidates to skip questions
+
+## Time Management
+
+### Time Limits
+
+<Tabs>
+  <Tab title="Overall Time Limit">
+    **Total Assessment Duration**
+    - Set maximum time for entire assessment
+    - Include buffer time for technical issues
+    - Consider question complexity and count
+    - Default: 60-90 minutes for coding assessments
+  </Tab>
+  <Tab title="Per-Question Timing">
+    **Individual Question Limits**
+    - Set time limits for each question
+    - Automatic progression after time expires
+    - Different limits for different question types
+    - Helpful for pacing and fairness
+  </Tab>
+  <Tab title="Section Timing">
+    **Timed Sections**
+    - Divide assessment into timed sections
+    - Cannot return to previous sections
+    - Useful for multi-part evaluations
+    - Simulates real interview conditions
+  </Tab>
+</Tabs>
+
+### Time Display Options
+
+Control what timing information participants see:
+- **Show Remaining Time**: Display countdown timer
+- **Time Warnings**: Alerts at 75%, 90% completion
+- **Question Time**: Show time spent on current question
+- **Hide Time**: Remove time pressure for some assessments
+
+## Navigation Controls
+
+### Question Navigation
+
+<CardGroup cols={2}>
+  <Card title="Linear Navigation" icon="arrow-right">
+    **One-Way Progress**
+    - Cannot return to previous questions
+    - Simulates time pressure
+    - Prevents answer revision
+    - Good for screening assessments
+  </Card>
+  <Card title="Free Navigation" icon="arrows-alt">
+    **Flexible Movement**
+    - Jump between any questions
+    - Review and revise answers
+    - Flag questions for review
+    - Better for complex assessments
+  </Card>
+</CardGroup>
+
+### Review and Submission
+
+Configure end-of-assessment behavior:
+- **Review Page**: Summary of all answers before submission
+- **Flag System**: Allow marking questions for review
+- **Confirmation Dialog**: Require confirmation before submission
+- **Auto-Submit**: Automatic submission when time expires
+
+## Security Settings
+
+### Browser Controls
+
+<AccordionGroup>
+  <Accordion title="Full-Screen Mode" icon="expand">
+    **Locked Browser Experience**
+    - Force full-screen mode
+    - Prevent window switching
+    - Hide browser controls
+    - Disable right-click context menu
+  </Accordion>
+
+  <Accordion title="Tab Management" icon="window-restore">
+    **Tab Monitoring**
+    - Detect tab switching attempts
+    - Log focus loss events
+    - Warning system for violations
+    - Automatic submission on repeated violations
+  </Accordion>
+
+  <Accordion title="Copy/Paste Restrictions" icon="clipboard">
+    **Content Protection**
+    - Disable copy/paste functionality
+    - Prevent text selection
+    - Block clipboard access
+    - Protect question confidentiality
+  </Accordion>
+</AccordionGroup>
+
+### Device Restrictions
+
+Control participant device usage:
+- **Single Device**: One device login per candidate
+- **IP Restrictions**: Limit access by location
+- **Browser Requirements**: Specify supported browsers
+- **Mobile Restrictions**: Allow/block mobile devices
+
+## Proctoring Configuration
+
+### Monitoring Levels
+
+<Tabs>
+  <Tab title="Basic Monitoring">
+    **Standard Security**
+    - Browser lockdown
+    - Tab switching detection
+    - Time tracking
+    - Basic violation logging
+    - Suitable for initial screening
+  </Tab>
+  <Tab title="Advanced Proctoring">
+    **Enhanced Security**
+    - Webcam monitoring
+    - Screen recording
+    - Audio detection
+    - AI-powered analysis
+    - Real-time alerts
+  </Tab>
+  <Tab title="Live Proctoring">
+    **Human Oversight**
+    - Live human proctors
+    - Real-time intervention
+    - Voice communication
+    - Flexible rule enforcement
+    - High-stakes assessments
+  </Tab>
+</Tabs>
+
+### Violation Handling
+
+Define responses to security violations:
+
+1. **Warning System**: Progressive warnings before action
+2. **Automatic Pause**: Temporary assessment suspension
+3. **Forced Submission**: End assessment immediately
+4. **Manual Review**: Flag for human evaluation
+5. **Retake Option**: Allow one-time retake after violation
+
+## Accessibility Options
+
+### Accommodations
+
+Support diverse candidate needs:
+- **Extended Time**: Additional time for candidates with disabilities
+- **Screen Reader Support**: Compatible with assistive technologies
+- **High Contrast Mode**: Visual accessibility options
+- **Font Size Adjustment**: Customizable text size
+- **Keyboard Navigation**: Full keyboard accessibility
+
+### Language Support
+
+Configure multi-language assessments:
+- **Interface Language**: Dashboard and controls language
+- **Question Language**: Assessment content language
+- **Translation Options**: Multiple language versions
+- **RTL Support**: Right-to-left language compatibility
+
+## Result Processing
+
+### Scoring Configuration
+
+<AccordionGroup>
+  <Accordion title="Automated Scoring" icon="calculator">
+    **System-Calculated Scores**
+    - Immediate results for coding questions
+    - Objective scoring for MCQ
+    - Performance benchmarking
+    - Percentile calculations
+  </Accordion>
+
+  <Accordion title="Manual Review" icon="user-check">
+    **Human Evaluation**
+    - Manual scoring for subjective questions
+    - Code quality assessment
+    - Holistic evaluation criteria
+    - Collaborative review process
+  </Accordion>
+
+  <Accordion title="Hybrid Scoring" icon="balance-scale">
+    **Combined Approach**
+    - Automated + manual components
+    - Weighted scoring systems
+    - Quality gates and thresholds
+    - Comprehensive evaluation
+  </Accordion>
+</AccordionGroup>
+
+### Score Calculation
+
+Define how final scores are computed:
+- **Question Weighting**: Different points for different questions
+- **Section Weighting**: Emphasize important assessment areas
+- **Bonus Points**: Extra credit for optimal solutions
+- **Penalty System**: Deductions for violations or errors
+
+## Communication Settings
+
+### Email Notifications
+
+Configure automated communications:
+
+<CardGroup cols={2}>
+  <Card title="Invitation Emails" icon="envelope">
+    - Assessment invitation with details
+    - Reminder emails before deadline
+    - Technical requirements checklist
+    - Support contact information
+  </Card>
+  <Card title="Status Updates" icon="bell">
+    - Assessment started notifications
+    - Progress milestone alerts
+    - Completion confirmations
+    - Result availability notices
+  </Card>
+</CardGroup>
+
+### Custom Messages
+
+Personalize participant communication:
+- **Welcome Message**: Pre-assessment instructions
+- **Success Message**: Post-submission confirmation
+- **Technical Support**: Help contact information
+- **Next Steps**: What happens after submission
+
+## Advanced Configuration
+
+### Conditional Logic
+
+Create dynamic assessment experiences:
+- **Adaptive Difficulty**: Adjust questions based on performance
+- **Branching Logic**: Different paths based on answers
+- **Skip Conditions**: Bypass irrelevant questions
+- **Prerequisites**: Require certain scores to continue
+
+### Integration Settings
+
+Connect with external systems:
+- **ATS Integration**: Sync with applicant tracking systems
+- **HRMS Connection**: Update employee records
+- **Learning Management**: Connect with training platforms
+- **Analytics Tools**: Export data to analysis platforms
+
+## Configuration Templates
+
+### Quick Setup Templates
+
+<Tabs>
+  <Tab title="Technical Screening">
+    **Developer Assessment Template**
+    - 60-minute duration
+    - 3-5 coding questions
+    - Basic proctoring enabled
+    - Linear navigation
+    - Auto-submit on time limit
+  </Tab>
+  <Tab title="Comprehensive Evaluation">
+    **Full Assessment Template**
+    - 120-minute duration
+    - Mixed question types
+    - Advanced proctoring
+    - Free navigation with review
+    - Manual scoring components
+  </Tab>
+  <Tab title="Quick Quiz">
+    **Short Assessment Template**
+    - 30-minute duration
+    - Multiple choice only
+    - Minimal security
+    - Immediate results
+    - Mobile-friendly
+  </Tab>
+</Tabs>
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Time Management" icon="clock">
+    - Allow 10-15 minutes per coding question
+    - Include 10% buffer time for technical issues
+    - Test timing with internal candidates first
+    - Provide clear time expectations in instructions
+  </Accordion>
+
+  <Accordion title="Security Balance" icon="shield-alt">
+    - Match security level to assessment importance
+    - Consider candidate experience vs. security needs
+    - Provide clear security expectations upfront
+    - Have technical support available during assessments
+  </Accordion>
+
+  <Accordion title="Accessibility" icon="universal-access">
+    - Always enable basic accessibility features
+    - Provide accommodation request process
+    - Test with screen readers and assistive devices
+    - Offer alternative formats when needed
+  </Accordion>
+</AccordionGroup>
+
+## Troubleshooting Common Issues
+
+<AccordionGroup>
+  <Accordion title="Time Limit Problems" icon="hourglass">
+    **Issue**: Candidates running out of time
+    **Solutions**:
+    - Review question difficulty vs. time allocation
+    - Add buffer time for complex problems
+    - Provide time management tips in instructions
+    - Consider per-question time limits
+  </Accordion>
+
+  <Accordion title="Navigation Confusion" icon="compass">
+    **Issue**: Candidates struggle with navigation
+    **Solutions**:
+    - Provide navigation tutorial or demo
+    - Include clear instructions about navigation rules
+    - Test navigation flow with sample users
+    - Offer practice assessments
+  </Accordion>
+
+  <Accordion title="Security Violations" icon="exclamation-triangle">
+    **Issue**: Legitimate candidates triggering security alerts
+    **Solutions**:
+    - Calibrate sensitivity appropriately
+    - Provide clear security guidelines
+    - Implement progressive warning system
+    - Offer manual review for edge cases
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+**Start simple and iterate.** Begin with basic settings and gradually add complexity based on your organization's needs and candidate feedback. Test all settings thoroughly before launching important assessments.
+</Note> 
