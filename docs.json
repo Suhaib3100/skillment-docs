@@ -1,35 +1,44 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Skillment API Documentation",
+  "openapi": "/api-reference/openapi.json",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#3B82F6",
+    "light": "#60A5FA",
+    "dark": "#1E40AF",
+    "anchors": {
+      "from": "#3B82F6",
+      "to": "#1E40AF"
+    }
   },
   "favicon": "/favicon.svg",
+  "api": {
+    "baseUrl": "https://api.skillment.in/api",
+    "auth": {
+      "method": "bearer"
+    }
+  },
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Getting Started",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Introduction",
             "pages": [
               "index",
               "quickstart",
-              "development"
+              "authentication"
             ]
           },
           {
-            "group": "Essentials",
+            "group": "Core Concepts",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
+              "concepts/organizations",
+              "concepts/assessments",
+              "concepts/participants",
+              "concepts/proctoring"
             ]
           }
         ]
@@ -38,18 +47,141 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": "API Documentation",
+            "group": "Overview",
             "pages": [
-              "api-reference/introduction"
+              "api-reference/introduction",
+              "api-reference/errors",
+              "api-reference/rate-limiting"
             ]
           },
           {
-            "group": "Endpoint Examples",
+            "group": "Authentication",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "api-reference/auth/register",
+              "api-reference/auth/login",
+              "api-reference/auth/verify",
+              "api-reference/auth/logout",
+              "api-reference/auth/candidate-login",
+              "api-reference/auth/otp"
+            ]
+          },
+          {
+            "group": "Assessments",
+            "pages": [
+              "api-reference/assessments/list",
+              "api-reference/assessments/create",
+              "api-reference/assessments/get",
+              "api-reference/assessments/update",
+              "api-reference/assessments/delete",
+              "api-reference/assessments/stats",
+              "api-reference/assessments/candidates"
+            ]
+          },
+          {
+            "group": "Participants",
+            "pages": [
+              "api-reference/participants/list",
+              "api-reference/participants/create",
+              "api-reference/participants/get",
+              "api-reference/participants/update",
+              "api-reference/participants/delete",
+              "api-reference/participants/bulk",
+              "api-reference/participants/export"
+            ]
+          },
+          {
+            "group": "Questions",
+            "pages": [
+              "api-reference/questions/list",
+              "api-reference/questions/create",
+              "api-reference/questions/update",
+              "api-reference/questions/delete"
+            ]
+          },
+          {
+            "group": "Organizations",
+            "pages": [
+              "api-reference/organizations/validate",
+              "api-reference/organizations/get",
+              "api-reference/organizations/update",
+              "api-reference/organizations/logo"
+            ]
+          },
+          {
+            "group": "Team Management",
+            "pages": [
+              "api-reference/team/list",
+              "api-reference/team/invite",
+              "api-reference/team/update",
+              "api-reference/team/delete",
+              "api-reference/team/invitation"
+            ]
+          },
+          {
+            "group": "Email & Notifications",
+            "pages": [
+              "api-reference/email/templates",
+              "api-reference/email/send",
+              "api-reference/email/credentials",
+              "api-reference/email/logs"
+            ]
+          },
+          {
+            "group": "Proctoring",
+            "pages": [
+              "api-reference/proctoring/events",
+              "api-reference/proctoring/media"
+            ]
+          },
+          {
+            "group": "Billing",
+            "pages": [
+              "api-reference/billing/subscription",
+              "api-reference/billing/upgrade",
+              "api-reference/billing/cancel"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "SDKs & Tools",
+        "groups": [
+          {
+            "group": "Frontend SDKs",
+            "pages": [
+              "sdks/react-components",
+              "sdks/javascript-client",
+              "sdks/code-runner"
+            ]
+          },
+          {
+            "group": "Libraries",
+            "pages": [
+              "sdks/api-client",
+              "sdks/proctoring-sdk",
+              "sdks/email-service"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Integration Guides",
+            "pages": [
+              "guides/assessment-creation",
+              "guides/participant-management",
+              "guides/proctoring-setup",
+              "guides/webhooks"
+            ]
+          },
+          {
+            "group": "Examples",
+            "pages": [
+              "examples/complete-workflow",
+              "examples/coding-assessment",
+              "examples/bulk-operations"
             ]
           }
         ]
@@ -58,19 +190,19 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Dashboard",
+          "href": "https://skillment.in/dashboard",
+          "icon": "chart-line"
         },
         {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
+          "anchor": "Support",
+          "href": "mailto:support@skillment.in",
+          "icon": "life-ring"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "GitHub",
+          "href": "https://github.com/skillment",
+          "icon": "github"
         }
       ]
     }
@@ -82,21 +214,31 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Contact Sales",
+        "href": "mailto:sales@skillment.in"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Get Started",
+      "href": "https://skillment.in/register"
     }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/skillment",
+      "github": "https://github.com/skillment",
+      "linkedin": "https://linkedin.com/company/skillment"
     }
+  },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "mailto:support@skillment.in"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Dashboard",
+    "url": "https://skillment.in/dashboard"
   }
 }

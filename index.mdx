@@ -1,71 +1,197 @@
 ---
-title: Introduction
-description: "Welcome to the home of your new documentation"
+title: "Welcome to Skillment API"
+description: "Build powerful assessment platforms with our comprehensive API suite"
 ---
 
 <img
   className="block dark:hidden"
   src="/images/hero-light.png"
-  alt="Hero Light"
+  alt="Skillment API Documentation"
 />
 <img
   className="hidden dark:block"
   src="/images/hero-dark.png"
-  alt="Hero Dark"
+  alt="Skillment API Documentation"
 />
 
-## Setting up
+# Welcome to Skillment API Documentation
 
-The first step to world-class documentation is setting up your editing environments.
+Skillment is a comprehensive assessment platform that enables organizations to create, manage, and conduct technical assessments with advanced proctoring capabilities. Our API provides everything you need to integrate assessment functionality into your applications.
+
+## What You Can Build
 
 <CardGroup cols={2}>
   <Card
-    title="Edit Your Docs"
-    icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
+    title="Assessment Platforms"
+    icon="clipboard-list"
+    href="/guides/assessment-creation"
   >
-    Get your docs set up locally for easy development
+    Create coding assessments, MCQ tests, and mixed evaluations with real-time code execution
   </Card>
   <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
+    title="Candidate Management"
+    icon="users"
+    href="/guides/participant-management"
   >
-    Preview your changes before you push to make sure they're perfect
+    Manage participants, bulk operations, and automated email communications
+  </Card>
+  <Card
+    title="Proctored Exams"
+    icon="eye"
+    href="/guides/proctoring-setup"
+  >
+    Implement advanced proctoring with face detection, tab monitoring, and violation tracking
+  </Card>
+  <Card
+    title="Team Collaboration"
+    icon="user-group"
+    href="/api-reference/team/list"
+  >
+    Multi-user organizations with role-based access control and team management
   </Card>
 </CardGroup>
 
-## Make it yours
+## Quick Start Guide
 
-Update your docs to your brand and add valuable content for the best user conversion.
+Get up and running with Skillment API in minutes:
+
+<Steps>
+  <Step title="Authentication">
+    Register your organization and get your API credentials
+    ```bash
+    curl -X POST https://api.skillment.in/api/auth/register \
+      -H "Content-Type: application/json" \
+      -d '{"email": "admin@company.com", "orgName": "my-company", ...}'
+    ```
+  </Step>
+  <Step title="Create Assessment">
+    Build your first assessment with questions and test cases
+    ```bash
+    curl -X POST https://api.skillment.in/api/assessments \
+      -H "Authorization: Bearer YOUR_TOKEN" \
+      -H "Content-Type: application/json" \
+      -d '{"title": "JavaScript Developer Test", "type": "coding", ...}'
+    ```
+  </Step>
+  <Step title="Add Participants">
+    Invite candidates to take your assessment
+    ```bash
+    curl -X POST https://api.skillment.in/api/participants \
+      -H "Authorization: Bearer YOUR_TOKEN" \
+      -d '{"firstName": "John", "lastName": "Doe", "email": "john@company.com"}'
+    ```
+  </Step>
+</Steps>
+
+## Key Features
+
+<AccordionGroup>
+  <Accordion title="Real-time Code Execution" icon="play">
+    Execute code in multiple programming languages (Python, JavaScript, Java, C++) with real-time output streaming and test case validation.
+  </Accordion>
+  
+  <Accordion title="Advanced Proctoring" icon="shield-check">
+    Comprehensive monitoring including face detection, tab switching prevention, fullscreen enforcement, and violation tracking.
+  </Accordion>
+  
+  <Accordion title="Flexible Assessment Types" icon="list-check">
+    Support for coding questions, multiple choice questions, and mixed assessments with customizable difficulty levels and time limits.
+  </Accordion>
+  
+  <Accordion title="Organization Management" icon="building">
+    Multi-tenant architecture with organization isolation, team management, and role-based permissions.
+  </Accordion>
+  
+  <Accordion title="Email Automation" icon="envelope">
+    Automated email workflows for invitations, credentials, reminders, and result notifications with customizable templates.
+  </Accordion>
+  
+  <Accordion title="Analytics & Reporting" icon="chart-bar">
+    Comprehensive analytics on assessment performance, candidate progress, and organizational metrics.
+  </Accordion>
+</AccordionGroup>
+
+## Popular Use Cases
+
+<CardGroup cols={3}>
+  <Card title="Technical Hiring" icon="briefcase">
+    Screen software developers with coding challenges and real-time assessments
+  </Card>
+  <Card title="Educational Testing" icon="graduation-cap">
+    Create secure online exams for educational institutions with proctoring
+  </Card>
+  <Card title="Certification Programs" icon="certificate">
+    Build certification assessments with advanced security and monitoring
+  </Card>
+</CardGroup>
+
+## Architecture Overview
+
+Skillment is built as a modern, scalable platform:
+
+- **Backend API**: RESTful API built with Express.js and Prisma ORM
+- **Real-time Code Execution**: WebSocket-based code runner supporting multiple languages
+- **Multi-tenant**: Organization-based isolation with secure data separation
+- **Scalable**: Designed to handle thousands of concurrent assessments
+
+## Base URLs
+
+<CodeGroup>
+```bash Production
+https://api.skillment.in/api
+```
+
+```bash Staging
+https://staging-api.skillment.in/api
+```
+
+```bash Code Runner (WebSocket)
+wss://code-runner.skillment.in
+```
+</CodeGroup>
+
+## Next Steps
 
 <CardGroup cols={2}>
   <Card
-    title="Customize Style"
-    icon="palette"
-    href="https://mintlify.com/docs/settings/global"
+    title="Quick Start"
+    icon="rocket"
+    href="/quickstart"
   >
-    Customize your docs to your company's colors and brands
+    Get your first assessment up and running in 5 minutes
   </Card>
   <Card
-    title="Reference APIs"
+    title="Authentication"
+    icon="key"
+    href="/authentication"
+  >
+    Learn how to authenticate with the Skillment API
+  </Card>
+  <Card
+    title="API Reference"
     icon="code"
-    href="https://mintlify.com/docs/api-playground/openapi"
+    href="/api-reference/introduction"
   >
-    Automatically generate endpoints from an OpenAPI spec
+    Explore all available endpoints and their parameters
   </Card>
   <Card
-    title="Add Components"
-    icon="screwdriver-wrench"
-    href="https://mintlify.com/docs/content/components/accordions"
+    title="SDKs & Libraries"
+    icon="puzzle-piece"
+    href="/sdks/javascript-client"
   >
-    Build interactive features and designs to guide your users
-  </Card>
-  <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://mintlify.com/customers"
-  >
-    Check out our showcase of our favorite documentation
+    Use our pre-built SDKs for faster integration
   </Card>
 </CardGroup>
+
+## Support
+
+Need help? We're here for you:
+
+- **Documentation**: Comprehensive guides and API reference
+- **Email Support**: [support@skillment.in](mailto:support@skillment.in)
+- **Sales Inquiries**: [sales@skillment.in](mailto:sales@skillment.in)
+- **GitHub**: [github.com/skillment](https://github.com/skillment)
+
+<Note>
+**New to Skillment?** Start with our [Quick Start Guide](/quickstart) to get up and running in minutes, or explore our [complete workflow example](/examples/complete-workflow) to see the full power of the platform.
+</Note>
