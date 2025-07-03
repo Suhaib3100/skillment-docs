@@ -1,0 +1,379 @@
+---
+title: 'Core Concepts'
+description: 'Understand the fundamental concepts and terminology used in Skillment'
+---
+
+## Overview
+
+This guide introduces the core concepts and terminology used throughout Skillment. Understanding these concepts will help you navigate the platform more effectively and make the most of its features.
+
+## Core Entities
+
+### Organizations
+
+Organizations are the top-level entity in Skillment's multi-tenant architecture. Each organization represents a company, institution, or group that conducts assessments.
+
+```json Organization Structure
+{
+  "id": "org_abc123",
+  "name": "acme-corp",
+  "displayName": "ACME Corporation",
+  "type": "corporate",
+  "plan": "elite",
+  "users": ["user1", "user2"],
+  "assessments": ["assessment1", "assessment2"]
+}
+```
+
+**Key Features:**
+- Custom branding and logos
+- Subscription management
+- Team member access control
+- Isolated data and settings
+
+### Users
+
+Users are individuals who belong to an organization and can create, manage, or participate in assessments.
+
+<CardGroup cols={3}>
+  <Card title="Admin" icon="crown">
+    Full access to all organization features including billing and team management
+  </Card>
+  <Card title="Member" icon="user">
+    Can create assessments and manage candidates with standard permissions
+  </Card>
+  <Card title="Viewer" icon="eye">
+    Read-only access to assessments and analytics without modification rights
+  </Card>
+</CardGroup>
+
+### Assessments
+
+Assessments are the primary evaluation tools in Skillment. They contain questions, configuration settings, and define the testing experience.
+
+```json Assessment Components
+{
+  "basicInfo": {
+    "title": "Frontend Developer Assessment",
+    "description": "React and JavaScript evaluation",
+    "duration": 60,
+    "totalMarks": 100
+  },
+  "settings": {
+    "randomizeQuestions": true,
+    "showResults": true,
+    "attemptLimit": 1
+  },
+  "security": {
+    "proctoring": true,
+    "fullScreen": true,
+    "tabSwitchDetection": true
+  }
+}
+```
+
+**Assessment Types:**
+- **Technical**: Programming, coding challenges, system design
+- **Academic**: Subject-specific knowledge, standardized tests
+- **Behavioral**: Personality assessments, cultural fit evaluations
+- **Certification**: Professional certifications, compliance testing
+
+### Questions
+
+Questions are the building blocks of assessments. Skillment supports various question types to accommodate different evaluation needs.
+
+<Tabs>
+  <Tab title="Multiple Choice">
+    ```json MCQ Structure
+    {
+      "type": "multiple_choice",
+      "question": "What is React?",
+      "options": [
+        "A JavaScript library",
+        "A database",
+        "A server framework",
+        "An operating system"
+      ],
+      "correctAnswer": 0,
+      "marks": 5
+    }
+    ```
+  </Tab>
+  <Tab title="Coding">
+    ```json Coding Question
+    {
+      "type": "coding",
+      "question": "Implement a function to reverse a string",
+      "language": "javascript",
+      "testCases": [
+        {"input": "hello", "output": "olleh"},
+        {"input": "world", "output": "dlrow"}
+      ],
+      "marks": 20
+    }
+    ```
+  </Tab>
+  <Tab title="Essay">
+    ```json Essay Question
+    {
+      "type": "essay",
+      "question": "Explain the benefits of microservices architecture",
+      "maxWords": 500,
+      "rubric": {
+        "clarity": 25,
+        "technical_accuracy": 50,
+        "examples": 25
+      },
+      "marks": 25
+    }
+    ```
+  </Tab>
+</Tabs>
+
+### Candidates
+
+Candidates are individuals who take assessments. They can be invited by assessment creators and receive unique credentials for accessing evaluations.
+
+```json Candidate Lifecycle
+{
+  "invitation": {
+    "status": "invited",
+    "sentAt": "2024-01-01T10:00:00Z"
+  },
+  "assessment": {
+    "status": "in_progress",
+    "startedAt": "2024-01-01T14:30:00Z",
+    "timeSpent": 1800
+  },
+  "completion": {
+    "status": "completed",
+    "submittedAt": "2024-01-01T15:30:00Z",
+    "score": 85
+  }
+}
+```
+
+## Advanced Concepts
+
+### Proctoring
+
+Proctoring is Skillment's comprehensive security and monitoring system that ensures assessment integrity.
+
+<AccordionGroup>
+  <Accordion title="Basic Proctoring">
+    - **Webcam Monitoring**: Record candidate during assessment
+    - **Tab Switch Detection**: Monitor when candidates leave the assessment tab
+    - **Full Screen Mode**: Force assessment to run in full screen
+    - **Right Click Disable**: Prevent context menu access
+  </Accordion>
+
+  <Accordion title="Advanced Proctoring">
+    - **Screen Recording**: Capture entire screen activity
+    - **Environment Check**: Verify assessment environment
+    - **ID Verification**: Confirm candidate identity
+    - **Copy-Paste Detection**: Monitor clipboard activities
+    - **Suspicious Activity Detection**: AI-powered behavior analysis
+  </Accordion>
+</AccordionGroup>
+
+### Analytics
+
+Skillment provides comprehensive analytics at multiple levels:
+
+<CardGroup cols={2}>
+  <Card title="Assessment Analytics" icon="chart-bar">
+    Overall assessment performance, completion rates, and score distributions
+  </Card>
+  <Card title="Question Analytics" icon="chart-line">
+    Question-level difficulty, discrimination index, and response patterns
+  </Card>
+  <Card title="Candidate Analytics" icon="user-check">
+    Individual performance, time tracking, and behavioral insights
+  </Card>
+  <Card title="Organization Analytics" icon="building">
+    Cross-assessment trends, team performance, and resource utilization
+  </Card>
+</CardGroup>
+
+### Team Management
+
+Team management enables collaborative assessment creation and administration within organizations.
+
+```json Team Structure
+{
+  "teamMember": {
+    "email": "member@example.com",
+    "role": "member",
+    "permissions": {
+      "assessments": ["read", "create", "edit"],
+      "candidates": ["read", "invite"],
+      "analytics": ["read"],
+      "team": ["read"]
+    },
+    "status": "active"
+  }
+}
+```
+
+## Data Flow
+
+Understanding how data flows through Skillment helps in planning integrations and workflows:
+
+<Steps>
+  <Step title="Organization Setup">
+    Admin creates organization and configures settings, branding, and team members
+  </Step>
+  <Step title="Assessment Creation">
+    Team members create assessments with questions, settings, and security configurations
+  </Step>
+  <Step title="Candidate Invitation">
+    Candidates are invited via email with unique credentials and access instructions
+  </Step>
+  <Step title="Assessment Execution">
+    Candidates take assessments while being monitored through proctoring systems
+  </Step>
+  <Step title="Results & Analytics">
+    Completed assessments generate scores, insights, and detailed analytics reports
+  </Step>
+</Steps>
+
+## Security Model
+
+### Multi-Tenant Isolation
+
+Each organization's data is completely isolated:
+
+```javascript Security Boundaries
+{
+  "organization": "org_abc",
+  "data_access": {
+    "assessments": "org_abc_assessments_only",
+    "candidates": "org_abc_candidates_only",
+    "analytics": "org_abc_data_only",
+    "team": "org_abc_members_only"
+  },
+  "cross_tenant_access": "forbidden"
+}
+```
+
+### Role-Based Access Control (RBAC)
+
+Permissions are enforced at every level:
+
+<Tabs>
+  <Tab title="Resource Level">
+    ```json Resource Permissions
+    {
+      "assessment_123": {
+        "owner": "user_abc",
+        "collaborators": ["user_def", "user_ghi"],
+        "permissions": {
+          "read": ["owner", "collaborators", "admin"],
+          "edit": ["owner", "admin"],
+          "delete": ["owner", "admin"]
+        }
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="Organization Level">
+    ```json Organization Permissions
+    {
+      "organization": "org_abc",
+      "admin_permissions": ["all"],
+      "member_permissions": [
+        "assessments.create",
+        "assessments.read_own",
+        "candidates.invite"
+      ],
+      "viewer_permissions": [
+        "assessments.read",
+        "analytics.read"
+      ]
+    }
+    ```
+  </Tab>
+</Tabs>
+
+## Integration Patterns
+
+### API-First Design
+
+Skillment follows an API-first approach where every feature is accessible via REST APIs:
+
+```javascript API Integration Pattern
+// Create assessment via API
+const assessment = await skillment.assessments.create({
+  title: "Technical Interview",
+  questions: questionIds,
+  settings: {
+    duration: 90,
+    proctoring: true
+  }
+});
+
+// Invite candidates programmatically
+await skillment.candidates.invite({
+  assessmentId: assessment.id,
+  candidates: candidateList,
+  emailTemplate: "technical_interview"
+});
+```
+
+### Webhook Support
+
+Real-time updates through webhooks:
+
+```json Webhook Events
+{
+  "assessment.completed": {
+    "candidateId": "candidate_123",
+    "assessmentId": "assessment_456",
+    "score": 85,
+    "completedAt": "2024-01-01T15:30:00Z"
+  },
+  "proctoring.alert": {
+    "candidateId": "candidate_123",
+    "type": "tab_switch",
+    "severity": "medium",
+    "timestamp": "2024-01-01T14:45:00Z"
+  }
+}
+```
+
+## Best Practices
+
+### Assessment Design
+
+<CardGroup cols={2}>
+  <Card title="Question Variety" icon="shuffle">
+    Mix different question types to evaluate various skills comprehensively
+  </Card>
+  <Card title="Balanced Difficulty" icon="balance-scale">
+    Include questions of varying difficulty levels to properly differentiate candidates
+  </Card>
+  <Card title="Clear Instructions" icon="message-square">
+    Provide clear, unambiguous instructions for each question and section
+  </Card>
+  <Card title="Time Management" icon="clock">
+    Allocate appropriate time based on question complexity and candidate level
+  </Card>
+</CardGroup>
+
+### Security Configuration
+
+1. **Enable Appropriate Proctoring**: Match security level to assessment importance
+2. **Test Environment**: Verify all security features work in candidate environments
+3. **Clear Communication**: Inform candidates about security requirements beforehand
+4. **Backup Plans**: Have alternative assessment methods for technical issues
+
+### Team Collaboration
+
+- **Role Assignment**: Give team members appropriate permissions for their responsibilities
+- **Communication**: Establish clear workflows for assessment creation and review
+- **Quality Control**: Implement review processes for questions and assessments
+- **Documentation**: Maintain clear documentation of assessment standards and procedures
+
+<Note>
+  Understanding these concepts will help you make the most of Skillment's features. For specific implementation details, refer to the relevant sections in this documentation.
+</Note>

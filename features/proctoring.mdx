@@ -1,0 +1,612 @@
+---
+title: 'Proctoring & Security'
+description: 'Comprehensive guide to Skillment advanced proctoring and security features'
+---
+
+## Overview
+
+Skillment's proctoring system provides enterprise-grade security to ensure assessment integrity. Our multi-layered approach combines AI-powered monitoring, real-time alerts, and comprehensive logging to maintain the highest standards of academic and professional honesty.
+
+<CardGroup cols={2}>
+  <Card title="Real-time Monitoring" icon="video">
+    Live webcam and screen monitoring with AI analysis
+  </Card>
+  <Card title="Behavior Detection" icon="eye">
+    Advanced algorithms detect suspicious activities automatically
+  </Card>
+  <Card title="Environment Control" icon="shield">
+    Comprehensive browser and system security measures
+  </Card>
+  <Card title="Identity Verification" icon="user-check">
+    Multi-step identity confirmation and continuous validation
+  </Card>
+</CardGroup>
+
+## Proctoring Levels
+
+Choose the appropriate level of proctoring based on your assessment requirements:
+
+### Basic Proctoring
+
+Suitable for low-stakes assessments and initial screening:
+
+```json Basic Proctoring Settings
+{
+  "level": "basic",
+  "features": {
+    "fullScreenMode": true,
+    "tabSwitchDetection": true,
+    "rightClickDisable": true,
+    "copyPasteDetection": true,
+    "timeTracking": true
+  },
+  "alerts": {
+    "tabSwitch": "warning",
+    "timeExceeded": "notification"
+  }
+}
+```
+
+**Includes:**
+- Full-screen enforcement
+- Tab switch monitoring
+- Basic browser controls
+- Time tracking and warnings
+
+### Standard Proctoring
+
+Recommended for most professional assessments:
+
+```json Standard Proctoring Settings
+{
+  "level": "standard",
+  "features": {
+    "webcamMonitoring": true,
+    "screenRecording": true,
+    "environmentCheck": true,
+    "faceDetection": true,
+    "audioMonitoring": true,
+    "keyboardMouseTracking": true
+  },
+  "aiAnalysis": {
+    "faceRecognition": true,
+    "behaviorAnalysis": true,
+    "objectDetection": false
+  }
+}
+```
+
+**Includes:**
+- All basic features
+- Webcam recording and monitoring
+- Screen recording
+- Face detection and recognition
+- Audio monitoring
+- Keyboard and mouse tracking
+
+### Advanced Proctoring
+
+Maximum security for high-stakes examinations:
+
+```json Advanced Proctoring Settings
+{
+  "level": "advanced",
+  "features": {
+    "idVerification": true,
+    "roomScan": true,
+    "multiplePersonDetection": true,
+    "objectDetection": true,
+    "voiceAnalysis": true,
+    "eyeTracking": true,
+    "screenSharingDetection": true
+  },
+  "aiAnalysis": {
+    "deepLearning": true,
+    "behaviorPrediction": true,
+    "anomalyDetection": true,
+    "riskScoring": true
+  },
+  "thresholds": {
+    "suspiciousActivityLimit": 3,
+    "autoTermination": true,
+    "adminNotification": true
+  }
+}
+```
+
+## Core Security Features
+
+### Webcam Monitoring
+
+Real-time video monitoring with intelligent analysis:
+
+<Tabs>
+  <Tab title="Face Detection">
+    ```json Face Detection Config
+    {
+      "faceDetection": {
+        "enabled": true,
+        "requireFaceVisible": true,
+        "multipleFaceAlert": true,
+        "faceObstructionDetection": true,
+        "lookAwayDetection": {
+          "enabled": true,
+          "threshold": 5,
+          "duration": 10
+        }
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="Identity Verification">
+    ```json Identity Verification
+    {
+      "idVerification": {
+        "documentUpload": true,
+        "faceMatching": true,
+        "livenessDetection": true,
+        "documentValidation": true,
+        "continuousVerification": true
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="Behavior Analysis">
+    ```json Behavior Monitoring
+    {
+      "behaviorAnalysis": {
+        "eyeMovement": true,
+        "headPosition": true,
+        "handGestures": true,
+        "emotionalState": true,
+        "stressIndicators": true,
+        "concentrationLevel": true
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+### Screen Recording
+
+Comprehensive screen activity monitoring:
+
+```json Screen Recording Configuration
+{
+  "screenRecording": {
+    "enabled": true,
+    "quality": "1080p",
+    "frameRate": 30,
+    "captureAudio": true,
+    "recordFullScreen": true,
+    "compression": "h264",
+    "storage": {
+      "cloudStorage": true,
+      "encryption": "AES-256",
+      "retentionPeriod": "90_days"
+    }
+  },
+  "screenSharing": {
+    "detection": true,
+    "prevention": true,
+    "alert": "immediate"
+  }
+}
+```
+
+### Environment Monitoring
+
+Control and monitor the candidate's testing environment:
+
+<AccordionGroup>
+  <Accordion title="Room Scan">
+    **Pre-assessment room verification:**
+    - 360-degree room scan requirement
+    - Object detection for prohibited items
+    - Lighting and setup verification
+    - Noise level assessment
+  </Accordion>
+
+  <Accordion title="Audio Monitoring">
+    **Continuous audio analysis:**
+    - Background noise detection
+    - Voice recognition for multiple speakers
+    - Communication attempt detection
+    - Audio pattern analysis
+  </Accordion>
+
+  <Accordion title="Network Security">
+    **Internet connection monitoring:**
+    - VPN detection and blocking
+    - Proxy server identification
+    - Network traffic analysis
+    - Bandwidth monitoring
+  </Accordion>
+</AccordionGroup>
+
+## AI-Powered Detection
+
+### Suspicious Activity Detection
+
+Advanced algorithms identify potential cheating behaviors:
+
+```json AI Detection System
+{
+  "suspiciousActivities": [
+    {
+      "type": "multiple_faces",
+      "description": "More than one person detected",
+      "severity": "high",
+      "action": "immediate_alert"
+    },
+    {
+      "type": "looking_away",
+      "description": "Candidate looking away from screen",
+      "severity": "medium",
+      "threshold": 5,
+      "action": "warning"
+    },
+    {
+      "type": "object_detection",
+      "description": "Prohibited items detected",
+      "items": ["phone", "book", "notes"],
+      "action": "flag_assessment"
+    },
+    {
+      "type": "unusual_typing",
+      "description": "Abnormal typing patterns",
+      "severity": "low",
+      "action": "log_activity"
+    }
+  ]
+}
+```
+
+### Real-time Risk Scoring
+
+Dynamic assessment of cheating probability:
+
+```json Risk Scoring System
+{
+  "riskFactors": {
+    "behavioral": {
+      "eyeMovement": 0.3,
+      "headMovement": 0.2,
+      "typingPattern": 0.15,
+      "responseTime": 0.1
+    },
+    "environmental": {
+      "audioAnomalies": 0.25,
+      "visualDistractions": 0.2,
+      "networkActivity": 0.15
+    },
+    "technical": {
+      "tabSwitches": 0.4,
+      "copyPaste": 0.35,
+      "screenCapture": 0.3
+    }
+  },
+  "thresholds": {
+    "low_risk": 0.3,
+    "medium_risk": 0.6,
+    "high_risk": 0.8,
+    "auto_terminate": 0.9
+  }
+}
+```
+
+## Browser Security
+
+### Lockdown Browser Features
+
+Comprehensive browser control and restriction:
+
+<CardGroup cols={2}>
+  <Card title="Navigation Control" icon="navigation">
+    Disable back/forward buttons, URL bar, and bookmarks
+  </Card>
+  <Card title="Function Key Blocking" icon="keyboard">
+    Block F1-F12 keys, Alt+Tab, Ctrl+Alt+Del, and other shortcuts
+  </Card>
+  <Card title="Download Prevention" icon="download">
+    Block all file downloads and external links
+  </Card>
+  <Card title="Developer Tools" icon="code">
+    Disable browser developer tools and inspection features
+  </Card>
+</CardGroup>
+
+### Content Security
+
+```json Content Security Policy
+{
+  "contentSecurity": {
+    "disableRightClick": true,
+    "disableTextSelection": true,
+    "disablePrint": true,
+    "disableCopy": true,
+    "disablePaste": true,
+    "disableFind": true,
+    "blockExternalResources": true,
+    "preventScreenshots": true
+  },
+  "networkRestrictions": {
+    "blockSocialMedia": true,
+    "blockMessaging": true,
+    "blockFileSharing": true,
+    "allowWhitelist": ["skillment.com", "assessment-cdn.com"]
+  }
+}
+```
+
+## Identity Verification
+
+### Multi-Step Verification Process
+
+Ensure the right person is taking the assessment:
+
+<Steps>
+  <Step title="Document Upload">
+    Candidates upload government-issued photo ID
+    ```json
+    {
+      "acceptedDocuments": ["passport", "driver_license", "national_id"],
+      "requirements": ["clear_photo", "valid_date", "readable_text"],
+      "validation": "ai_ocr_verification"
+    }
+    ```
+  </Step>
+  <Step title="Facial Recognition">
+    AI compares live photo with ID document
+    ```json
+    {
+      "faceMatching": {
+        "confidence_threshold": 0.95,
+        "liveness_detection": true,
+        "angle_verification": true,
+        "lighting_check": true
+      }
+    }
+    ```
+  </Step>
+  <Step title="Knowledge-Based Authentication">
+    Optional security questions for additional verification
+    ```json
+    {
+      "kba_questions": 3,
+      "question_types": ["personal", "historical", "location"],
+      "pass_threshold": 2
+    }
+    ```
+  </Step>
+  <Step title="Continuous Verification">
+    Ongoing identity confirmation throughout assessment
+    ```json
+    {
+      "continuous_monitoring": {
+        "face_recheck_interval": 300,
+        "identity_drift_detection": true,
+        "substitution_prevention": true
+      }
+    }
+    ```
+  </Step>
+</Steps>
+
+## Monitoring Dashboard
+
+### Real-time Monitoring Interface
+
+Live oversight of all active assessments:
+
+```json Live Dashboard Features
+{
+  "candidateOverview": {
+    "totalActive": 45,
+    "flaggedCandidates": 3,
+    "technicalIssues": 1,
+    "averageProgress": 65
+  },
+  "alerts": [
+    {
+      "candidateId": "candidate_123",
+      "type": "multiple_faces",
+      "timestamp": "2024-01-01T14:30:00Z",
+      "severity": "high",
+      "status": "investigating"
+    }
+  ],
+  "proctorActions": [
+    "send_warning",
+    "chat_with_candidate",
+    "terminate_assessment",
+    "flag_for_review"
+  ]
+}
+```
+
+### Proctor Intervention Tools
+
+Direct communication and control capabilities:
+
+<Tabs>
+  <Tab title="Communication">
+    ```json Proctor Communication
+    {
+      "chatSystem": {
+        "realTimeChat": true,
+        "predefinedMessages": [
+          "Please look at the camera",
+          "Remove prohibited items",
+          "Adjust your camera position"
+        ],
+        "audioMessages": true
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="Assessment Control">
+    ```json Assessment Controls
+    {
+      "controls": {
+        "pauseAssessment": true,
+        "extendTime": true,
+        "terminateSession": true,
+        "markForReview": true,
+        "takeScreenshot": true,
+        "recordClip": true
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+## Compliance and Privacy
+
+### Data Protection
+
+Ensuring privacy while maintaining security:
+
+```json Privacy Configuration
+{
+  "dataProtection": {
+    "encryption": "AES-256",
+    "dataMinimization": true,
+    "consentManagement": true,
+    "rightToErasure": true,
+    "dataLocalization": {
+      "eu_candidates": "eu_servers",
+      "us_candidates": "us_servers"
+    }
+  },
+  "retention": {
+    "video_recordings": "90_days",
+    "activity_logs": "2_years",
+    "biometric_data": "30_days"
+  }
+}
+```
+
+### Regulatory Compliance
+
+Support for various compliance frameworks:
+
+<AccordionGroup>
+  <Accordion title="GDPR Compliance">
+    - Explicit consent for biometric data processing
+    - Right to access and delete personal data
+    - Data Processing Impact Assessments (DPIA)
+    - Privacy by design principles
+  </Accordion>
+
+  <Accordion title="FERPA Compliance">
+    - Educational record protection
+    - Student consent requirements
+    - Directory information handling
+    - Audit trail maintenance
+  </Accordion>
+
+  <Accordion title="SOC 2 Type II">
+    - Security controls validation
+    - Availability monitoring
+    - Processing integrity assurance
+    - Confidentiality measures
+  </Accordion>
+</AccordionGroup>
+
+## Best Practices
+
+### Implementing Proctoring
+
+<CardGroup cols={2}>
+  <Card title="Gradual Implementation" icon="trending-up">
+    Start with basic proctoring and gradually increase security based on needs
+  </Card>
+  <Card title="Clear Communication" icon="megaphone">
+    Inform candidates about proctoring requirements well in advance
+  </Card>
+  <Card title="Technical Testing" icon="test-tube">
+    Provide practice sessions to test candidate systems and setup
+  </Card>
+  <Card title="Support Availability" icon="headphones">
+    Ensure technical support is available during assessments
+  </Card>
+</CardGroup>
+
+### Candidate Experience
+
+1. **Pre-assessment Preparation**: Provide detailed setup instructions and system requirements
+2. **Practice Sessions**: Offer practice assessments to familiarize candidates with proctoring
+3. **Clear Expectations**: Explain what behaviors will trigger alerts or flags
+4. **Technical Support**: Provide easy access to help during the assessment
+5. **Accessibility**: Ensure proctoring doesn't interfere with accessibility accommodations
+
+### Managing Alerts
+
+```javascript Alert Management Workflow
+const alertWorkflow = {
+  immediate: [
+    'multiple_faces_detected',
+    'prohibited_items_visible',
+    'screen_sharing_detected'
+  ],
+  warning: [
+    'looking_away_frequently',
+    'unusual_typing_patterns',
+    'background_noise'
+  ],
+  logging: [
+    'minor_head_movements',
+    'brief_audio_spikes',
+    'normal_environmental_changes'
+  ]
+};
+
+// Auto-response configuration
+const autoResponses = {
+  high_severity: 'immediate_proctor_notification',
+  medium_severity: 'automated_warning_message',
+  low_severity: 'silent_logging'
+};
+```
+
+<Warning>
+  Always ensure your proctoring implementation complies with local privacy laws and institutional policies. Consider providing alternative assessment methods for candidates who cannot use proctoring technology.
+</Warning>
+
+## Integration Examples
+
+### API Integration
+
+```javascript Proctoring API Usage
+// Configure proctoring for an assessment
+await skillment.assessments.updateProctoring(assessmentId, {
+  level: 'standard',
+  features: {
+    webcamMonitoring: true,
+    screenRecording: true,
+    idVerification: true
+  },
+  thresholds: {
+    suspiciousActivityLimit: 3,
+    autoTermination: false
+  }
+});
+
+// Monitor live sessions
+const liveSessions = await skillment.proctoring.getLiveSessions();
+liveSessions.forEach(session => {
+  console.log(`Candidate ${session.candidateId}: ${session.riskScore}`);
+});
+
+// Handle proctoring alerts
+skillment.webhooks.on('proctoring.alert', (alert) => {
+  if (alert.severity === 'high') {
+    notifyProctor(alert);
+  }
+});
+```
+
+<Note>
+  Skillment's proctoring features are continuously updated with the latest AI and security technologies. Check our [feature updates](https://skillment.com/features) for the newest capabilities.
+</Note>

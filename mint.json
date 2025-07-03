@@ -1,0 +1,171 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Skillment Documentation",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#ea580c",
+    "light": "#fb923c",
+    "dark": "#c2410c",
+    "anchors": {
+      "from": "#ea580c",
+      "to": "#fb923c"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "mailto:support@skillment.com"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Dashboard",
+    "url": "https://app.skillment.com"
+  },
+  "tabs": [
+    {
+      "name": "API Reference",
+      "url": "api-reference"
+    },
+    {
+      "name": "Guides",
+      "url": "guides"
+    },
+    {
+      "name": "Examples",
+      "url": "examples"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "Community",
+      "icon": "discord",
+      "url": "https://discord.gg/skillment"
+    },
+    {
+      "name": "GitHub",
+      "icon": "github",
+      "url": "https://github.com/skillment/platform"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Get Started",
+      "pages": [
+        "introduction",
+        "quickstart",
+        "authentication",
+        "concepts"
+      ]
+    },
+    {
+      "group": "Platform Features",
+      "pages": [
+        "features/organizations",
+        "features/assessments",
+        "features/candidates",
+        "features/proctoring",
+        "features/analytics",
+        "features/team-management",
+        "features/email-management"
+      ]
+    },
+    {
+      "group": "Assessment Management",
+      "pages": [
+        "assessments/creating-assessments",
+        "assessments/question-types",
+        "assessments/proctoring-settings",
+        "assessments/scoring-grading",
+        "assessments/analytics"
+      ]
+    },
+    {
+      "group": "Candidate Experience",
+      "pages": [
+        "candidates/invitation-process",
+        "candidates/taking-assessments",
+        "candidates/results-feedback"
+      ]
+    },
+    {
+      "group": "API Reference",
+      "pages": [
+        "api-reference/introduction",
+        "api-reference/authentication",
+        {
+          "group": "Organizations",
+          "pages": [
+            "api-reference/organizations/get-organization",
+            "api-reference/organizations/update-organization",
+            "api-reference/organizations/upload-logo"
+          ]
+        },
+        {
+          "group": "Assessments",
+          "pages": [
+            "api-reference/assessments/create-assessment",
+            "api-reference/assessments/get-assessments",
+            "api-reference/assessments/get-assessment",
+            "api-reference/assessments/update-assessment",
+            "api-reference/assessments/delete-assessment"
+          ]
+        },
+        {
+          "group": "Candidates",
+          "pages": [
+            "api-reference/candidates/get-candidates",
+            "api-reference/candidates/invite-candidate",
+            "api-reference/candidates/update-candidate"
+          ]
+        },
+        {
+          "group": "Questions",
+          "pages": [
+            "api-reference/questions/create-question",
+            "api-reference/questions/get-questions",
+            "api-reference/questions/update-question",
+            "api-reference/questions/delete-question"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Guides",
+      "pages": [
+        "guides/getting-started",
+        "guides/organization-setup",
+        "guides/first-assessment",
+        "guides/team-collaboration",
+        "guides/advanced-proctoring",
+        "guides/analytics-insights",
+        "guides/api-integration"
+      ]
+    },
+    {
+      "group": "Examples",
+      "pages": [
+        "examples/basic-assessment",
+        "examples/proctored-exam",
+        "examples/coding-challenge",
+        "examples/team-evaluation"
+      ]
+    },
+    {
+      "group": "Support",
+      "pages": [
+        "support/troubleshooting",
+        "support/faq",
+        "support/contact"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "twitter": "https://twitter.com/skillment",
+    "github": "https://github.com/skillment/platform",
+    "linkedin": "https://linkedin.com/company/skillment"
+  }
+}

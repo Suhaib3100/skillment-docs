@@ -1,188 +1,301 @@
 ---
-title: 'Quick Start Guide'
-description: 'Get up and running with Skillment in 5 minutes'
+title: 'Quickstart'
+description: 'Get up and running with Skillment in under 10 minutes'
 ---
 
-## Welcome to Skillment!
+## Overview
 
-This quick start guide will help you create your first assessment and invite participants in just a few minutes. By the end of this guide, you'll have a fully functional assessment ready to use.
+This quickstart guide will help you create your first assessment on Skillment in just a few minutes. By the end of this guide, you'll have:
 
-## Step 1: Access Your Dashboard
+- Set up your organization
+- Created your first assessment
+- Invited candidates
+- Configured basic proctoring settings
 
-After signing up at [skillment.in](https://skillment.in/sign-up), log in to your dashboard at [app.skillment.in](https://app.skillment.in).
+<Note>
+  You'll need a Skillment account to follow this guide. If you don't have one, [sign up here](https://app.skillment.com/signup).
+</Note>
 
-<Frame>
-  <img src="/images/dashboard-overview.png" alt="Skillment Dashboard" />
-</Frame>
+## Step 1: Organization Setup
+
+After signing up, you'll be prompted to create your organization:
+
+<Steps>
+  <Step title="Choose Organization Name">
+    Select a unique organization name that will be used in your URLs (e.g., `company-name.skillment.com`)
+  </Step>
+  <Step title="Add Organization Details">
+    Fill in your organization's display name, type, and size for better customization
+  </Step>
+  <Step title="Upload Logo (Optional)">
+    Upload your organization's logo for branded assessments and emails
+  </Step>
+</Steps>
+
+```json Organization Creation Example
+{
+  "name": "acme-corp",
+  "displayName": "ACME Corporation",
+  "type": "corporate",
+  "size": "50-200"
+}
+```
 
 ## Step 2: Create Your First Assessment
 
-<Steps>
-  <Step title="Navigate to Assessments">
-    Click on "Assessments" in the left sidebar, then click "Create New Assessment"
-  </Step>
-  <Step title="Basic Information">
-    Fill in your assessment details:
-    - **Title**: "JavaScript Developer Test"
-    - **Description**: "Basic JavaScript skills assessment"
-    - **Duration**: 60 minutes
-    - **Type**: Coding Assessment
-  </Step>
-  <Step title="Add Questions">
-    Choose from our question bank or create custom questions:
-    - Select "Add from Question Bank"
-    - Filter by "JavaScript" and "Beginner"
-    - Add 3-5 coding problems
-  </Step>
-  <Step title="Configure Settings">
-    Set up assessment rules:
-    - **Proctoring**: Enable basic monitoring
-    - **Browser**: Lock browser during test
-    - **Time Limit**: 60 minutes
-    - **Attempts**: 1 attempt allowed
-  </Step>
-</Steps>
+Navigate to the Assessments page and click "Create Assessment":
 
-## Step 3: Invite Participants
+### Basic Information
 
-<Steps>
-  <Step title="Go to Participants">
-    Click "Participants" in the sidebar, then "Add Participants"
-  </Step>
-  <Step title="Add Participant Details">
-    Enter participant information:
-    ```
-    Name: John Doe
-    Email: john.doe@example.com
-    Role: Frontend Developer Candidate
-    ```
-  </Step>
-  <Step title="Assign Assessment">
-    Select the assessment you just created and set:
-    - **Start Date**: Immediate or scheduled
-    - **Deadline**: 7 days from now
-    - **Instructions**: Custom message for the candidate
-  </Step>
-  <Step title="Send Invitations">
-    Click "Send Invitations" to automatically email participants with:
-    - Assessment link
-    - Login credentials
-    - Instructions and guidelines
-  </Step>
-</Steps>
+<CodeGroup>
 
-## Step 4: Monitor Progress
+```json Assessment Configuration
+{
+  "title": "Frontend Developer Assessment",
+  "description": "Comprehensive evaluation for React developers",
+  "type": "technical",
+  "duration": 60,
+  "totalMarks": 100,
+  "attemptLimit": 1
+}
+```
 
-Once participants start taking assessments:
+```json Question Example
+{
+  "question": "What is the virtual DOM in React?",
+  "type": "multiple_choice",
+  "options": [
+    "A JavaScript representation of the real DOM",
+    "A browser API for manipulating DOM",
+    "A React component lifecycle method",
+    "A state management library"
+  ],
+  "correctAnswer": 0,
+  "marks": 5
+}
+```
+
+</CodeGroup>
+
+### Assessment Settings
+
+Configure your assessment with these essential settings:
+
+<Accordion title="Time Management">
+  - **Duration**: Set the total time allowed (e.g., 60 minutes)
+  - **Auto-submit**: Automatically submit when time expires
+  - **Time warnings**: Alert candidates at 30, 15, and 5 minutes remaining
+</Accordion>
+
+<Accordion title="Question Settings">
+  - **Randomize Questions**: Present questions in random order
+  - **Randomize Options**: Shuffle multiple-choice options
+  - **Show Results**: Display results immediately after submission
+</Accordion>
+
+<Accordion title="Security Settings">
+  - **Proctoring**: Enable webcam monitoring
+  - **Tab Switch Detection**: Monitor when candidates leave the assessment
+  - **Full Screen Mode**: Force candidates to stay in full screen
+</Accordion>
+
+## Step 3: Add Questions
+
+Skillment supports multiple question types:
 
 <CardGroup cols={2}>
-  <Card title="Real-time Monitoring" icon="eye">
-    Watch live progress, detect violations, and see current status
+  <Card title="Multiple Choice" icon="list-check">
+    Single or multiple correct answers with customizable options
   </Card>
-  <Card title="Instant Notifications" icon="bell">
-    Get alerts for assessment starts, submissions, and security violations
+  <Card title="Short Answer" icon="pencil">
+    Text-based responses for brief explanations
+  </Card>
+  <Card title="Essay" icon="file-text">
+    Long-form responses with rich text editing
+  </Card>
+  <Card title="Coding" icon="code">
+    Programming challenges with syntax highlighting
   </Card>
 </CardGroup>
 
-## Step 5: Review Results
+### Example Question Creation
 
-After assessment completion:
-
-<Steps>
-  <Step title="Access Results">
-    Go to "Results" tab in your assessment dashboard
-  </Step>
-  <Step title="Review Performance">
-    See detailed analytics:
-    - Code execution results
-    - Time spent per question
-    - Overall scores and rankings
-  </Step>
-  <Step title="Export Data">
-    Download reports in PDF or Excel format for further analysis
-  </Step>
-</Steps>
-
-## Sample Assessment Flow
-
-Here's what your participant will experience:
-
-```mermaid
-graph TD
-    A[Receive Email Invitation] --> B[Click Assessment Link]
-    B --> C[System Compatibility Check]
-    C --> D[Identity Verification]
-    D --> E[Assessment Guidelines]
-    E --> F[Start Assessment]
-    F --> G[Answer Questions]
-    G --> H[Submit Assessment]
-    H --> I[Thank You Page]
+```javascript Multiple Choice Question
+{
+  "question": "Which hook is used for side effects in React?",
+  "type": "multiple_choice",
+  "options": [
+    "useState",
+    "useEffect",
+    "useContext",
+    "useReducer"
+  ],
+  "correctAnswer": 1,
+  "marks": 5,
+  "explanation": "useEffect is the primary hook for handling side effects in functional components"
+}
 ```
 
-## Quick Tips for Success
+## Step 4: Configure Proctoring
+
+Enable security features to maintain assessment integrity:
+
+<Tabs>
+  <Tab title="Basic Proctoring">
+    ```json Basic Settings
+    {
+      "webcamMonitoring": true,
+      "tabSwitchDetection": true,
+      "fullscreenMode": true,
+      "rightClickDisable": true
+    }
+    ```
+  </Tab>
+  <Tab title="Advanced Proctoring">
+    ```json Advanced Settings
+    {
+      "screenRecording": true,
+      "environmentCheck": true,
+      "idVerification": true,
+      "suspiciousActivityThreshold": 3,
+      "copyPasteDetection": true
+    }
+    ```
+  </Tab>
+</Tabs>
+
+<Warning>
+  Advanced proctoring features may require additional setup and candidate permissions for camera and screen access.
+</Warning>
+
+## Step 5: Invite Candidates
+
+Once your assessment is ready, invite candidates:
+
+### Bulk Invitation
+
+1. **Upload CSV**: Prepare a CSV file with candidate information
+2. **Email Templates**: Customize invitation emails with your branding
+3. **Credentials**: Auto-generate secure login credentials
+
+```csv CSV Format Example
+name,email,phone,organization
+John Doe,john@example.com,+1234567890,ACME Corp
+Jane Smith,jane@example.com,+1234567891,Beta Inc
+```
+
+### Individual Invitation
+
+For single candidates, use the individual invitation form:
+
+```json Candidate Invitation
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "assessmentId": "assessment_123",
+  "customMessage": "Please complete this assessment by Friday."
+}
+```
+
+## Step 6: Monitor and Analyze
+
+During and after the assessment:
+
+### Real-time Monitoring
+
+<CardGroup cols={2}>
+  <Card title="Live Dashboard" icon="monitor">
+    Monitor candidates in real-time during the assessment
+  </Card>
+  <Card title="Proctoring Alerts" icon="bell">
+    Receive notifications for suspicious activities
+  </Card>
+  <Card title="Progress Tracking" icon="chart-line">
+    Track completion rates and time spent
+  </Card>
+  <Card title="Technical Issues" icon="exclamation-triangle">
+    Monitor and assist with technical difficulties
+  </Card>
+</CardGroup>
+
+### Post-Assessment Analytics
+
+After completion, analyze results:
+
+```json Analytics Example
+{
+  "totalCandidates": 50,
+  "completionRate": 96,
+  "averageScore": 73.5,
+  "averageTimeSpent": 52,
+  "topPerformers": 5,
+  "flaggedActivities": 2
+}
+```
+
+## Next Steps
+
+Congratulations! You've created your first assessment. Here's what to explore next:
+
+<CardGroup cols={2}>
+  <Card
+    title="Advanced Features"
+    icon="rocket"
+    href="/features/assessments"
+  >
+    Explore question pools, adaptive testing, and custom scoring
+  </Card>
+  <Card
+    title="Team Management"
+    icon="users"
+    href="/features/team-management"
+  >
+    Add team members and configure permissions
+  </Card>
+  <Card
+    title="API Integration"
+    icon="code"
+    href="/api-reference"
+  >
+    Integrate with your existing systems
+  </Card>
+  <Card
+    title="Analytics Deep Dive"
+    icon="chart-bar"
+    href="/features/analytics"
+  >
+    Master reporting and insights
+  </Card>
+</CardGroup>
+
+## Common Issues
 
 <AccordionGroup>
-  <Accordion title="Choose the Right Questions" icon="lightbulb">
-    Start with questions that match your candidates' expected skill level. Use our difficulty ratings to guide your selection.
+  <Accordion title="Candidates can't access the assessment">
+    Check that:
+    - Invitations were sent successfully
+    - Assessment status is "published" not "draft"
+    - Candidates are using the correct credentials
+    - Assessment hasn't expired
   </Accordion>
 
-  <Accordion title="Set Realistic Time Limits" icon="clock">
-    Allow 10-15 minutes per coding question and 2-3 minutes per MCQ. Test the assessment yourself first.
+  <Accordion title="Proctoring not working">
+    Ensure:
+    - Candidates have granted camera/microphone permissions
+    - Browser supports WebRTC (Chrome, Firefox, Safari)
+    - No browser extensions blocking camera access
+    - Stable internet connection
   </Accordion>
 
-  <Accordion title="Configure Proctoring Appropriately" icon="shield">
-    For initial assessments, use basic monitoring. Enable advanced proctoring for final rounds or high-stakes evaluations.
-  </Accordion>
-
-  <Accordion title="Communicate Clearly" icon="message">
-    Send clear instructions to participants including technical requirements and what to expect during the assessment.
+  <Accordion title="Questions not displaying correctly">
+    Verify:
+    - Question content is properly formatted
+    - Images are uploaded and accessible
+    - Question types are correctly configured
+    - Assessment is saved and published
   </Accordion>
 </AccordionGroup>
 
-## What's Next?
-
-Now that you've created your first assessment, explore these advanced features:
-
-<CardGroup cols={2}>
-  <Card
-    title="Question Bank Management"
-    icon="database"
-    href="/guides/question-bank"
-  >
-    Create custom questions and build your organization's question library
-  </Card>
-  <Card
-    title="Advanced Proctoring"
-    icon="video"
-    href="/guides/proctoring-setup"
-  >
-    Set up AI-powered monitoring and violation detection
-  </Card>
-  <Card
-    title="Team Collaboration"
-    icon="users"
-    href="/guides/team-management"
-  >
-    Add team members and manage permissions
-  </Card>
-  <Card
-    title="Analytics Dashboard"
-    icon="chart-bar"
-    href="/guides/assessment-analytics"
-  >
-    Dive deep into performance metrics and insights
-  </Card>
-</CardGroup>
-
-## Need Help?
-
-<Note>
-  **Stuck on something?** Our support team is available at [support@skillment.in](mailto:support@skillment.in), or check out our detailed guides for step-by-step instructions.
-</Note>
-
-## Common Next Steps
-
-- **Bulk Import Participants**: Upload CSV files with hundreds of candidates
-- **Custom Branding**: Add your organization's logo and colors
-- **Integration Setup**: Connect with your ATS or HRMS system
-- **Advanced Reporting**: Set up automated report generation
+<Tip>
+  Need help? Contact our support team at [support@skillment.com](mailto:support@skillment.com) or join our [Discord community](https://discord.gg/skillment).
+</Tip>

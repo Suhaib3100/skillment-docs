@@ -1,0 +1,514 @@
+---
+title: 'Assessment Features'
+description: 'Comprehensive guide to assessment creation, management, and configuration in Skillment'
+---
+
+## Overview
+
+Skillment's assessment engine is designed to handle diverse evaluation needs, from simple quizzes to complex technical interviews. This guide covers all assessment features and capabilities.
+
+## Assessment Types
+
+Skillment supports various assessment types to match your evaluation needs:
+
+<CardGroup cols={2}>
+  <Card title="Technical Assessments" icon="code">
+    Programming challenges, system design, and technical knowledge evaluation
+  </Card>
+  <Card title="Academic Assessments" icon="graduation-cap">
+    Subject-specific tests, standardized exams, and educational evaluations
+  </Card>
+  <Card title="Behavioral Assessments" icon="users">
+    Personality tests, cultural fit evaluation, and soft skill assessment
+  </Card>
+  <Card title="Certification Exams" icon="award">
+    Professional certifications, compliance testing, and skill validation
+  </Card>
+</CardGroup>
+
+## Question Types
+
+### Multiple Choice Questions (MCQ)
+
+Support for single and multiple correct answers with flexible configuration:
+
+```json MCQ Configuration
+{
+  "type": "multiple_choice",
+  "question": "Which of the following are React hooks?",
+  "options": [
+    "useState",
+    "componentDidMount",
+    "useEffect",
+    "render"
+  ],
+  "correctAnswers": [0, 2],
+  "multipleCorrect": true,
+  "marks": 5,
+  "explanation": "useState and useEffect are React hooks introduced in React 16.8"
+}
+```
+
+**Features:**
+- Single or multiple correct answers
+- Option randomization
+- Rich text formatting
+- Image and media support
+- Custom explanations
+
+### Short Answer Questions
+
+Text-based responses with automatic and manual grading options:
+
+```json Short Answer Question
+{
+  "type": "short_answer",
+  "question": "Explain the difference between let and var in JavaScript",
+  "maxLength": 500,
+  "keywords": ["scope", "hoisting", "block", "function"],
+  "marks": 10,
+  "gradingType": "manual"
+}
+```
+
+### Essay Questions
+
+Long-form responses with rubric-based grading:
+
+```json Essay Question
+{
+  "type": "essay",
+  "question": "Discuss the advantages and disadvantages of microservices architecture",
+  "minWords": 300,
+  "maxWords": 1000,
+  "rubric": {
+    "understanding": { "weight": 30, "description": "Demonstrates clear understanding" },
+    "analysis": { "weight": 40, "description": "Provides thoughtful analysis" },
+    "examples": { "weight": 30, "description": "Uses relevant examples" }
+  },
+  "marks": 25
+}
+```
+
+### Coding Questions
+
+Programming challenges with automated testing:
+
+<Tabs>
+  <Tab title="Function Implementation">
+    ```json Coding Challenge
+    {
+      "type": "coding",
+      "question": "Implement a function to find the longest palindromic substring",
+      "language": "javascript",
+      "starterCode": "function longestPalindrome(s) {\n  // Your code here\n}",
+      "testCases": [
+        { "input": "babad", "expectedOutput": "bab" },
+        { "input": "cbbd", "expectedOutput": "bb" }
+      ],
+      "timeLimit": 1000,
+      "memoryLimit": "256MB",
+      "marks": 30
+    }
+    ```
+  </Tab>
+  <Tab title="Algorithm Design">
+    ```json Algorithm Question
+    {
+      "type": "coding",
+      "question": "Design and implement a LRU Cache",
+      "language": "python",
+      "requirements": [
+        "get(key) - Get the value of the key if it exists",
+        "put(key, value) - Set or insert the value"
+      ],
+      "constraints": [
+        "Time complexity: O(1) for both operations",
+        "Space complexity: O(capacity)"
+      ],
+      "marks": 50
+    }
+    ```
+  </Tab>
+</Tabs>
+
+### File Upload Questions
+
+Allow candidates to submit files for portfolio reviews or project submissions:
+
+```json File Upload Question
+{
+  "type": "file_upload",
+  "question": "Upload your portfolio project demonstrating React best practices",
+  "allowedFormats": [".zip", ".rar", ".tar.gz"],
+  "maxFileSize": "10MB",
+  "maxFiles": 3,
+  "instructions": "Include source code, documentation, and deployment instructions",
+  "marks": 40
+}
+```
+
+## Assessment Configuration
+
+### Basic Settings
+
+<AccordionGroup>
+  <Accordion title="General Information">
+    ```json Basic Configuration
+    {
+      "title": "Senior Frontend Developer Assessment",
+      "description": "Comprehensive evaluation covering React, JavaScript, and system design",
+      "type": "technical",
+      "tags": ["react", "javascript", "frontend", "senior"],
+      "notes": "Focus on practical problem-solving and code quality"
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="Timing and Attempts">
+    ```json Timing Configuration
+    {
+      "duration": 120,
+      "attemptLimit": 1,
+      "timeWarnings": [30, 15, 5],
+      "autoSubmit": true,
+      "allowBackNavigation": true,
+      "showTimeRemaining": true
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="Scoring and Results">
+    ```json Scoring Configuration
+    {
+      "totalMarks": 150,
+      "passingScore": 70,
+      "showResults": true,
+      "showCorrectAnswers": false,
+      "showExplanations": true,
+      "resultDelay": 0
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
+### Advanced Configuration
+
+#### Question Randomization
+
+Control how questions are presented to ensure fairness:
+
+```json Randomization Settings
+{
+  "randomizeQuestions": true,
+  "randomizeOptions": true,
+  "questionPools": {
+    "javascript_basics": {
+      "questions": 20,
+      "selectRandom": 5
+    },
+    "react_advanced": {
+      "questions": 15,
+      "selectRandom": 3
+    }
+  }
+}
+```
+
+#### Adaptive Testing
+
+Dynamic question selection based on candidate performance:
+
+```json Adaptive Configuration
+{
+  "adaptiveTesting": {
+    "enabled": true,
+    "initialDifficulty": "medium",
+    "adjustmentFactor": 0.5,
+    "confidenceThreshold": 0.95,
+    "maxQuestions": 30,
+    "minQuestions": 15
+  }
+}
+```
+
+## Security and Proctoring
+
+### Basic Security Features
+
+<CardGroup cols={2}>
+  <Card title="Full Screen Mode" icon="expand">
+    Force assessment to run in full screen mode
+  </Card>
+  <Card title="Tab Switch Detection" icon="eye-off">
+    Monitor when candidates leave the assessment tab
+  </Card>
+  <Card title="Right Click Disable" icon="mouse-pointer-click">
+    Prevent access to browser context menu
+  </Card>
+  <Card title="Copy-Paste Prevention" icon="clipboard-x">
+    Block clipboard operations during assessment
+  </Card>
+</CardGroup>
+
+### Advanced Proctoring
+
+```json Proctoring Configuration
+{
+  "webcamMonitoring": {
+    "enabled": true,
+    "recordVideo": true,
+    "faceDetection": true,
+    "multipleFaceAlert": true
+  },
+  "screenRecording": {
+    "enabled": true,
+    "quality": "high",
+    "frameRate": 15
+  },
+  "environmentCheck": {
+    "enabled": true,
+    "roomScan": true,
+    "noiseDetection": true
+  },
+  "behaviorAnalysis": {
+    "enabled": true,
+    "suspiciousActivityThreshold": 3,
+    "aiAnalysis": true
+  }
+}
+```
+
+### ID Verification
+
+Multi-step identity verification process:
+
+<Steps>
+  <Step title="Document Upload">
+    Candidates upload government-issued ID documents
+  </Step>
+  <Step title="Facial Recognition">
+    AI-powered face matching with uploaded photo
+  </Step>
+  <Step title="Live Verification">
+    Real-time identity confirmation during assessment
+  </Step>
+  <Step title="Continuous Monitoring">
+    Ongoing verification throughout the assessment
+  </Step>
+</Steps>
+
+## Assessment Analytics
+
+### Real-time Monitoring
+
+Monitor assessment progress and candidate behavior in real-time:
+
+```json Live Dashboard Data
+{
+  "currentCandidates": 25,
+  "completedCandidates": 12,
+  "averageTimeSpent": 65,
+  "flaggedActivities": [
+    {
+      "candidateId": "candidate_123",
+      "type": "tab_switch",
+      "count": 3,
+      "lastOccurrence": "2024-01-01T14:30:00Z"
+    }
+  ],
+  "technicalIssues": 2
+}
+```
+
+### Post-Assessment Analytics
+
+Comprehensive analysis after assessment completion:
+
+<Tabs>
+  <Tab title="Score Distribution">
+    ```json Score Analytics
+    {
+      "statistics": {
+        "mean": 73.5,
+        "median": 75,
+        "standardDeviation": 12.3,
+        "range": { "min": 45, "max": 98 }
+      },
+      "distribution": {
+        "0-20": 2,
+        "21-40": 5,
+        "41-60": 8,
+        "61-80": 15,
+        "81-100": 20
+      },
+      "percentiles": {
+        "25th": 65,
+        "50th": 75,
+        "75th": 85,
+        "90th": 92
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="Question Analysis">
+    ```json Question Statistics
+    {
+      "questionId": "q_123",
+      "difficulty": 0.65,
+      "discrimination": 0.42,
+      "responses": {
+        "correct": 32,
+        "incorrect": 18,
+        "unanswered": 0
+      },
+      "timeStatistics": {
+        "averageTime": 120,
+        "medianTime": 115,
+        "maxTime": 300
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+## Collaboration Features
+
+### Team Assessment Creation
+
+Multiple team members can collaborate on assessment creation:
+
+```json Collaboration Workflow
+{
+  "assessmentCreation": {
+    "owner": "user_123",
+    "collaborators": ["user_456", "user_789"],
+    "workflow": {
+      "draft": "user_123",
+      "review": "user_456",
+      "approval": "user_789",
+      "publish": "user_123"
+    }
+  },
+  "permissions": {
+    "edit": ["owner", "collaborators"],
+    "review": ["admin", "senior_members"],
+    "publish": ["admin", "owner"]
+  }
+}
+```
+
+### Review and Approval Process
+
+Structured workflow for quality assurance:
+
+<Steps>
+  <Step title="Draft Creation">
+    Assessment creator builds initial version with questions and settings
+  </Step>
+  <Step title="Peer Review">
+    Team members review questions for accuracy and clarity
+  </Step>
+  <Step title="Expert Approval">
+    Subject matter experts approve final assessment
+  </Step>
+  <Step title="Quality Check">
+    Final review of technical settings and configurations
+  </Step>
+</Steps>
+
+## Integration Capabilities
+
+### API Integration
+
+Programmatically create and manage assessments:
+
+```javascript Assessment API Usage
+// Create assessment
+const assessment = await skillment.assessments.create({
+  title: "React Developer Assessment",
+  duration: 90,
+  questions: [
+    {
+      type: "multiple_choice",
+      question: "What is JSX?",
+      options: ["JavaScript XML", "Java Syntax Extension", "JSON Extended"],
+      correctAnswer: 0
+    }
+  ],
+  settings: {
+    randomizeQuestions: true,
+    proctoring: true
+  }
+});
+
+// Add questions from question bank
+await skillment.assessments.addQuestions(assessment.id, {
+  pool: "react_advanced",
+  count: 5,
+  difficulty: "medium"
+});
+```
+
+### Webhook Events
+
+Real-time notifications for assessment events:
+
+```json Webhook Events
+{
+  "assessment.created": {
+    "assessmentId": "assessment_123",
+    "createdBy": "user_456",
+    "timestamp": "2024-01-01T10:00:00Z"
+  },
+  "assessment.completed": {
+    "assessmentId": "assessment_123",
+    "candidateId": "candidate_789",
+    "score": 85,
+    "timestamp": "2024-01-01T15:30:00Z"
+  },
+  "proctoring.violation": {
+    "assessmentId": "assessment_123",
+    "candidateId": "candidate_789",
+    "violationType": "multiple_faces",
+    "severity": "high"
+  }
+}
+```
+
+## Best Practices
+
+### Assessment Design
+
+<CardGroup cols={2}>
+  <Card title="Clear Objectives" icon="target">
+    Define clear learning objectives and align questions accordingly
+  </Card>
+  <Card title="Balanced Difficulty" icon="balance-scale">
+    Include questions of varying difficulty to properly differentiate candidates
+  </Card>
+  <Card title="Time Allocation" icon="clock">
+    Allocate appropriate time based on question complexity
+  </Card>
+  <Card title="Quality Assurance" icon="check-circle">
+    Implement thorough review processes for all questions
+  </Card>
+</CardGroup>
+
+### Security Configuration
+
+1. **Risk Assessment**: Evaluate the importance and sensitivity of your assessment
+2. **Proportional Security**: Apply appropriate security measures without hindering user experience
+3. **Clear Communication**: Inform candidates about security requirements beforehand
+4. **Testing**: Test all security features in candidate environments before deployment
+
+### Performance Optimization
+
+- **Question Loading**: Use lazy loading for large assessments
+- **Media Optimization**: Optimize images and videos for fast loading
+- **Caching**: Implement appropriate caching strategies
+- **Monitoring**: Monitor assessment performance and loading times
+
+<Note>
+  Skillment's assessment features are continuously evolving. Check our [changelog](https://skillment.com/changelog) for the latest updates and feature releases.
+</Note>
